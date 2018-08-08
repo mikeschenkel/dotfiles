@@ -4,3 +4,13 @@
     ~/.zgen: vendor/zgen
     ~/z.sh: vendor/z/z.sh
 
+- shell:
+  -
+    command: "zsh"
+  -
+    description: "Change user shell to zsh"
+    command: "chsh"
+  -
+    description: "Run ZSH to initialize everything"
+    command: "zsh"
+
