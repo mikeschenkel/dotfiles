@@ -9,7 +9,7 @@
     command: "zsh"
   -
     description: "Change user shell to zsh"
-    command: "chsh"
+    command: "chsh -s /bin/zsh"
   -
     description: "Run ZSH to initialize everything"
     command: "zsh"

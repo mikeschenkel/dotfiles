@@ -22,7 +22,6 @@ ZGEN="${HOME}/.zgenrc"
 
 # -- ZSH SPACESHIP THEME -------------------------------------------------------
 
-SPACESHIP_KUBECONTEXT_SHOW=false
 SPACESHIP_VI_MODE_SHOW=false
 
 
