@@ -1,0 +1,14 @@
+# - defaults:
+#     link:
+#       create: true
+#       relink: true
+
+    #- clean: ['~']
+
+#- link:
+  # ~/.vim_config: vim/
+  # ~/.vim: vim/
+  # ~/.vimrc: vimrc
+  # ~/.config/nvim/init.vim: vimrc
+  # ~/.tmux.conf: tmux.conf
+

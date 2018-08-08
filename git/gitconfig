@@ -1,0 +1,99 @@
+[core]
+  excludesfile = ~/.gitignore_global
+  editor = nvim
+
+[include]
+  path = ~/.gitconfig.local
+  # use separate file for username / github token / etc
+
+[help]
+  autocorrect = 1
+  # correct typos
+
+[color]
+  ui = always
+
+[color "diff"]
+  meta = yellow bold
+  commit = green bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+# git mergetool
+[merge]
+  tool = opendiff
+
+[status]
+  showUntrackedFiles = all
+  # Sometimes a newly-added folder, since it's only one line in git status, can slip under the radar.
+  # https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles
+
+#[commit]
+  # template = ~/.git-commit-template
+  # gpgSign = true
+  # "other people can trust that the changes you've made really were made by you"
+  # https://help.github.com/articles/about-gpg/
+  # https://git-scm.com/docs/git-config#git-config-commitgpgSign
+
+[push]
+  default = simple
+  # "push the current branch back to the branch whose changes are usually integrated into the current branch"
+  # "refuse to push if the upstream branch’s name is different from the local one"
+  # https://git-scm.com/docs/git-config#git-config-pushdefault
+
+  followTags = true
+  # Because I get sick of telling git to do it manually
+  # https://git-scm.com/docs/git-config#git-config-pushfollowTags
+
+[fetch]
+  prune = true
+
+[diff]
+  compactionHeuristic = true
+
+[transfer]
+  fsckobjects = true
+  # To combat repository corruption!
+  # Note: this global option applies during receive and transmit
+  # https://git-scm.com/docs/git-config#git-config-transferfsckObjects
+  # via https://groups.google.com/forum/#!topic/binary-transparency/f-BI4o8HZW0
+
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
+
+# rewrites of repo paths
+[url "git@github.com:"]
+  insteadOf = "https://github.com/"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
+  pushInsteadOf = "https://github.com/"
+
+[url "git://github.com/"]
+  insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+  insteadOf = "gist:"
