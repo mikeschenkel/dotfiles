@@ -10,9 +10,13 @@ pathadd() {
   [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]] && PATH="${PATH:+"$PATH:"}$1"
 }
 
-PATH=/usr/local/bin":${PATH}"
-pathadd "/usr/local/sbin"
-pathadd "${HOME}/bin"
+typeset -U path
+path=(/usr/local/bin /usr/local/sbin $path)
+path+=(${HOME}/bin)
+
+#PATH=/usr/local/bin":${PATH}"
+#pathadd "/usr/local/sbin"
+#pathadd "${HOME}/bin"
 
 
 
@@ -37,7 +41,8 @@ Z="${HOME}/z.sh"
 
 NPM_PACKAGES="${HOME}/.npm-packages"
 if [ -s "$NPM_PACKAGES" ]; then
-  pathadd "${NPM_PACKAGES}/bin"
+  #pathadd "${NPM_PACKAGES}/bin"
+  path+=(${NPM_PACKAGES}/bin)
   export NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
   export N_PREFIX="${NPM_PACKAGES}/node"
 fi
@@ -47,7 +52,8 @@ fi
 
 RBENV="${HOME}/.rbenv"
 if [ -s "$RBENV" ]; then
-  pathadd "${RBENV}/bin"
+  #pathadd "${RBENV}/bin"
+  path+=(${RBENV}/bin)
   eval "$(rbenv init -)"
 fi
 
@@ -57,6 +63,18 @@ fi
 [ -z "$TMUX" ] && export TERM="xterm-256color"
 
 
+# -- FUNCTIONS -----------------------------------------------------------------
+
+FUNCTIONS="${HOME}/.functions"
+if [ -s "$FUNCTIONS" ]; then
+  source "$FUNCTIONS"
+fi
+
+
 # -- ALIASES -------------------------------------------------------------------
 
-#alias vim='nvim'
+ALIASES="${HOME}/.aliases"
+if [ -s "$ALIASES" ]; then
+  source "$ALIASES"
+fi
+

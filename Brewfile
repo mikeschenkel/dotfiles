@@ -3,8 +3,6 @@ tap "caskroom/versions"
 tap "neovim/neovim"
 tap "bramstein/webfonttools"
 
-#export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
 # Shells
 #brew install bash
 #brew install zsh
@@ -71,6 +69,7 @@ cask_args appdir: "/Applications"
 cask "iterm2"
 cask "cleanmymac"
 cask "notion"
+cask "imageoptim"
 #brew cask install macdown
 #brew cask install dropbox
 #brew cask install stack
@@ -78,7 +77,6 @@ cask "notion"
 #brew cask install caption
 #brew cask install xld
 #brew cask install adapter
-cask "imageoptim"
 #brew cask install exifrenamer
 #brew cask install flux
 #brew cask install filezilla
@@ -90,7 +88,7 @@ cask "imageoptim"
 #brew cask install malwarebytes-anti-malware
 
 # Productivity Tools
-#brew cask install contexts
+cask "contexts"
 cask "alfred"
 cask "bartender"
 
@@ -107,8 +105,8 @@ cask "vlc"
 # Communication
 #brew cask install skype
 #brew cask install slack
-#brew cask install telegram-desktop
-#brew cask install franz
+cask "telegram"
+cask "franz"
 
 # Browsers
 cask "google-chrome"
@@ -122,6 +120,7 @@ cask "virtualbox"
 cask "vagrant"
 cask "vagrant-manager"
 cask "docker"
+cask "local-by-flywheel"
 
 # Misc
 cask "cakebrew"
@@ -154,6 +153,11 @@ brew "mas"
 
 mas "Magnet", id: 441258766
 mas "Todoist", id: 585829637
+mas "Tweetbot", id: 557168941
 mas "Memory Clean 2", id: 1114591412
 mas "Reeder", id: 880001334
 mas "Enpass", id: 732710998
+
+mas "Pages", id: 409201541
+mas "Numbers", id: 409203825
+mas "Keynote", id: 409183694
