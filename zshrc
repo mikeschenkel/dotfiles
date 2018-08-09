@@ -11,7 +11,9 @@ pathadd() {
 }
 
 PATH=/usr/local/bin":${PATH}"
+pathadd "/usr/local/sbin"
 pathadd "${HOME}/bin"
+
 
 
 # -- ZGEN ----------------------------------------------------------------------
