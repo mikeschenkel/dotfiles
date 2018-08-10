@@ -1,0 +1,7 @@
+- link:
+    ~/Brewfile: Brewfile
+
+- shell:
+  -
+    command: "brew bundle"
+    stdout: true
