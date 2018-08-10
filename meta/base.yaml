@@ -7,7 +7,6 @@
 
 - link:
     ~/.tmux.conf: tmux.conf
-    ~/Brewfile: Brewfile
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
