@@ -1,7 +1,19 @@
+################################################################################
+# Taps
+################################################################################
+
 tap "caskroom/cask"
 tap "caskroom/versions"
 tap "neovim/neovim"
 tap "bramstein/webfonttools"
+
+
+################################################################################
+# Brew
+################################################################################
+
+### Personal ###
+tap "homebrew/cask-drivers"
 
 # Shells
 #brew install bash
@@ -59,6 +71,7 @@ brew "tmux"
 brew "neovim"
 #brew macvim --override-system-vim --custom-system-icons
 
+
 ################################################################################
 # Brew Cask
 ################################################################################
@@ -67,9 +80,13 @@ cask_args appdir: "/Applications"
 
 # Utilities
 cask "iterm2"
-cask "cleanmymac"
 cask "notion"
 cask "imageoptim"
+
+#cask "cleanmymac"
+cask "apptrap"
+cask "onyx"
+
 #brew cask install macdown
 #brew cask install dropbox
 #brew cask install stack
@@ -91,6 +108,7 @@ cask "imageoptim"
 cask "contexts"
 cask "alfred"
 cask "bartender"
+cask "istat-menus"
 
 # Editors
 cask "visual-studio-code"
@@ -145,6 +163,10 @@ cask "quicklookapk"
 cask "quicklookase"
 cask "quicklook-pat"
 
+### Personal ###
+cask "logitech-control-center"
+
+
 ################################################################################
 # Mac App Store
 ################################################################################
@@ -154,7 +176,6 @@ brew "mas"
 mas "Magnet", id: 441258766
 mas "Todoist", id: 585829637
 mas "Tweetbot", id: 557168941
-mas "Memory Clean 2", id: 1114591412
 mas "Reeder", id: 880001334
 mas "Enpass", id: 732710998
 

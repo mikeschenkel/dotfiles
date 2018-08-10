@@ -77,4 +77,3 @@ ALIASES="${HOME}/.aliases"
 if [ -s "$ALIASES" ]; then
   source "$ALIASES"
 fi
-

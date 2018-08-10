@@ -1,0 +1,23 @@
+- shell:
+  -
+    command: "brew update"
+  -
+    description: "Install Node.js"
+    command: "brew install node"
+  -
+    command: "brew cleanup"
+  -
+    description: "Create a directory for global npm packages"
+    command: "mkdir -p \"${HOME}/.npm-packages\""
+  -
+    description: "Save npm packges with an exact version instead of npm's semver range operator"
+    command: "npm config set save-exact = true"
+  -
+    description: "Set location to install global npm packages"
+    command: "npm config set prefix \"${HOME}/.npm-packages\""
+  -
+    description: "Install the latest version of npm"
+    command: "npm install npm -g"
+  -
+    description: "Globally install npm packges"
+    command: "npm install -g n npm-check"
