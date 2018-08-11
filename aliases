@@ -17,10 +17,10 @@ alias ka="k -a -h"
 ###
 # time to upgrade `ls`
 
-# use coreutils `ls` if possible‚Ä¶
+# use coreutils `ls` if possible
 hash gls >/dev/null 2>&1 || alias gls="ls"
 
-# always use color, even when piping (to awk,grep,etc)
+# always use color, even when piping (to awk, grep, etc)
 if gls --color > /dev/null 2>&1; then colorflag="--color"; else colorflag="-G"; fi;
 export CLICOLOR_FORCE=1
 
@@ -69,6 +69,4 @@ alias https-server='http-server --ssl --cert ~/.ssl/localhost.crt --key ~/.ssl/l
 
 # Update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update_brew="brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew cask cleanup; brew prune; brew doctor"
-alias update_npm="npm-check -gu"
-# alias update_ruby="gem update --system"
-# alias update_brew_npm_gem='brew_update; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update --no-document'
+alias update_npm="npm install npm -g; npm-check -gu"

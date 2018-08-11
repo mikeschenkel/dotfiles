@@ -7,8 +7,12 @@
     ~/.functions: functions
 
 - shell:
-  - [zsh]
+  -
+    command: "zsh"
   -
     description: "Change user shell to zsh"
-    command: "chsh -s /bin/zsh"
-  - [zsh]
+    # command: "chsh -s /bin/zsh"
+    # command: "chsh -s $(which zsh)"
+    command: "sudo chsh -s /usr/local/bin/zsh $USER"
+  -
+    command: "zsh"

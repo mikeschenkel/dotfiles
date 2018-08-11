@@ -1,6 +1,8 @@
-################################################################################
-# Taps
-################################################################################
+# ------------------------------------------------------------------------------
+# ~/Brewfile
+# ------------------------------------------------------------------------------
+
+# -- TAPS ----------------------------------------------------------------------
 
 tap "caskroom/cask"
 tap "caskroom/versions"
@@ -8,23 +10,21 @@ tap "neovim/neovim"
 tap "bramstein/webfonttools"
 
 
-################################################################################
-# Brew
-################################################################################
+# -- HOMEBREW ------------------------------------------------------------------
 
 ### Personal ###
 tap "homebrew/cask-drivers"
 
 # Shells
-#brew install bash
-#brew install zsh
+brew "bash", link: true
+brew "zsh"
 
 # Core Utilities
 brew "coreutils"
 brew "binutils"
 brew "diffutils"
 brew "moreutils"
-brew "findutils", args: ["with-default-names"]
+brew "findutils"
 brew "gnu-sed", args: ["with-default-names"]
 brew "gnu-tar", args: ["with-default-names"]
 brew "gnu-which", args: ["with-default-names"]
@@ -43,6 +43,8 @@ brew "rsync"
 brew "gzip"
 brew "unzip"
 brew "unrar"
+brew "make"
+brew "less"
 brew "imagemagick", args: ["with-webp"]
 ##brew "homebrew/x11/xpdf"
 
@@ -72,9 +74,7 @@ brew "neovim"
 #brew macvim --override-system-vim --custom-system-icons
 
 
-################################################################################
-# Brew Cask
-################################################################################
+# -- HOMEBREW CASK -------------------------------------------------------------
 
 cask_args appdir: "/Applications"
 
@@ -83,7 +83,6 @@ cask "iterm2"
 cask "notion"
 cask "imageoptim"
 
-#cask "cleanmymac"
 cask "apptrap"
 cask "onyx"
 
@@ -167,9 +166,7 @@ cask "quicklook-pat"
 cask "logitech-control-center"
 
 
-################################################################################
-# Mac App Store
-################################################################################
+# -- APP STORE -----------------------------------------------------------------
 
 brew "mas"
 

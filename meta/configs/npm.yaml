@@ -18,6 +18,8 @@
   -
     description: "Install the latest version of npm"
     command: "npm install npm -g"
+    stdout: true
   -
     description: "Globally install npm packges"
     command: "npm install -g n npm-check"
+    stdout: true
