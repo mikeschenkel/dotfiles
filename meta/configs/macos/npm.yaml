@@ -1,0 +1,35 @@
+- link:
+    ~/.npmrc: npmrc
+
+- shell:
+  -
+    command: "brew update"
+  -
+    description: "Installing Node.js"
+    command: "brew install node --without-npm"
+    stdout: true
+    stderr: true
+  -
+    description: "Installing Yarn"
+    command: "brew install yarn --without-node"
+    stdout: true
+    stderr: true
+  -
+    command: "yarn global add rimraf"
+    stdout: true
+    stderr: true
+  -
+    command: "brew cleanup"
+  -
+    description: "Create a directory for global npm packages"
+    command: "mkdir -p \"${HOME}/.npm-packages\""
+  -
+    description: "Install the latest version of npm"
+    command: "curl -L https://www.npmjs.com/install.sh | sh"
+    stdout: true
+    stderr: true
+  -
+    description: "Globally install npm packges"
+    command: "${HOME}/.npm-packages/bin/npm install -g npm-check"
+    stdout: true
+    stderr: true

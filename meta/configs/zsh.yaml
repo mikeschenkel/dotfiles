@@ -3,8 +3,8 @@
     ~/.zgenrc: zgenrc
     ~/.zgen: vendor/zgen
     ~/z.sh: vendor/z/z.sh
-    ~/.aliases: aliases
-    ~/.functions: functions
+    ~/.aliases: shell/aliases.sh
+    ~/.functions: shell/functions.sh
 
 - shell:
   -
@@ -14,5 +14,3 @@
     # command: "chsh -s /bin/zsh"
     # command: "chsh -s $(which zsh)"
     command: "sudo chsh -s /usr/local/bin/zsh $USER"
-  -
-    command: "zsh"

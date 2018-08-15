@@ -2,7 +2,6 @@
 # ~/.zshrc
 # ------------------------------------------------------------------------------
 
-
 # -- PATH ----------------------------------------------------------------------
 
 # Add additional directories to the path.
@@ -19,11 +18,41 @@ path+=(${HOME}/bin)
 #pathadd "${HOME}/bin"
 
 
-
 # -- ZGEN ----------------------------------------------------------------------
 
 ZGEN="${HOME}/.zgenrc"
 [ -s "$ZGEN" ] && source "$ZGEN"
+
+# autoload -Uz compinit
+# if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+# 	compinit;
+# else
+# 	compinit -C;
+# fi;
+
+# Function to determine the need of a zcompile. If the .zwc file
+# does not exist, or the base file is newer, we need to compile.
+# man zshbuiltins: zcompile
+zcompare() {
+	if [[ -s ${1} && ( ! -s ${1}.zwc || ${1} -nt ${1}.zwc) ]]; then
+		zcompile ${1}
+	fi
+}
+
+# zcompile the completion cache; siginificant speedup.
+setopt EXTENDED_GLOB
+local zsh_glob='^(.git*|LICENSE|README.md|*.zwc)(.)'
+for file in ${ZDOTDIR:-${HOME}}/.zcomp${~zsh_glob}; do
+  zcompare ${file}
+done
+
+# zcompile .zshrc
+zcompare ${ZDOTDIR:-${HOME}}/.zshrc
+
+# zgen
+zgen_mods=${ZDOTDIR:-${HOME}}/.zgen
+zcompare ${zgen_mods}/init.zsh
+zcompare ${zgen_mods}/zgen.zsh
 
 
 # -- ZSH SPACESHIP THEME -------------------------------------------------------
@@ -77,3 +106,4 @@ ALIASES="${HOME}/.aliases"
 if [ -s "$ALIASES" ]; then
   source "$ALIASES"
 fi
+

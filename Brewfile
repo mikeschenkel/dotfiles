@@ -8,6 +8,8 @@ tap "caskroom/cask"
 tap "caskroom/versions"
 tap "neovim/neovim"
 tap "bramstein/webfonttools"
+tap "buo/cask-upgrade"
+tap "dteoh/sqa"
 
 
 # -- HOMEBREW ------------------------------------------------------------------
@@ -49,11 +51,14 @@ brew "imagemagick", args: ["with-webp"]
 ##brew "homebrew/x11/xpdf"
 
 #brew install ack
-#brew install the_silver_searcher
+brew "the_silver_searcher"
 #brew install z
 #brew install ssh-copy-id
 #brew install wifi-password
 #brew install youtube-dl
+
+brew "node", args: ["without-npm"]
+brew "yarn", args: ["without-node"]
 
 # Git
 brew "git"
@@ -83,6 +88,7 @@ cask "iterm2"
 cask "notion"
 cask "imageoptim"
 
+cask "slowquitapps"
 cask "apptrap"
 cask "onyx"
 
@@ -108,6 +114,7 @@ cask "contexts"
 cask "alfred"
 cask "bartender"
 cask "istat-menus"
+cask "itsycal"
 
 # Editors
 cask "visual-studio-code"

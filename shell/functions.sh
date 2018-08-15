@@ -1,8 +1,27 @@
 #!/usr/bin/env bash
 
+# Normalize `open` across Linux, macOS, and Windows.
+# This is needed to make the `o` function (see below) cross-platform.
+if [ ! $(uname -s) = 'Darwin' ]; then
+  if grep -q Microsoft /proc/version; then
+    # Ubuntu on Windows using the Linux subsystem
+    alias open='explorer.exe';
+  else
+    alias open='xdg-open';
+  fi
+fi
+
 # Create a new directory and enter it
 function mkd() {
-  mkdir -p "$@" && cd "$_";
+  # mkdir -p "$@" && cd "$_";
+  if [[ ! -n "$1" ]]; then
+    echo "Usage: mkd [directory]"
+  elif [ -d $1 ]; then
+    echo "'$1' already exists"
+    cd "${1}"
+  else
+    mkdir -p "${1}" && cd "${1}"
+  fi
 }
 
 # Start a PHP server from a directory, optionally specifying the port
@@ -48,26 +67,19 @@ function o() {
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
 function tre() {
-  tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
-# List all files, long format, colorized, permissions in octal
-function la() {
- 	ls -l  "$@" | awk '
-    {
-      k=0;
-      for (i=0;i<=8;i++)
-        k+=((substr($1,i+2,1)~/[rwx]/) *2^(8-i));
-      if (k)
-        printf("%0o ",k);
-      printf(" %9s  %3s %2s %5s  %6s  %s %s %s\n", $3, $6, $7, $8, $5, $9,$10, $11);
-    }'
-}
-
-# Get gzipped size
+# Compare original and gzipped file size
 function gz() {
-  echo "original size (bytes):"
-  cat "$1" | wc -c
-  echo "gzipped size (bytes):"
-  gzip -c "$1" | wc -c
+  local origsize=$(wc -c < "$1");
+  local gzipsize=$(gzip -c "$1" | wc -c);
+  local ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
+  printf "orig: %d bytes\n" "$origsize";
+  printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
+}
+
+function defaults() {
+  echo `date` "defaults" "$@" >> "${HOME}/Documents/defaults.txt"
+  /usr/bin/defaults "$@"
 }
