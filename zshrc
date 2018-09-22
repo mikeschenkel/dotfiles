@@ -4,18 +4,12 @@
 
 # -- PATH ----------------------------------------------------------------------
 
-# Add additional directories to the path.
-pathadd() {
-  [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]] && PATH="${PATH:+"$PATH:"}$1"
-}
-
-typeset -U path
-path=(/usr/local/bin /usr/local/sbin $path)
-path+=(${HOME}/bin)
-
-#PATH=/usr/local/bin":${PATH}"
-#pathadd "/usr/local/sbin"
-#pathadd "${HOME}/bin"
+path=(
+  ${HOME}/bin
+  /usr/local/bin
+  /usr/local/sbin
+  $path
+)
 
 
 # -- ZGEN ----------------------------------------------------------------------
@@ -106,4 +100,12 @@ ALIASES="${HOME}/.aliases"
 if [ -s "$ALIASES" ]; then
   source "$ALIASES"
 fi
+
+
+# -- FZF -----------------------------------------------------------------------
+
+[ -f ~/.fzf-base16.config ] && source ~/.fzf-base16.config
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+typeset -U path
 

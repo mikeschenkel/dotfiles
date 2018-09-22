@@ -11,13 +11,20 @@ alias cp="cp -v"
 alias cask="brew cask"
 
 # k
-alias k="k -h"
-alias ka="k -a -h"
+#alias k="k -h"
+#alias ka="k -a -h"
+
+# bat
+alias bat="bat --theme=TwoDark"
+alias cat="bat"
 
 # Git
 alias git='hub'
 alias gst='git status'
 alias gaa='git add -A'
+
+# Vim
+alias v='nvim'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -29,19 +36,25 @@ else # macOS `ls`
 fi
 
 # List all files colorized in long format
-alias l="command ls -lhF ${colorflag}"
+#alias l="command ls -lhF ${colorflag}"
 
 # List all files colorized in long format, including dot files
-alias la="command ls -lhaF ${colorflag}"
+#alias la="command ls -lhaF ${colorflag}"
 
 # Always use color output for `ls`
-alias ls="command ls -F ${colorflag}"
+#alias ls="command ls -F ${colorflag}"
 
 # Always use color output for `ls`
-alias lsa="command ls -aF ${colorflag}"
+#alias lsa="command ls -aF ${colorflag}"
 
 # List only directories
 alias lsd="command ls -lhF ${colorflag} | grep --color=never '^d'"
+
+# exa
+alias l="exa -lhF --git"
+alias la="exa -lhaF --git"
+alias ls="exa -F"
+alias lsa="exa -aF"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -102,6 +115,9 @@ alias path='echo -e ${PATH//:/\\n}'
 
 alias https-server='http-server --ssl --cert ~/.ssl/localhost.crt --key ~/.ssl/localhost.key -a localhost -o'
 
-# Update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update_brew="brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew cu --all --cleanup; brew cask cleanup; brew prune; brew doctor"
+# Update installed Homebrew, npm, Ruby gems and their installed packages
+alias update_brew="brew -v update; brew upgrade --force-bottle --cleanup; brew cu --all --cleanup; brew cleanup; brew prune; brew doctor"
 alias update_npm="npm-check -gu"
+alias update_ruby="gem update --system; gem update --no-document"
+alias update_vim="nvim +PlugUpgrade +PlugInstall +PlugUpdate +qall"
+alias update_all="update_brew; update_npm; update_ruby; update_vim"

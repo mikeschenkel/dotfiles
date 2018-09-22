@@ -14,7 +14,7 @@ tap "dteoh/sqa"
 
 # -- HOMEBREW ------------------------------------------------------------------
 
-### Personal ###
+### Personal/Logitech ###
 tap "homebrew/cask-drivers"
 
 # Shells
@@ -33,7 +33,7 @@ brew "gnu-which", args: ["with-default-names"]
 brew "gnutls", args: ["with-default-names"]
 brew "grep", args: ["with-default-names"]
 
-# Utilities
+# Command-line Utilities
 brew "wget"
 brew "nmap"
 brew "ngrep"
@@ -48,10 +48,14 @@ brew "unrar"
 brew "make"
 brew "less"
 brew "imagemagick", args: ["with-webp"]
-##brew "homebrew/x11/xpdf"
+
+brew "the_silver_searcher"
+brew "exa"
+brew "bat"
+brew "fd"
+brew "ripgrep"
 
 #brew install ack
-brew "the_silver_searcher"
 #brew install z
 #brew install ssh-copy-id
 #brew install wifi-password
@@ -59,6 +63,14 @@ brew "the_silver_searcher"
 
 brew "node", args: ["without-npm"]
 brew "yarn", args: ["without-node"]
+brew "rbenv"
+
+# Editors
+brew "nano"
+brew "vim", args: ["override-system-vi"]
+brew "tmux"
+brew "neovim"
+#brew macvim --override-system-vim --custom-system-icons
 
 # Git
 brew "git"
@@ -71,13 +83,6 @@ brew "woff2"
 brew "sfnt2woff"
 brew "sfnt2woff-zopfli"
 
-# Editors
-brew "nano"
-brew "vim", args: ["override-system-vi"]
-brew "tmux"
-brew "neovim"
-#brew macvim --override-system-vim --custom-system-icons
-
 
 # -- HOMEBREW CASK -------------------------------------------------------------
 
@@ -87,6 +92,9 @@ cask_args appdir: "/Applications"
 cask "iterm2"
 cask "notion"
 cask "imageoptim"
+
+## Personal? ##
+cask "fontplop"
 
 cask "slowquitapps"
 cask "apptrap"
@@ -103,9 +111,10 @@ cask "onyx"
 #brew cask install flux
 #brew cask install filezilla
 
+## Personal ##
 # Security
-#brew cask install little-snitch
-#brew cask install micro-snitch
+cask "little-snitch"
+cask "micro-snitch"
 #brew cask install virustotaluploader
 #brew cask install malwarebytes-anti-malware
 
@@ -171,6 +180,7 @@ cask "quicklook-pat"
 
 ### Personal ###
 cask "logitech-control-center"
+cask "exifrenamer"
 
 
 # -- APP STORE -----------------------------------------------------------------
@@ -178,11 +188,14 @@ cask "logitech-control-center"
 brew "mas"
 
 mas "Magnet", id: 441258766
-mas "Todoist", id: 585829637
-mas "Tweetbot", id: 557168941
-mas "Reeder", id: 880001334
-mas "Enpass", id: 732710998
+mas "Spark", id: 1176895641
 
 mas "Pages", id: 409201541
 mas "Numbers", id: 409203825
 mas "Keynote", id: 409183694
+
+### Personal ###
+mas "Todoist", id: 585829637
+mas "Tweetbot", id: 557168941
+mas "Reeder", id: 880001334
+mas "Enpass", id: 732710998

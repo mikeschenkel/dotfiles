@@ -6,7 +6,11 @@
 - clean: ['~']
 
 - link:
-    ~/.tmux.conf: tmux.conf
+    ~/.config/nvim/after: vim/after
+    ~/.vim: vim
+    ~/.vimrc: vimrc
+    ~/.config/nvim/init.vim: vimrc
+    ~/.fzf-base16.config: shell/fzf-base16.config
 
 - shell:
   -
