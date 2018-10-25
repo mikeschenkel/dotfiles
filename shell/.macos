@@ -526,11 +526,12 @@ defaults write org.m0k.transmission BlocklistNew -bool true
 defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
 defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 
+
 ###############################################################################
 # SlowQuitApps                                                                #
 ###############################################################################
 
-defaults write com.dteoh.SlowQuitApps delay -int 5000
+defaults write com.dteoh.SlowQuitApps delay -int 1000
 
 
 ###############################################################################
@@ -557,6 +558,7 @@ for app in "Activity Monitor" \
 	"Transmission" \
 	"Tweetbot" \
 	"Twitter" \
+	"SlowQuitApps" \
 	"iCal"; do
 	killall "${app}" &> /dev/null
 done

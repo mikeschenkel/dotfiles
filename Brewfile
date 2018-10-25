@@ -158,9 +158,10 @@ cask "vagrant"
 cask "vagrant-manager"
 cask "docker"
 cask "local-by-flywheel"
+cask "lando"
 
 # Misc
-cask "cakebrew"
+# cask "cakebrew"
 #cask "java"
 #cask "xquartz"
 

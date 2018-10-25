@@ -129,7 +129,7 @@ alias https-server='http-server --ssl --cert ~/.ssl/localhost.crt --key ~/.ssl/l
 # Update installed Homebrew, npm, Ruby gems and their installed packages
 alias update_brew="brew -v update; brew upgrade --force-bottle --cleanup; brew cu --all --cleanup; brew cleanup; brew prune; brew doctor"
 alias update_npm="npm-check -gu"
-alias update_ruby="gem update --system; gem update --no-document"
+alias update_ruby="brew upgrade rbenv ruby-build --cleanup; gem update --system; gem update --no-document"
 alias update_vim="nvim +PlugUpgrade +PlugInstall +PlugUpdate +qall"
 alias update_mas="mas upgrade"
 alias update_all="update_brew; update_npm; update_ruby; update_vim; update_mas"
