@@ -27,9 +27,9 @@ function mkd() {
 # Start a PHP server from a directory, optionally specifying the port
 # (Requires PHP 5.4.0+.)
 function phpserver() {
-	local port="${1:-9999}";
-	sleep 1 && open "http://localhost:${port}/" &
-	php -S "localhost:${port}";
+  local port="${1:-9999}";
+  sleep 1 && open "http://localhost:${port}/" &
+  php -S "localhost:${port}";
 }
 
 # `v` with no arguments opens the current directory in Vim, otherwise opens the
@@ -67,7 +67,7 @@ function o() {
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
 function tre() {
-	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+  tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
 # Compare original and gzipped file size
@@ -79,6 +79,7 @@ function gz() {
   printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
 }
 
+# Write all `defaults` commands to a file for future reference
 function defaults() {
   echo `date` "defaults" "$@" >> "${HOME}/Documents/defaults.txt"
   /usr/bin/defaults "$@"

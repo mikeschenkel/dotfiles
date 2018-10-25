@@ -54,6 +54,9 @@ brew "exa"
 brew "bat"
 brew "fd"
 brew "ripgrep"
+brew "ncdu"
+brew "tldr"
+brew "prettyping"
 
 #brew install ack
 #brew install z
@@ -77,6 +80,7 @@ brew "git"
 brew "git-extras"
 brew "git-flow-avh"
 brew "hub"
+brew "diff-so-fancy"
 
 # Font Tools
 brew "woff2"
@@ -93,15 +97,15 @@ cask "iterm2"
 cask "notion"
 cask "imageoptim"
 
-## Personal? ##
+## Personal ##
 cask "fontplop"
 
 cask "slowquitapps"
 cask "apptrap"
 cask "onyx"
 
+cask "dropbox"
 #brew cask install macdown
-#brew cask install dropbox
 #brew cask install stack
 #brew cask install transmission
 #brew cask install caption
@@ -199,3 +203,5 @@ mas "Todoist", id: 585829637
 mas "Tweetbot", id: 557168941
 mas "Reeder", id: 880001334
 mas "Enpass", id: 732710998
+mas "Wunderlist", id: 410628904
+mas "The Unarchiver", id: 425424353

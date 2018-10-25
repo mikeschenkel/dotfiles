@@ -42,9 +42,14 @@ Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
 Plug 'bounceme/remote-viewer'
 
+
 Plug 'wincent/ferret'
 
+
 Plug 'atweiden/vim-dragvisuals'
+
+
+Plug 'editorconfig/editorconfig-vim' " EditorConfig plugin for Vim
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'docunext/closetag.vim'
@@ -59,10 +64,13 @@ Plug 'ncm2/ncm2-path'
 
 " PHP completion, refactoring and introspection tool
 Plug 'phpactor/phpactor', { 'do': 'composer install', 'for': ['php'] }
-Plug 'phpactor/ncm2-phpactor', { 'for': ['php'] } " NCM2 Integration for Phpactor
+Plug 'phpactor/ncm2-phpactor', { 'for': ['php'] }
 
-Plug 'chriskempson/base16-vim'          " Base16 for Vim
+
+" Base16 for Vim
+Plug 'chriskempson/base16-vim'
 Plug 'mike-hearn/base16-vim-lightline'
+
 
 Plug 'justinmk/vim-sneak'               " The missing motion for Vim
 Plug 'rhysd/clever-f.vim'               " Extended f, F, t and T key mappings for Vim
@@ -90,9 +98,11 @@ Plug 'itchyny/lightline.vim'            " A light and configurable statusline/ta
 Plug 'w0rp/ale'                         " Asynchronous Lint Engine
 Plug 'maximbaz/lightline-ale'           " ALE indicator for the lightline vim plugin
 
+
 " -- FILETYPES -----------------------------------------------------------------
 
-Plug 'sheerun/vim-polyglot'          " A collection of language packs for Vim
+" A collection of language packs for Vim
+Plug 'sheerun/vim-polyglot'
 
 " Extra syntax support for CSS3
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss', 'sass', 'less'] }
@@ -105,6 +115,7 @@ Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript'] }
 
 " Generate phpDocumentor documentation blocks for PHP code
 Plug 'Rican7/php-doc-modded', { 'for': ['php'] }
+
 
 " -- TMUX ----------------------------------------------------------------------
 
@@ -255,13 +266,10 @@ set scrolloff=5     " Minumum lines to keep above and below from the cursor
 set sidescroll=1    " Scroll sideways a character at a time, rather than a screen at a time
 set sidescrolloff=5 " Minumum lines to keep left and right from the cursor
 
-" Always report changed lines
-set report=0
+set report=0        " Always report changed lines
 
-set splitright " Open new vsplit windows to the right of the current one
-" I want to test lskadjflkasdjflaskdjflksajdfklsadjfksadjfksadjflksajdfj I
-" want to t
-set splitbelow " Open new split windows to the bottom of the current one
+set splitright      " Open new vsplit windows to the right of the current one
+set splitbelow      " Open new split windows to the bottom of the current one
 
 " No annoying sound on errors
 set noerrorbells
@@ -517,10 +525,11 @@ let g:netrw_preview=1
 "vmap  <expr>  j        DVB_Drag('down')
 "vmap  <expr>  k        DVB_Drag('up')
 
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 " HOST-SPECIFIC VIM FILE
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local

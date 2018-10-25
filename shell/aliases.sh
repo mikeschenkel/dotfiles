@@ -18,6 +18,8 @@ alias cask="brew cask"
 alias bat="bat --theme=TwoDark"
 alias cat="bat"
 
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+
 # Git
 alias git='hub'
 alias gst='git status'
@@ -34,6 +36,15 @@ else # macOS `ls`
 	colorflag="-G"
 	export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 fi
+
+# Check disk space
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+
+alias help='tldr'
+
+alias ping='prettyping --nolegend'
+
+alias top="sudo htop"
 
 # List all files colorized in long format
 #alias l="command ls -lhF ${colorflag}"
@@ -120,4 +131,5 @@ alias update_brew="brew -v update; brew upgrade --force-bottle --cleanup; brew c
 alias update_npm="npm-check -gu"
 alias update_ruby="gem update --system; gem update --no-document"
 alias update_vim="nvim +PlugUpgrade +PlugInstall +PlugUpdate +qall"
-alias update_all="update_brew; update_npm; update_ruby; update_vim"
+alias update_mas="mas upgrade"
+alias update_all="update_brew; update_npm; update_ruby; update_vim; update_mas"

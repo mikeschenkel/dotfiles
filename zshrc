@@ -28,9 +28,9 @@ ZGEN="${HOME}/.zgenrc"
 # does not exist, or the base file is newer, we need to compile.
 # man zshbuiltins: zcompile
 zcompare() {
-	if [[ -s ${1} && ( ! -s ${1}.zwc || ${1} -nt ${1}.zwc) ]]; then
-		zcompile ${1}
-	fi
+  if [[ -s ${1} && ( ! -s ${1}.zwc || ${1} -nt ${1}.zwc) ]]; then
+    zcompile ${1}
+  fi
 }
 
 # zcompile the completion cache; siginificant speedup.
@@ -52,6 +52,7 @@ zcompare ${zgen_mods}/zgen.zsh
 # -- ZSH SPACESHIP THEME -------------------------------------------------------
 
 SPACESHIP_VI_MODE_SHOW=false
+SPACESHIP_GIT_SYMBOL=''
 
 
 # -- Z -------------------------------------------------------------------------
@@ -64,7 +65,6 @@ Z="${HOME}/z.sh"
 
 NPM_PACKAGES="${HOME}/.npm-packages"
 if [ -s "$NPM_PACKAGES" ]; then
-  #pathadd "${NPM_PACKAGES}/bin"
   path+=(${NPM_PACKAGES}/bin)
   export NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
   export N_PREFIX="${NPM_PACKAGES}/node"
@@ -75,7 +75,6 @@ fi
 
 RBENV="${HOME}/.rbenv"
 if [ -s "$RBENV" ]; then
-  #pathadd "${RBENV}/bin"
   path+=(${RBENV}/bin)
   eval "$(rbenv init -)"
 fi
@@ -106,6 +105,12 @@ fi
 
 [ -f ~/.fzf-base16.config ] && source ~/.fzf-base16.config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# -- AUTOJUMP ------------------------------------------------------------------
+
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
 
 typeset -U path
 
