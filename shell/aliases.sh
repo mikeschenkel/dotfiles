@@ -1,7 +1,11 @@
 # Enable aliases to use sudo
 alias sudo="sudo "
 
-alias chmox='chmod -x'
+# Easier navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 # mv, rm, cp
 alias mv="mv -v"
@@ -9,6 +13,8 @@ alias rm="rm -i -v"
 alias cp="cp -v"
 
 alias cask="brew cask"
+
+alias chmox='chmod -x'
 
 # k
 #alias k="k -h"

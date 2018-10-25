@@ -526,7 +526,7 @@ defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 # SlowQuitApps                                                                #
 ###############################################################################
 
-defaults write com.dteoh.SlowQuitApps delay -int 5000
+defaults write com.dteoh.SlowQuitApps delay -int 1000
 
 
 ###############################################################################
