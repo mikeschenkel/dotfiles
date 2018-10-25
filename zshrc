@@ -12,6 +12,14 @@ path=(
 )
 
 
+# -- EDITORS -------------------------------------------------------------------
+
+export EDITOR='nvim'
+export GIT_EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
+
+
 # -- ZPLUG----------------------------------------------------------------------
 
 ZPLUG="${HOME}/.zplug/init.zsh"
