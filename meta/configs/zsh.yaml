@@ -1,4 +1,5 @@
 - link:
+    ~/.zshenv: zshenv
     ~/.zshrc: zshrc
     ~/.zgenrc: zgenrc
     ~/.zgen: vendor/zgen
@@ -11,6 +12,4 @@
     command: "zsh"
   -
     description: "Change user shell to zsh"
-    # command: "chsh -s /bin/zsh"
-    # command: "chsh -s $(which zsh)"
     command: "sudo chsh -s /usr/local/bin/zsh $USER"

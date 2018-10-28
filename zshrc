@@ -2,24 +2,6 @@
 # ~/.zshrc
 # ------------------------------------------------------------------------------
 
-# -- PATH ----------------------------------------------------------------------
-
-path=(
-  ${HOME}/bin
-  /usr/local/bin
-  /usr/local/sbin
-  $path
-)
-
-
-# -- EDITORS -------------------------------------------------------------------
-
-export EDITOR='nvim'
-export GIT_EDITOR='nvim'
-export VISUAL='nvim'
-export PAGER='less'
-
-
 # -- ZPLUG----------------------------------------------------------------------
 
 ZPLUG="${HOME}/.zplug/init.zsh"
@@ -147,5 +129,5 @@ fi
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 
-typeset -U path
+# typeset -U path
 

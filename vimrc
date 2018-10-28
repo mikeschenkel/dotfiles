@@ -54,6 +54,7 @@ Plug 'editorconfig/editorconfig-vim' " EditorConfig plugin for Vim
 Plug 'jiangmiao/auto-pairs'
 Plug 'docunext/closetag.vim'
 
+Plug 'mattn/emmet-vim' " emmet for vim
 
 " Completion plugins
 Plug 'ncm2/ncm2'

@@ -1,11 +1,25 @@
-# Enable aliases to use sudo
-alias sudo="sudo "
+#!/usr/bin/env bash
 
 # Easier navigation
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+
+# Shortcuts
+# alias d="cd ~/Documents/Dropbox"
+# alias dl="cd ~/Downloads"
+# alias dt="cd ~/Desktop"
+# alias p="cd ~/projects"
+
+# Git
+alias g='hub'
+alias git='hub'
+alias gst='git status'
+alias gaa='git add -A'
+
+# Vim
+alias v='nvim'
 
 # mv, rm, cp
 alias mv="mv -v"
@@ -16,23 +30,25 @@ alias cask="brew cask"
 
 alias chmox='chmod -x'
 
-# k
-#alias k="k -h"
-#alias ka="k -a -h"
-
 # bat
 alias bat="bat --theme=TwoDark"
 alias cat="bat"
 
+# Enable aliases to use sudo
+alias sudo="sudo "
+
+# Check disk space
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+
+alias help='tldr'
+
+alias ping='prettyping --nolegend'
+alias top="sudo htop"
+
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 
-# Git
-alias git='hub'
-alias gst='git status'
-alias gaa='git add -A'
+alias ag="ag -f --hidden"
 
-# Vim
-alias v='nvim'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -42,15 +58,6 @@ else # macOS `ls`
 	colorflag="-G"
 	export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 fi
-
-# Check disk space
-alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
-
-alias help='tldr'
-
-alias ping='prettyping --nolegend'
-
-alias top="sudo htop"
 
 # List all files colorized in long format
 #alias l="command ls -lhF ${colorflag}"
@@ -73,17 +80,18 @@ alias la="exa -lhaF --git"
 alias ls="exa -F"
 alias lsa="exa -aF"
 
+
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias ag="ag -f --hidden"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
@@ -105,6 +113,9 @@ alias copy="tr -d '\n' | pbcopy"
 # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
 alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
 
+# Trim new lines and copy to clipboard
+alias c="tr -d '\n' | pbcopy"
+
 # $HOME/.ssh/id_rsa.pub
 alias ssh-key="cat $HOME/.ssh/id_rsa.pub | pbcopy"
 
@@ -119,6 +130,9 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
+# Get week number
+alias week='date +%V'
+
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname
@@ -131,6 +145,14 @@ alias reload="exec "$SHELL" -l"
 alias path='echo -e ${PATH//:/\\n}'
 
 alias https-server='http-server --ssl --cert ~/.ssl/localhost.crt --key ~/.ssl/localhost.key -a localhost -o'
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # Update installed Homebrew, npm, Ruby gems and their installed packages
 alias update_brew="brew -v update; brew upgrade --force-bottle --cleanup; brew cu --all --cleanup; brew cleanup; brew prune; brew doctor"
