@@ -57,6 +57,7 @@ brew "ripgrep"
 brew "ncdu"
 brew "tldr"
 brew "prettyping"
+brew "ren"
 
 #brew install ack
 #brew install z
@@ -99,17 +100,18 @@ cask "imageoptim"
 
 ## Personal ##
 cask "fontplop"
+cask "fontbase"
 
 cask "slowquitapps"
 cask "apptrap"
 cask "onyx"
+cask "xld"
 
 cask "dropbox"
 #brew cask install macdown
 #brew cask install stack
 #brew cask install transmission
 #brew cask install caption
-#brew cask install xld
 #brew cask install adapter
 #brew cask install exifrenamer
 #brew cask install flux

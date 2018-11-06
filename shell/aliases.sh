@@ -34,6 +34,9 @@ alias chmox='chmod -x'
 alias bat="bat --theme=TwoDark"
 alias cat="bat"
 
+# ren
+alias ren="ren -v"
+
 # Enable aliases to use sudo
 alias sudo="sudo "
 

@@ -8,15 +8,19 @@ ZPLUG="${HOME}/.zplug/init.zsh"
 if [ -s "$ZPLUG" ]; then
   source "$ZPLUG"
 
-  zplug 'chrissicool/zsh-256color'
-  zplug 'zsh-users/zsh-syntax-highlighting'
-  zplug 'zsh-users/zsh-completions'
-  zplug 'zsh-users/zsh-autosuggestions'
-  zplug 'bobthecow/git-flow-completion'
-  zplug 'plugins/vi-mode', from:oh-my-zsh
-  zplug 'plugins/colored-man-pages', from:oh-my-zsh
-  zplug 'denysdovhan/spaceship-prompt', use:spaceship.zsh, from:github, as:theme
-  zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+  zplug "chrissicool/zsh-256color"
+  zplug "zsh-users/zsh-syntax-highlighting"
+  zplug "zsh-users/zsh-completions"
+  zplug "zsh-users/zsh-autosuggestions"
+  zplug "zsh-users/zsh-history-substring-search"
+  zplug "bobthecow/git-flow-completion"
+  zplug "plugins/vi-mode", from:oh-my-zsh
+  zplug "plugins/colored-man-pages", from:oh-my-zsh
+  zplug "zplug/zplug", hook-build:"zplug --self-manage"
+
+  zplug "mafredri/zsh-async"
+  zplug "sindresorhus/pure", use:pure.zsh, as:theme
+  # zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
   # Install plugins if there are plugins that have not been installed
   if ! zplug check --verbose; then
@@ -29,42 +33,39 @@ if [ -s "$ZPLUG" ]; then
   zplug load
 fi
 
+HISTFILE=~/.zsh_history
+
 
 # -- ZGEN ----------------------------------------------------------------------
 
 # ZGEN="${HOME}/.zgenrc"
 # [ -s "$ZGEN" ] && source "$ZGEN"
 
-# autoload -Uz compinit
-# if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-# 	compinit;
-# else
-# 	compinit -C;
-# fi;
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit;
+else
+  compinit -C;
+fi;
 
 # Function to determine the need of a zcompile. If the .zwc file
 # does not exist, or the base file is newer, we need to compile.
 # man zshbuiltins: zcompile
-# zcompare() {
-  # if [[ -s ${1} && ( ! -s ${1}.zwc || ${1} -nt ${1}.zwc) ]]; then
-    # zcompile ${1}
-  # fi
-# }
+zcompare() {
+  if [[ -s ${1} && ( ! -s ${1}.zwc || ${1} -nt ${1}.zwc) ]]; then
+    zcompile ${1}
+  fi
+}
 
 # zcompile the completion cache; siginificant speedup.
-# setopt EXTENDED_GLOB
-# local zsh_glob='^(.git*|LICENSE|README.md|*.zwc)(.)'
-# for file in ${ZDOTDIR:-${HOME}}/.zcomp${~zsh_glob}; do
-  # zcompare ${file}
-# done
+setopt EXTENDED_GLOB
+local zsh_glob='^(.git*|LICENSE|README.md|*.zwc)(.)'
+for file in ${ZDOTDIR:-$HOME}/.zcomp${~zsh_glob}; do
+  zcompare ${file}
+done
 
 # zcompile .zshrc
-# zcompare ${ZDOTDIR:-${HOME}}/.zshrc
-
-# zgen
-# zgen_mods=${ZDOTDIR:-${HOME}}/.zgen
-# zcompare ${zgen_mods}/init.zsh
-# zcompare ${zgen_mods}/zgen.zsh
+# zcompare ${HOME}/.zshrc
 
 
 # -- ZSH SPACESHIP THEME -------------------------------------------------------
@@ -102,32 +103,23 @@ fi
 [ -z "$TMUX" ] && export TERM="xterm-256color"
 
 
-# -- FUNCTIONS -----------------------------------------------------------------
-
-FUNCTIONS="${HOME}/.functions"
-if [ -s "$FUNCTIONS" ]; then
-  source "$FUNCTIONS"
-fi
-
-
-# -- ALIASES -------------------------------------------------------------------
-
-ALIASES="${HOME}/.aliases"
-if [ -s "$ALIASES" ]; then
-  source "$ALIASES"
-fi
-
-
 # -- FZF -----------------------------------------------------------------------
 
-[ -f ~/.fzf-base16.config ] && source ~/.fzf-base16.config
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f "${HOME}/.fzf-base16.config" ] && source "${HOME}/.fzf-base16.config"
+[ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
 
 
 # -- AUTOJUMP ------------------------------------------------------------------
 
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+AUTOJUMP="/usr/local/etc/profile.d/autojump.sh"
+[ -f "$AUTOJUMP" ] && . "$AUTOJUMP"
 
 
-# typeset -U path
+# -- FUNCTIONS & ALIASES -------------------------------------------------------
+
+FUNCTIONS="${HOME}/.functions"
+[ -s "$FUNCTIONS" ] && source "$FUNCTIONS"
+
+ALIASES="${HOME}/.aliases"
+[ -s "$ALIASES" ] && source "$ALIASES"
 
