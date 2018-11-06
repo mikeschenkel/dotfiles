@@ -18,7 +18,7 @@ if [ -s "$ZPLUG" ]; then
   zplug "plugins/colored-man-pages", from:oh-my-zsh
   zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
-  zplug "mafredri/zsh-async"
+  zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
   zplug "sindresorhus/pure", use:pure.zsh, as:theme
   # zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
@@ -68,15 +68,16 @@ done
 # zcompare ${HOME}/.zshrc
 
 
-# -- ZSH SPACESHIP THEME -------------------------------------------------------
+# -- ZSH SPACESHIP PROMPT ------------------------------------------------------
 
-SPACESHIP_VI_MODE_SHOW=false
+SPACESHIP="${HOME}/dotbot-dotfiles/zsh/spaceship-prompt.zsh"
+[ -s "$SPACESHIP" ] && source "$SPACESHIP"
 
 
 # -- Z -------------------------------------------------------------------------
 
-Z="${HOME}/z.sh"
-[ -s "$Z" ] && source "$Z"
+# Z="${HOME}/z.sh"
+# [ -s "$Z" ] && source "$Z"
 
 
 # -- NPM -----------------------------------------------------------------------
@@ -94,7 +95,7 @@ fi
 RBENV="${HOME}/.rbenv"
 if [ -s "$RBENV" ]; then
   path+=(${RBENV}/bin)
-  eval "$(rbenv init -)"
+  eval "$(rbenv init - --no-rehash)"
 fi
 
 
@@ -117,9 +118,12 @@ AUTOJUMP="/usr/local/etc/profile.d/autojump.sh"
 
 # -- FUNCTIONS & ALIASES -------------------------------------------------------
 
-FUNCTIONS="${HOME}/.functions"
-[ -s "$FUNCTIONS" ] && source "$FUNCTIONS"
+[ -s "${HOME}/.functions" ] && source "${HOME}/.functions"
+[ -s "${HOME}/.aliases" ] && source "${HOME}/.aliases"
 
-ALIASES="${HOME}/.aliases"
-[ -s "$ALIASES" ] && source "$ALIASES"
+# FUNCTIONS="${HOME}/.functions"
+# [ -s "$FUNCTIONS" ] && source "$FUNCTIONS"
+
+# ALIASES="${HOME}/.aliases"
+# [ -s "$ALIASES" ] && source "$ALIASES"
 
