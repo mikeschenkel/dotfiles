@@ -74,12 +74,6 @@ SPACESHIP="${HOME}/dotbot-dotfiles/zsh/spaceship-prompt.zsh"
 [ -s "$SPACESHIP" ] && source "$SPACESHIP"
 
 
-# -- Z -------------------------------------------------------------------------
-
-# Z="${HOME}/z.sh"
-# [ -s "$Z" ] && source "$Z"
-
-
 # -- NPM -----------------------------------------------------------------------
 
 NPM_PACKAGES="${HOME}/.npm-packages"
@@ -120,10 +114,4 @@ AUTOJUMP="/usr/local/etc/profile.d/autojump.sh"
 
 [ -s "${HOME}/.functions" ] && source "${HOME}/.functions"
 [ -s "${HOME}/.aliases" ] && source "${HOME}/.aliases"
-
-# FUNCTIONS="${HOME}/.functions"
-# [ -s "$FUNCTIONS" ] && source "$FUNCTIONS"
-
-# ALIASES="${HOME}/.aliases"
-# [ -s "$ALIASES" ] && source "$ALIASES"
 
