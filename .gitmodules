@@ -4,6 +4,3 @@
 [submodule "vendor/zgen"]
 	path = vendor/zgen
 	url = https://github.com/tarjoilija/zgen.git
-[submodule "vendor/z"]
-	path = vendor/z
-	url = https://github.com/rupa/z.git
