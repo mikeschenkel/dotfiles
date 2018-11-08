@@ -3,7 +3,6 @@
     ~/.zshrc: zshrc
     ~/.zgenrc: zgenrc
     ~/.zgen: vendor/zgen
-    ~/z.sh: vendor/z/z.sh
     ~/.aliases: shell/aliases.sh
     ~/.functions: shell/functions.sh
 
