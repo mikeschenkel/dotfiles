@@ -70,8 +70,8 @@ done
 
 # -- ZSH SPACESHIP PROMPT ------------------------------------------------------
 
-SPACESHIP="${HOME}/dotbot-dotfiles/zsh/spaceship-prompt.zsh"
-[ -s "$SPACESHIP" ] && source "$SPACESHIP"
+# SPACESHIP="${HOME}/dotbot-dotfiles/shell/spaceship-prompt.zsh"
+# [ -s "$SPACESHIP" ] && source "$SPACESHIP"
 
 
 # -- NPM -----------------------------------------------------------------------
