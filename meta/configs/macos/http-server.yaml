@@ -1,0 +1,17 @@
+- shell:
+  -
+    description: "Setting up localhost ssl certificate"
+    command: "mkdir -p ~/.ssl"
+  -
+    command: "openssl req -newkey rsa:2048 -x509 -nodes -keyout ~/.ssl/localhost.key -new -out ~/.ssl/localhost.crt -subj /CN=localhost -reqexts SAN -extensions SAN -config <(cat /System/Library/OpenSSL/openssl.cnf <(printf '[SAN]\nsubjectAltName=DNS:localhost')) -sha256 -days 3650"
+    stdout: true
+    stderr: true
+  -
+    command: "sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ~/.ssl/localhost.crt"
+    stdout: true
+    stderr: true
+  -
+    description: "Installing http-server"
+    command: "npm install http-server -g"
+    stdout: true
+    stderr: true

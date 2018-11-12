@@ -9,7 +9,7 @@ if [ -s "$ZPLUG" ]; then
   source "$ZPLUG"
 
   zplug "chrissicool/zsh-256color"
-  zplug "zsh-users/zsh-syntax-highlighting"
+  zplug "zsh-users/zsh-syntax-highlighting", defer:2
   zplug "zsh-users/zsh-completions"
   zplug "zsh-users/zsh-autosuggestions"
   zplug "zsh-users/zsh-history-substring-search"
@@ -17,6 +17,8 @@ if [ -s "$ZPLUG" ]; then
   zplug "plugins/vi-mode", from:oh-my-zsh
   zplug "plugins/colored-man-pages", from:oh-my-zsh
   zplug "zplug/zplug", hook-build:"zplug --self-manage"
+
+  zplug "b4b4r07/zsh-vimode-visual", defer:3
 
   zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
   zplug "sindresorhus/pure", use:pure.zsh, as:theme
