@@ -7,10 +7,11 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 # Shortcuts
-# alias d="cd ~/Documents/Dropbox"
-# alias dl="cd ~/Downloads"
-# alias dt="cd ~/Desktop"
-# alias p="cd ~/projects"
+alias d="cd ~/Dropbox"
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias co="cd ~/code"
+alias p="cd ~/Dropbox/Projects"
 
 # Git
 alias g='hub'
@@ -21,17 +22,19 @@ alias gaa='git add -A'
 # Vim
 alias v='nvim'
 
-# mv, rm, cp
+# mv, rm, cp, 
 alias mv="mv -v"
 alias rm="rm -i -v"
 alias cp="cp -v"
+
+alias md="mkdir -p"
 
 alias cask="brew cask"
 
 alias chmox='chmod -x'
 
 # bat
-alias bat="bat --theme=TwoDark"
+alias bat="bat --theme=TwoDark --italic-text=always"
 alias cat="bat"
 
 # ren
@@ -122,6 +125,9 @@ alias c="tr -d '\n' | pbcopy"
 # $HOME/.ssh/id_rsa.pub
 alias ssh-key="cat $HOME/.ssh/id_rsa.pub | pbcopy"
 
+# Copy with a progress bar
+alias cpv="rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --"
+
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.
 # Finally, clear download history from quarantine. https://mths.be/bum
@@ -163,5 +169,5 @@ alias update_npm="npm-check -gu"
 alias update_ruby="brew upgrade rbenv ruby-build --cleanup; gem update --system; gem update --no-document"
 alias update_vim="nvim +PlugUpgrade +PlugInstall +PlugUpdate +qall"
 alias update_mas="mas upgrade"
-alias update_os="sudo softwareupdate -ia"
+alias update_os="sudo softwareupdate -iaR"
 alias update_all="update_brew; update_npm; update_ruby; update_vim; update_mas"

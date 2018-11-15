@@ -3,8 +3,8 @@
     ~/.zshrc: zshrc
     ~/.zgenrc: zgenrc
     ~/.zgen: vendor/zgen
-    ~/.aliases: shell/aliases.sh
-    ~/.functions: shell/functions.sh
+    ~/.zsh/.aliases: zsh/aliases.sh
+    ~/.zsh/.functions: zsh/functions.sh
 
 - shell:
   -
@@ -12,3 +12,5 @@
   -
     description: "Change user shell to zsh"
     command: "sudo chsh -s /usr/local/bin/zsh $USER"
+  -
+    command: "mkdir -p ${HOME}/.zsh/cache"

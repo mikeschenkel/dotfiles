@@ -101,6 +101,7 @@ cask "imageoptim"
 ## Personal ##
 cask "fontplop"
 cask "fontbase"
+cask "sip"
 
 cask "slowquitapps"
 cask "apptrap"
@@ -113,7 +114,6 @@ cask "dropbox"
 #brew cask install transmission
 #brew cask install caption
 #brew cask install adapter
-#brew cask install exifrenamer
 #brew cask install flux
 #brew cask install filezilla
 
