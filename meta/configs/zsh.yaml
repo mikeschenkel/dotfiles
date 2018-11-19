@@ -1,8 +1,6 @@
 - link:
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
-    ~/.zgenrc: zgenrc
-    ~/.zgen: vendor/zgen
     ~/.zsh/.aliases: zsh/aliases.sh
     ~/.zsh/.functions: zsh/functions.sh
 
