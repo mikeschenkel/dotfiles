@@ -38,19 +38,19 @@ fi
 
 # -- MISC ----------------------------------------------------------------------
 
-setopt ZLE                                  # Enable the ZLE line editor, which is default behavior, but to be sure
-declare -U path                             # prevent duplicate entries in path
-LESSHISTFILE="/dev/null"                    # Prevent the less hist file from being made, I don't want it
-umask 002                                   # Default permissions for new files, subract from 777 to understand
-setopt NO_BEEP                              # Disable beeps
-setopt AUTO_CD                              # Sends cd commands without the need for 'cd'
-setopt MULTI_OS                             # Can pipe to mulitple outputs
-unsetopt NO_HUP                             # Kill all child processes when we exit, don't leave them running
-setopt INTERACTIVE_COMMENTS                 # Allows comments in interactive shell.
-setopt RC_EXPAND_PARAM                      # Abc{$cool}efg where $cool is an array surrounds all array variables individually
-unsetopt FLOW_CONTROL                       # Ctrl+S and Ctrl+Q usually disable/enable tty input. This disables those inputs
-setopt LONG_LIST_JOBS                       # List jobs in the long format by default. (I don't know what this does but it sounds good)
-setopt vi                                   # Make the shell act like vi if i hit escape
+setopt ZLE                          # Enable the ZLE line editor, which is default behavior, but to be sure
+declare -U path                     # prevent duplicate entries in path
+LESSHISTFILE="/dev/null"            # Prevent the less hist file from being made, I don't want it
+umask 002                           # Default permissions for new files, subract from 777 to understand
+setopt NO_BEEP                      # Disable beeps
+setopt AUTO_CD                      # Sends cd commands without the need for 'cd'
+setopt MULTI_OS                     # Can pipe to mulitple outputs
+unsetopt NO_HUP                     # Kill all child processes when we exit, don't leave them running
+setopt INTERACTIVE_COMMENTS         # Allows comments in interactive shell.
+setopt RC_EXPAND_PARAM              # Abc{$cool}efg where $cool is an array surrounds all array variables individually
+unsetopt FLOW_CONTROL               # Ctrl+S and Ctrl+Q usually disable/enable tty input. This disables those inputs
+setopt LONG_LIST_JOBS               # List jobs in the long format by default. (I don't know what this does but it sounds good)
+setopt vi                           # Make the shell act like vi if i hit escape
 
 
 # -- ZSH HISTORY ---------------------------------------------------------------

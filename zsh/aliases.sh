@@ -11,7 +11,10 @@ alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias co="cd ~/code"
+alias re="cd ~/repos"
 alias p="cd ~/Dropbox/Projects"
+
+alias cl="clear"
 
 # Git
 alias g='hub'
@@ -22,7 +25,7 @@ alias gaa='git add -A'
 # Vim
 alias v='nvim'
 
-# mv, rm, cp, 
+# mv, rm, cp
 alias mv="mv -v"
 alias rm="rm -i -v"
 alias cp="cp -v"

@@ -16,3 +16,7 @@
   -
     description: "Installing submodules"
     command: "git submodule update --init --recursive"
+  -
+    command: "mkdir -p ${HOME}/code"
+  -
+    command: "mkdir -p ${HOME}/repos"
