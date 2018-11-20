@@ -11,6 +11,7 @@
     ~/.vimrc: vimrc
     ~/.config/nvim/init.vim: vimrc
     ~/.zsh/.fzf-base16.config: zsh/fzf-base16.config
+    ~/.gitignore_global: git/gitignore_global
 
 - shell:
   -
