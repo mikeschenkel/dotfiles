@@ -7,10 +7,10 @@
 
 - link:
     ~/.vim: vim
-    ~/.vim/plugin_settings: vim/plugin_settings
     ~/.vimrc: vimrc
     ~/.config/nvim/init.vim: vimrc
     ~/.zsh/.fzf-base16.config: zsh/fzf-base16.config
+    ~/.gitconfig: git/gitconfig
     ~/.gitignore_global: git/gitignore_global
 
 - shell:
@@ -21,3 +21,5 @@
     command: "mkdir -p ${HOME}/code"
   -
     command: "mkdir -p ${HOME}/repos"
+  -
+    command: "git config --global core.excludesfile ~/.gitignore_global"
