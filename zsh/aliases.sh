@@ -19,11 +19,14 @@ alias cl="clear"
 # Git
 alias g='hub'
 alias git='hub'
-alias gst='git status'
+alias gl='git lg'
+alias gapa='git patch'
+alias gst='git s'
 alias gaa='git add -A'
 
 # Vim
 alias v='nvim'
+alias vim='nvim'
 
 # mv, rm, cp
 alias mv="mv -v"
