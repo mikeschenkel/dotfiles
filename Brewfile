@@ -9,7 +9,6 @@ tap "caskroom/versions"
 tap "neovim/neovim"
 tap "bramstein/webfonttools"
 tap "buo/cask-upgrade"
-tap "dteoh/sqa"
 
 
 # -- HOMEBREW ------------------------------------------------------------------
@@ -100,9 +99,11 @@ cask "imageoptim"
 
 ## Personal ##
 cask "fontplop"
-cask "fontbase"
+# cask "rightfont"
+# Not correct version yet?
 cask "sip"
 
+tap "dteoh/sqa"
 cask "slowquitapps"
 cask "apptrap"
 cask "onyx"

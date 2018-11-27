@@ -158,3 +158,7 @@ if [[ -r $LOCAL_ZSHRC ]]; then
   source $LOCAL_ZSHRC
 fi
 
+
+# -- WAKTIME ---------------------------------------------------------------
+
+WAKATIME_HOME="${HOME}/.config/wakatime"

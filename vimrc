@@ -109,7 +109,7 @@ Plug 'Yggdroot/IndentLine', { 'on': 'IndentLinesToggle' }
 Plug 'airblade/vim-gitgutter'           " Show Git diff in the gutter and stages/undoes hunks
 Plug 'airblade/vim-rooter'              " Changes Vim working directory to project root
 Plug 'nixon/vim-vmath'                  " Damian Conway's vmath.vim plugin
-Plug 'takac/vim-hardtime'               " Plugin to help you stop repeating the basic movement keys
+" Plug 'takac/vim-hardtime'               " Plugin to help you stop repeating the basic movement keys
 
 "Plug 'tpope/vim-vinegar'               " Combine with netrw to create a delicious salad dressing
 Plug 'tpope/vim-unimpaired'             " Pairs of handy bracket mappings
@@ -261,7 +261,8 @@ set nobackup            " <3 Git
 set noswapfile          " <3 Git
 set nowritebackup       " <3 Git
 
-set undodir=~/.vimundo  " Permanent undo
+" set undodir=~/.vimundo  " Permanent undo
+set undodir=~/.vim/undo_files//
 set undofile            " Permanent undo
 
 

@@ -1,0 +1,19 @@
+- shell:
+  -
+    command: "brew update"
+  -
+    command: "brew upgrade"
+  -
+    description: "Installing rbenv & ruby-build"
+    command: "brew install rbenv"
+    stdout: true
+    stderr: true
+  -
+    command: "brew cleanup"
+  -
+    command: "eval \"$(rbenv init -)\""
+  -
+    description: "Installing global Ruby gems"
+    command: "gem install bundler"
+    stdout: true
+    stderr: true

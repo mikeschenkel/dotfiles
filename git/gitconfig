@@ -1,5 +1,5 @@
 [core]
-  excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore.global
   editor = nvim
 
 [include]
@@ -97,8 +97,8 @@
 	sslBackend = openssl
 
 [help]
-  autocorrect = 1
   # correct typos
+  autocorrect = 1
 
 [color]
   ui = always

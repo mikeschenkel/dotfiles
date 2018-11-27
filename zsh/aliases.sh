@@ -10,9 +10,9 @@ alias .....="cd ../../../.."
 alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias co="cd ~/code"
-alias re="cd ~/repos"
 alias p="cd ~/Dropbox/Projects"
+alias repos="cd ~/repos"
+alias labs="cd ~/labs"
 
 alias cl="clear"
 
@@ -37,7 +37,7 @@ alias md="mkdir -p"
 
 alias cask="brew cask"
 
-alias chmox='chmod -x'
+alias chmox='chmod +x'
 
 # bat
 alias bat="bat --theme=TwoDark --italic-text=always"
@@ -99,6 +99,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+alias speedtest="npx speed-test"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -109,7 +110,7 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
 
 # Edit hostsfile
-alias hosts="sudo $EDITOR /etc/hosts"
+alias edithosts="sudo $EDITOR /private/etc/hosts"
 
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
