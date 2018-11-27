@@ -203,6 +203,7 @@ mas "Numbers", id: 409203825
 mas "Keynote", id: 409183694
 
 ### Personal ###
+mas "Fantastical 2", id: 975937182
 mas "Todoist", id: 585829637
 mas "Tweetbot", id: 557168941
 mas "Reeder", id: 880001334
