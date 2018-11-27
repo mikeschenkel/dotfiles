@@ -6,13 +6,9 @@
 - clean: ['~']
 
 - link:
-    ~/.vim/plugin_settings:
-      create: true
-      relink: true
-      glob: true
-      path: vim/plugin_settings/*
     ~/.vimrc: vimrc
     ~/.config/nvim/init.vim: vimrc
+    ~/.config/vim/plugin_settings: vim/plugin_settings
     ~/.zsh/.fzf-base16.config: zsh/fzf-base16.config
     ~/.gitconfig: git/gitconfig
     ~/.gitignore.global: git/gitignore.global

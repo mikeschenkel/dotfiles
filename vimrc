@@ -558,7 +558,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " Plugin Settings
 " ------------------------------------------------------------------------------
 
-let plugin_settings='~/.vim/plugin_settings'
+let plugin_settings='~/.config/vim/plugin_settings'
 for fpath in split(globpath(plugin_settings, '*.vim'), '\n')
   exe 'source' fpath
 endfor
