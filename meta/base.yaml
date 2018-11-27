@@ -10,6 +10,7 @@
     ~/.config/nvim/init.vim: vimrc
     ~/.config/vim/plugin_settings: vim/plugin_settings
     ~/.zsh/.fzf-base16.config: zsh/fzf-base16.config
+    ~/.ctags.d/config.ctags: ctags
     ~/.gitconfig: git/gitconfig
     ~/.gitignore.global: git/gitignore.global
     ~/bin:

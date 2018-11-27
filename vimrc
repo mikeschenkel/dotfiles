@@ -108,6 +108,9 @@ Plug 'Yggdroot/IndentLine', { 'on': 'IndentLinesToggle' }
 
 Plug 'airblade/vim-gitgutter'           " Show Git diff in the gutter and stages/undoes hunks
 Plug 'airblade/vim-rooter'              " Changes Vim working directory to project root
+
+Plug 'craigemery/vim-autotag'           " Automatically discover and properly update ctags files on save
+
 Plug 'nixon/vim-vmath'                  " Damian Conway's vmath.vim plugin
 " Plug 'takac/vim-hardtime'               " Plugin to help you stop repeating the basic movement keys
 

@@ -48,6 +48,9 @@ brew "make"
 brew "less"
 brew "imagemagick", args: ["with-webp"]
 
+tap "universal-ctags/universal-ctags"
+brew "universal-ctags", args: ["HEAD"]
+
 brew "the_silver_searcher"
 brew "exa"
 brew "bat"
