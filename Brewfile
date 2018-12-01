@@ -65,7 +65,7 @@ brew "ren"
 #brew install z
 #brew install ssh-copy-id
 #brew install wifi-password
-#brew install youtube-dl
+brew install youtube-dl
 
 brew "node", args: ["without-npm"]
 brew "yarn", args: ["without-node"]
