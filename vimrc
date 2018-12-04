@@ -561,6 +561,7 @@ let g:netrw_preview=1
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
+
 " ------------------------------------------------------------------------------
 " Plugin Settings
 " ------------------------------------------------------------------------------
@@ -570,8 +571,9 @@ for fpath in split(globpath(plugin_settings, '*.vim'), '\n')
   exe 'source' fpath
 endfor
 
+
 " ------------------------------------------------------------------------------
-" HOST-SPECIFIC VIM FILE
+" HOST-SPECIFIC SETTINGS
 " ------------------------------------------------------------------------------
 
 if filereadable(expand('~/.vimrc.local'))
