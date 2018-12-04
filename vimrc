@@ -150,10 +150,10 @@ Plug 'Rican7/php-doc-modded', { 'for': ['php'] }
 " -- TMUX ----------------------------------------------------------------------
 
 " vim-tmux-navigator - Seamless navigation between tmux panes and vim splits
-" Plug 'christoomey/vim-tmux-navigator', Cond(exists('$TMUX'))
+Plug 'christoomey/vim-tmux-navigator', Cond(exists('$TMUX'))
 
 " vim-tmux-focus-events - Make terminal vim and tmux work better together
-" Plug 'tmux-plugins/vim-tmux-focus-events', Cond(exists('$TMUX'))
+Plug 'tmux-plugins/vim-tmux-focus-events', Cond(exists('$TMUX'))
 
 call plug#end()
 
@@ -197,13 +197,18 @@ set number                      " Show current line in the gutter
 set relativenumber              " Display relative line numbers
 set cursorline                  " Highlight current line
 
-set lazyredraw                  " Don't redraw while executing macros (good performance config)
+set lazyredraw                  " Don't redraw while executing macros
 set t_ut=                       " Improve screen clearing by using the background color
 set ttyfast                     " Faster redrawing
 
 set shortmess=atOI              " No help Uganda information
 set title                       " Show file title in terminal tab
 set fillchars+=vert:│           " Change vertical split character to │
+
+set clipboard=unnamed           " ┐
+if has("unnamedplus")           " │ Use the system clipboard
+  set clipboard+=unnamedplus    " │ as the default register
+endif                           " ┘
 
 
 " ------------------------------------------------------------------------------
@@ -261,13 +266,12 @@ set wildignore+=node_modules/*,bower_components/*
 set autoread            " Reload files modified outside of Vim
 set autowrite           " Automatically write a file when leaving a modified buffer
 
-set nobackup            " <3 Git
-set noswapfile          " <3 Git
-set nowritebackup       " <3 Git
+set nobackup            " ┐
+set noswapfile          " │ <3 Git
+set nowritebackup       " ┘
 
-" set undodir=~/.vimundo  " Permanent undo
-set undodir=~/.vim/undo_files//
-set undofile            " Permanent undo
+set undodir=~/.vim/undo_files// " ┐ Permanent
+set undofile                    " ┘ undo
 
 
 " -- ABBREVIATIONS AND AUTO-COMPLETIONS ----------------------------------------
@@ -302,11 +306,10 @@ set report=0        " Always report changed lines
 set splitright      " Open new vsplit windows to the right of the current one
 set splitbelow      " Open new split windows to the bottom of the current one
 
-" No annoying sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
+set noerrorbells    " ┐
+set novisualbell    " │ No annoying sound on errors
+set t_vb=           " │
+set tm=500          " ┘
 
 " Resize splits when the window is resized
 au VimResized * :wincmd =
