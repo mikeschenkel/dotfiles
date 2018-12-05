@@ -160,6 +160,8 @@ alias reload="exec "$SHELL" -l"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
+alias ssh='TERM=xterm-256color ssh'
+
 alias https-server='http-server --ssl --cert ~/.ssl/localhost.crt --key ~/.ssl/localhost.key -a localhost -o'
 
 # Show/hide hidden files in Finder

@@ -13,6 +13,8 @@
     ~/.ctags.d/config.ctags: ctags
     ~/.gitconfig: git/gitconfig
     ~/.gitignore.global: git/gitignore.global
+    ~/tmux-256color.terminfo: resources/tmux-256color.terminfo
+    ~/xterm-256color-italic.terminfo: resources/xterm-256color-italic.terminfo
     ~/bin:
       create: true
       relink: true
