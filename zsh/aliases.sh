@@ -14,7 +14,7 @@ alias p="cd ~/Dropbox/Projects"
 alias repos="cd ~/repos"
 alias labs="cd ~/labs"
 
-alias cl="clear"
+alias clr="clear"
 
 # Git
 alias g='hub'
