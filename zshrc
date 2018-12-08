@@ -8,6 +8,9 @@
 # ~/.zshrc
 # ------------------------------------------------------------------------------
 
+source ~/.common_profile
+export BASH_ENV="${HOME}/.bashenv"
+
 local ZSH_CONF="${HOME}/.zsh"
 local ZSH_CACHE="${ZSH_CONF}/cache"
 
@@ -52,11 +55,13 @@ setopt NO_BEEP                      # Disable beeps
 setopt AUTO_CD                      # Sends cd commands without the need for 'cd'
 setopt MULTI_OS                     # Can pipe to mulitple outputs
 unsetopt NO_HUP                     # Kill all child processes when we exit, don't leave them running
+unsetopt RM_STAR_SILENT             # ask you before executing rm with a star
 setopt INTERACTIVE_COMMENTS         # Allows comments in interactive shell.
 setopt RC_EXPAND_PARAM              # Abc{$cool}efg where $cool is an array surrounds all array variables individually
 unsetopt FLOW_CONTROL               # Ctrl+S and Ctrl+Q usually disable/enable tty input. This disables those inputs
 setopt LONG_LIST_JOBS               # List jobs in the long format by default. (I don't know what this does but it sounds good)
 setopt vi                           # Make the shell act like vi if i hit escape
+unset MANPATH                       # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
 
 
 # -- ZSH HISTORY ---------------------------------------------------------------
@@ -122,6 +127,7 @@ if [ -s "$NPM_PACKAGES" ]; then
   path+=(${NPM_PACKAGES}/bin)
   export NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
   export N_PREFIX="${NPM_PACKAGES}/node"
+  export MANPATH="${NPM_PACKAGES}/share/man:$(manpath)"
 fi
 
 
