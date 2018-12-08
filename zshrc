@@ -163,3 +163,6 @@ fi
 # -- WAKTIME ---------------------------------------------------------------
 
 WAKATIME_HOME="${HOME}/.config/wakatime"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

@@ -62,6 +62,7 @@ Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-tmux', Cond(exists('$TMUX'))
 Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-tagprefix'
 
 " PHP completion, refactoring and introspection tool
 Plug 'phpactor/phpactor', { 'do': 'composer install', 'for': ['php'] }
@@ -144,16 +145,18 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-" Set encoding to utf-8
-set encoding=utf-8
-set fileencoding=utf-8
-set termencoding=utf-8
+set encoding=utf-8              " ┐
+set fileencoding=utf-8          " │ Set encoding to utf-8
+set termencoding=utf-8          " ┘
 
-" Set language to English US
-set langmenu=en_US
-let $LANG='en_US'
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
+" ┐
+" │
+" │
+" ┘
+set langmenu=en_US              " ┐
+let $LANG='en_US'               " │ Set language to
+source $VIMRUNTIME/delmenu.vim  " │ English US
+source $VIMRUNTIME/menu.vim     " ┘
 
 
 " ------------------------------------------------------------------------------
@@ -229,7 +232,7 @@ autocmd FileType gitcommit set textwidth=72 colorcolumn+=51
 set wildmenu
 
 " Autocomplete as much as you can
-" set wildmode=list:longest,full
+set wildmode=longest:list,full
 
 " Don’t offer to open certain files/directories
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*        " Version control
@@ -245,12 +248,12 @@ set wildignore+=node_modules/*,bower_components/*
 
 " -- FILES, BACKUPS AND UNDO ---------------------------------------------------
 
-set autoread            " Reload files modified outside of Vim
-set autowrite           " Automatically write a file when leaving a modified buffer
+set autoread                    " Reload files modified outside of Vim
+set autowrite                   " Automatically write a file when leaving a modified buffer
 
-set nobackup            " ┐
-set noswapfile          " │ <3 Git
-set nowritebackup       " ┘
+set nobackup                    " ┐
+set noswapfile                  " │ <3 Git
+set nowritebackup               " ┘
 
 set undodir=~/.vim/undo_files// " ┐ Permanent
 set undofile                    " ┘ undo
@@ -438,9 +441,6 @@ vnoremap <C-q> :q<CR>
 " `<leader>+w / <leader>+s` -- Save the current buffer
 nnoremap <leader>s :w<CR>
 nnoremap <leader>w :w<CR>
-" Review
-nnoremap <C-w> :w<CR>
-nnoremap <C-s> :w<CR>
 
 " `<leader>+x` -- Save and exit the current buffer
 " `ZZ` -- Save and exit the current buffer
@@ -513,6 +513,9 @@ nnoremap <Leader>rt :retab<CR>
 
 " `<leader>+tw` -- Remove trailing whitespace
 nnoremap <leader>tw :%s/ \+$//<CR>
+
+" `<leader>+sr` -- Search and replace the word under the cursor
+nnoremap <Leader>sr :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 
 " ------------------------------------------------------------------------------

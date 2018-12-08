@@ -41,8 +41,8 @@ brew prune
 
 # -- macOS ARTIFACTS -----------------------------------------------------------
 
-echo "Removing OS artifacts"
 cd "$HOME"
+echo "Removing OS artifacts"
 find . -type f -name '*.DS_Store' -ls -delete
 
 
