@@ -61,6 +61,7 @@ brew "ncdu"
 brew "tldr"
 brew "prettyping"
 brew "ren"
+brew "shellcheck"
 
 #brew install ack
 #brew install z
