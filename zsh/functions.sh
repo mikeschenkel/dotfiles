@@ -2,7 +2,7 @@
 
 # Normalize `open` across Linux, macOS, and Windows.
 # This is needed to make the `o` function (see below) cross-platform.
-if [ ! $(uname -s) = 'Darwin' ]; then
+if [ ! "$(uname -s)" = 'Darwin' ]; then
   if grep -q Microsoft /proc/version; then
     # Ubuntu on Windows using the Linux subsystem
     alias open='explorer.exe';
@@ -14,13 +14,13 @@ fi
 # Create a new directory and enter it
 function mkd() {
   # mkdir -p "$@" && cd "$_";
-  if [[ ! -n "$1" ]]; then
+  if [[ -z "$1" ]]; then
     echo "Usage: mkd [directory]"
-  elif [ -d $1 ]; then
+  elif [ -d "$1" ]; then
     echo "'$1' already exists"
-    cd "${1}"
+    cd "${1}" || exit
   else
-    mkdir -p "${1}" && cd "${1}"
+    mkdir -p "${1}" && cd "${1}" || exit
   fi
 }
 
@@ -72,22 +72,23 @@ function tre() {
 
 # Compare original and gzipped file size
 function gz() {
-  local origsize=$(wc -c < "$1");
-  local gzipsize=$(gzip -c "$1" | wc -c);
-  local ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
+  origsize=$(wc -c < "$1");
+  gzipsize=$(gzip -c "$1" | wc -c);
+  ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
   printf "orig: %d bytes\n" "$origsize";
   printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
 }
 
 # Write all `defaults` commands to a file for future reference
 function defaults() {
-  echo `date` "defaults" "$@" >> "${HOME}/Documents/defaults.txt"
+  date_command=$(date);
+  echo "${date_command}" "defaults" "$@" >> "${HOME}/Documents/defaults.txt"
   /usr/bin/defaults "$@"
 }
 
 # Change working directory to the top-most Finder window location
 function cdf() { # short for `cdfinder`
-  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
+  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" || exit;
 }
 
 # Determine size of a file or total size of a directory
@@ -97,7 +98,7 @@ function fs() {
   else
     local arg=-sh;
   fi
-  if [[ -n "$@" ]]; then
+  if [[ -n "$*" ]]; then
     du $arg -- "$@";
   else
     du $arg .[^.]* ./*;
