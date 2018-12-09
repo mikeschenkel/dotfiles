@@ -1,0 +1,113 @@
+#!/bin/bash
+set -euo pipefail
+
+homebrew=''
+mas=''
+npm=''
+os=''
+ruby=''
+vim=''
+
+print_usage() {
+  printf "Usage: ..."
+}
+
+while getopts 'abmsnorv' flag; do
+  case "${flag}" in
+    b) homebrew='true' ;;
+    m) mas='true' ;;
+    n) npm='true' ;;
+    o) os='true' ;;
+    r) ruby='true' ;;
+    v) vim='true' ;;
+    a) homebrew='true'
+       mas='true'
+       npm='true'
+       os='true'
+       ruby='true'
+       vim='true' ;;
+    *) print_usage
+       exit 1 ;;
+  esac
+done
+
+
+# ==============================================================================
+# HOMEBREW
+# ==============================================================================
+
+if [ $homebrew ]
+then
+  echo "------------------------------"
+  echo "Upgrading global Homebrew packages"
+  brew -v update
+  brew upgrade --force-bottle
+  brew cu --all
+  brew cleanup
+  brew -v prune
+  brew -v doctor
+fi
+
+
+# ==============================================================================
+# MAC APP STORE
+# ==============================================================================
+
+if [ $mas ]
+then
+  echo "------------------------------"
+  echo "Upgrading Mac App Store apps"
+  mas upgrade
+fi
+
+
+# ==============================================================================
+# NODE & NPM
+# ==============================================================================
+
+if [ $npm ]
+then
+  echo "------------------------------"
+  echo "Upgrading Node"
+  echo "------------------------------"
+  echo "Upgrading npm"
+  npm-check -gu
+fi
+
+
+# ==============================================================================
+# MACOS
+# ==============================================================================
+
+if [ $os ]
+then
+  echo "------------------------------"
+  echo "Upgrading macOS"
+  sudo softwareupdate -iaR
+fi
+
+
+# ==============================================================================
+# RUBY
+# ==============================================================================
+
+if [ $ruby ]
+then
+  echo "------------------------------"
+  echo "Upgrading Gems"
+  gem update --system
+  gem update --no-document
+fi
+
+
+# ==============================================================================
+# VIM
+# ==============================================================================
+
+if [ $vim ]
+then
+  echo "------------------------------"
+  echo "Upgrading Vim plugins"
+  nvim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
+fi
+

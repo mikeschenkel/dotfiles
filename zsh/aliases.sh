@@ -172,11 +172,3 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && kil
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
-# Update installed Homebrew, npm, Ruby gems and their installed packages
-alias update_brew="brew -v update; brew upgrade --force-bottle --cleanup; brew cu --all --cleanup; brew cleanup; brew prune; brew doctor"
-alias update_npm="npm-check -gu"
-alias update_ruby="brew upgrade rbenv ruby-build --cleanup; gem update --system; gem update --no-document"
-alias update_vim="nvim +PlugUpgrade +PlugInstall +PlugUpdate +qall"
-alias update_mas="mas upgrade"
-alias update_os="sudo softwareupdate -iaR"
-alias update_all="update_brew; update_npm; update_ruby; update_vim; update_mas"
