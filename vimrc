@@ -4,6 +4,7 @@
 "  \ V /| | | | | | | | | (__
 "   \_/ |_|_| |_| |_|_|  \___|
 
+
 " ------------------------------------------------------------------------------
 " VIM-PLUG
 " ------------------------------------------------------------------------------
@@ -33,21 +34,20 @@ endfunction
 
 call plug#begin()
 
+" Utility
+" Generic Programming Support
+
 " Command-line fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-
 
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
 Plug 'bounceme/remote-viewer'
 
-
 Plug 'wincent/ferret'
 
-
 Plug 'atweiden/vim-dragvisuals'
-
 
 Plug 'editorconfig/editorconfig-vim' " EditorConfig plugin for Vim
 
@@ -67,12 +67,6 @@ Plug 'ncm2/ncm2-path'
 " PHP completion, refactoring and introspection tool
 Plug 'phpactor/phpactor', { 'do': 'composer install', 'for': ['php'] }
 Plug 'phpactor/ncm2-phpactor', { 'for': ['php'] }
-
-
-" Base16 for Vim
-Plug 'chriskempson/base16-vim'
-Plug 'mike-hearn/base16-vim-lightline'
-
 
 Plug 'justinmk/vim-sneak'               " The missing motion for Vim
 Plug 'rhysd/clever-f.vim'               " Extended f, F, t and T key mappings for Vim
@@ -99,10 +93,18 @@ Plug 'tpope/vim-surround'               " Quoting/parenthesizing made simple
 Plug 'tpope/vim-commentary'             " Comment stuff out
 Plug 'tpope/vim-repeat'                 " Enable repeating supported plugin maps with '.'
 
-Plug 'itchyny/lightline.vim'            " A light and configurable statusline/tabline plugin for Vim
-
 Plug 'w0rp/ale'                         " Asynchronous Lint Engine
 Plug 'maximbaz/lightline-ale'           " ALE indicator for the lightline vim plugin
+
+
+
+" -- THEME / INTERFACE ---------------------------------------------------------
+
+" Base16 for Vim
+Plug 'chriskempson/base16-vim'
+Plug 'mike-hearn/base16-vim-lightline'
+
+Plug 'itchyny/lightline.vim'            " A light and configurable statusline/tabline plugin for Vim
 
 
 " -- FILETYPES -----------------------------------------------------------------

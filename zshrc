@@ -4,11 +4,8 @@
 #  / /\__ \ | | | | | (__
 # /___|___/_| |_|_|  \___|
 
-# ------------------------------------------------------------------------------
-# ~/.zshrc
-# ------------------------------------------------------------------------------
 
-source ~/.common_profile
+source "${HOME}/.common_profile"
 export BASH_ENV="${HOME}/.bashenv"
 
 local ZSH_CONF="${HOME}/.zsh"
@@ -61,7 +58,6 @@ setopt RC_EXPAND_PARAM              # Abc{$cool}efg where $cool is an array surr
 unsetopt FLOW_CONTROL               # Ctrl+S and Ctrl+Q usually disable/enable tty input. This disables those inputs
 setopt LONG_LIST_JOBS               # List jobs in the long format by default. (I don't know what this does but it sounds good)
 setopt vi                           # Make the shell act like vi if i hit escape
-unset MANPATH                       # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
 
 
 # -- ZSH HISTORY ---------------------------------------------------------------
@@ -127,7 +123,6 @@ if [ -s "$NPM_PACKAGES" ]; then
   path+=(${NPM_PACKAGES}/bin)
   export NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
   export N_PREFIX="${NPM_PACKAGES}/node"
-  export MANPATH="${NPM_PACKAGES}/share/man:$(manpath)"
 fi
 
 
