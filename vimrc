@@ -5,9 +5,9 @@
 "   \_/ |_|_| |_| |_|_|  \___|
 
 
-" ------------------------------------------------------------------------------
+" ==============================================================================
 " VIM-PLUG
-" ------------------------------------------------------------------------------
+" ==============================================================================
 
 if has('nvim')
   let plugpath = '~/.local/share/nvim/site/autoload/plug.vim'
@@ -28,9 +28,9 @@ function! Cond(cond, ...)
 endfunction
 
 
-" ------------------------------------------------------------------------------
+" ==============================================================================
 " PLUGINS
-" ------------------------------------------------------------------------------
+" ==============================================================================
 
 call plug#begin()
 
@@ -49,12 +49,17 @@ Plug 'wincent/ferret'
 
 Plug 'atweiden/vim-dragvisuals'
 
-Plug 'editorconfig/editorconfig-vim' " EditorConfig plugin for Vim
+" A Vim plugin for more pleasant editing on commit messages
+Plug 'rhysd/committia.vim'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'docunext/closetag.vim'
 
-Plug 'mattn/emmet-vim' " emmet for vim
+" EditorConfig plugin for Vim
+Plug 'editorconfig/editorconfig-vim'
+
+" emmet for vim
+Plug 'mattn/emmet-vim'
 
 " Completion plugins
 Plug 'ncm2/ncm2'
@@ -68,34 +73,62 @@ Plug 'ncm2/ncm2-path'
 Plug 'phpactor/phpactor', { 'do': 'composer install', 'for': ['php'] }
 Plug 'phpactor/ncm2-phpactor', { 'for': ['php'] }
 
-Plug 'justinmk/vim-sneak'               " The missing motion for Vim
-Plug 'rhysd/clever-f.vim'               " Extended f, F, t and T key mappings for Vim
+" The missing motion for Vim
+Plug 'justinmk/vim-sneak'
 
-Plug 'machakann/vim-highlightedyank'    " Make the yanked region apparent!
+" Extended f, F, t and T key mappings for Vim
+Plug 'rhysd/clever-f.vim'
+
+" Make the yanked region apparent!
+Plug 'machakann/vim-highlightedyank'
 
 " Display indention levels with thin vertical lines
 Plug 'Yggdroot/IndentLine', { 'on': 'IndentLinesToggle' }
 
-Plug 'airblade/vim-gitgutter'           " Show Git diff in the gutter and stages/undoes hunks
-Plug 'airblade/vim-rooter'              " Changes Vim working directory to project root
+" Show Git diff in the gutter and stages/undoes hunks
+Plug 'airblade/vim-gitgutter'
 
-" Plug 'craigemery/vim-autotag'           " Automatically discover and properly update ctags files on save
-Plug 'ludovicchabant/vim-gutentags'     " A Vim plugin that manages your tag files
+" Changes Vim working directory to project root
+Plug 'airblade/vim-rooter'
 
-Plug 'nixon/vim-vmath'                  " Damian Conway's vmath.vim plugin
-" Plug 'takac/vim-hardtime'               " Plugin to help you stop repeating the basic movement keys
+" A Vim plugin that manages your tag files
+Plug 'ludovicchabant/vim-gutentags'
 
-"Plug 'tpope/vim-vinegar'               " Combine with netrw to create a delicious salad dressing
-Plug 'tpope/vim-unimpaired'             " Pairs of handy bracket mappings
-Plug 'tpope/vim-eunuch'                 " Helpers for UNIX
-Plug 'tpope/vim-fugitive'               " A Git wrapper so awesome, it should be illegal
-Plug 'tpope/vim-surround'               " Quoting/parenthesizing made simple
-Plug 'tpope/vim-commentary'             " Comment stuff out
-Plug 'tpope/vim-repeat'                 " Enable repeating supported plugin maps with '.'
+" Damian Conway's vmath.vim plugin
+Plug 'nixon/vim-vmath'
 
-Plug 'w0rp/ale'                         " Asynchronous Lint Engine
-Plug 'maximbaz/lightline-ale'           " ALE indicator for the lightline vim plugin
+" Automatically discover and properly update ctags files on save
+" Plug 'craigemery/vim-autotag'
 
+" Plugin to help you stop repeating the basic movement keys
+" Plug 'takac/vim-hardtime'
+
+" Combine with netrw to create a delicious salad dressing
+" Plug 'tpope/vim-vinegar'
+
+" Pairs of handy bracket mappings
+Plug 'tpope/vim-unimpaired'
+
+" Helpers for UNIX
+Plug 'tpope/vim-eunuch'
+
+" A Git wrapper so awesome, it should be illegal
+Plug 'tpope/vim-fugitive'
+
+" Quoting/parenthesizing made simple
+Plug 'tpope/vim-surround'
+
+" Comment stuff out
+Plug 'tpope/vim-commentary'
+
+" Enable repeating supported plugin maps with '.'
+Plug 'tpope/vim-repeat'
+
+" Asynchronous Lint Engine
+Plug 'w0rp/ale'
+
+" ALE indicator for the lightline vim plugin
+Plug 'maximbaz/lightline-ale'
 
 
 " -- THEME / INTERFACE ---------------------------------------------------------
@@ -104,7 +137,8 @@ Plug 'maximbaz/lightline-ale'           " ALE indicator for the lightline vim pl
 Plug 'chriskempson/base16-vim'
 Plug 'mike-hearn/base16-vim-lightline'
 
-Plug 'itchyny/lightline.vim'            " A light and configurable statusline/tabline plugin for Vim
+" A light and configurable statusline/tabline plugin for Vim
+Plug 'itchyny/lightline.vim'
 
 
 " -- FILETYPES -----------------------------------------------------------------
@@ -136,9 +170,9 @@ Plug 'tmux-plugins/vim-tmux-focus-events', Cond(exists('$TMUX'))
 call plug#end()
 
 
-" ------------------------------------------------------------------------------
+" ==============================================================================
 " GENERAL
-" ------------------------------------------------------------------------------
+" ==============================================================================
 
 " Enable truecolor and italics for tmux
 if (has("termguicolors"))
@@ -147,23 +181,26 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+if has("autocmd")
+    filetype plugin indent on
+    "           │     │    └──── Enable file type detection
+    "           │     └───────── Enable loading of indent file
+    "           └─────────────── Enable loading of plugin files
+endif
+
 set encoding=utf-8              " ┐
 set fileencoding=utf-8          " │ Set encoding to utf-8
 set termencoding=utf-8          " ┘
 
-" ┐
-" │
-" │
-" ┘
 set langmenu=en_US              " ┐
 let $LANG='en_US'               " │ Set language to
 source $VIMRUNTIME/delmenu.vim  " │ English US
 source $VIMRUNTIME/menu.vim     " ┘
 
 
-" ------------------------------------------------------------------------------
+" ==============================================================================
 " OPTIONS
-" ------------------------------------------------------------------------------
+" ==============================================================================
 
 let mapleader="\<Space>"        " Remap Leader to <Space>
 
@@ -198,9 +235,9 @@ if has("unnamedplus")           " │ Use the system clipboard
 endif                           " ┘
 
 
-" ------------------------------------------------------------------------------
+" ==============================================================================
 " COLORS
-" ------------------------------------------------------------------------------
+" ==============================================================================
 
 set termguicolors
 set background=dark
@@ -219,7 +256,9 @@ highlight Comment gui=italic
 highlight htmlArg gui=italic
 
 
-" -- FILETYPES -----------------------------------------------------------------
+" ==============================================================================
+" FILETYPES
+" ==============================================================================
 
 " Quickfix
 au FileType qf setlocal norelativenumber colorcolumn=
@@ -228,7 +267,17 @@ au FileType qf setlocal norelativenumber colorcolumn=
 " Force the cursor onto a new line after 72 characters and color the 51st colomn (for titles)
 autocmd FileType gitcommit set textwidth=72 colorcolumn+=51
 
-" -- UI ------------------------------------------------------------------------
+autocmd BufNewFile,BufRead *.ts,*.snap,*.es6,*.tsx setlocal filetype=javascript.jsx
+autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*prettierrc setlocal syntax=json
+
+" Markdown
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown tw=80 fo+=t colorcolumn=80
+" let g:vim_markdown_conceal = 0
+
+
+" ==============================================================================
+" UI
+" ==============================================================================
 
 " Turn on the WiLd menu
 set wildmenu
@@ -248,10 +297,12 @@ set wildignore+=*.map,*.min.css
 set wildignore+=node_modules/*,bower_components/*
 
 
-" -- FILES, BACKUPS AND UNDO ---------------------------------------------------
+" ==============================================================================
+" FILES, BACKUPS AND UNDO
+" ==============================================================================
 
 set autoread                    " Reload files modified outside of Vim
-set autowrite                   " Automatically write a file when leaving a modified buffer
+set autowrite                   " Automatically write when leaving a modified buffer
 
 set nobackup                    " ┐
 set noswapfile                  " │ <3 Git
@@ -260,8 +311,12 @@ set nowritebackup               " ┘
 set undodir=~/.vim/undo_files// " ┐ Permanent
 set undofile                    " ┘ undo
 
+" set hidden                    " Allow buffer switching without saving
 
-" -- ABBREVIATIONS AND AUTO-COMPLETIONS ----------------------------------------
+
+" ==============================================================================
+" ABBREVIATIONS AND AUTO-COMPLETIONS
+" ==============================================================================
 
 " lipsum<Tab> drops some Lorem ipsum text into the document
 iab lipsum Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
@@ -274,46 +329,51 @@ iab target="_blank" target="_blank" rel="noopener noreferrer nofollow"
 iab todo TODO
 
 
-" ------------------------------------------------------------------------------
+" ==============================================================================
 
-" Limit line-length to 80 columns by highlighting col 81
-set colorcolumn=81
-
+set colorcolumn=81              " Limit line-length to 80 columns
+                                " by highlighting col 81
 set list
-" set listchars=trail:·,tab:▸\ ,eol:¬,extends:❯,precedes:❮
-set listchars=trail:·,tab:▸\ ,extends:❯,precedes:❮
+set listchars=tab:▸\            " ┐
+set listchars+=trail:·          " │
+" set listchars+=eol:¬          " │ Use custom symbols to
+set listchars+=extends:❯        " │ represent invisible characters
+set listchars+=precedes:❮       " │
+set listchars+=nbsp:_           " ┘
 set showbreak=↪
 
-set scrolloff=5     " Minumum lines to keep above and below from the cursor
-set sidescroll=1    " Scroll sideways a character at a time, rather than a screen at a time
-set sidescrolloff=5 " Minumum lines to keep left and right from the cursor
+set scrolloff=5                " Minumum lines to keep above and below
+                               " from the cursor
+set sidescroll=1               " Scroll sideways a character at a time,
+                               " rather than a screen at a time
+set sidescrolloff=5            " Minumum lines to keep left and right from the cursor
 
-set report=0        " Always report changed lines
+set report=0                   " Always report changed lines
 
-set splitright      " Open new vsplit windows to the right of the current one
-set splitbelow      " Open new split windows to the bottom of the current one
+set splitright                 " Open new vsplit windows to the right of the current one
+set splitbelow                 " Open new split windows to the bottom of the current one
 
-set noerrorbells    " ┐
-set novisualbell    " │ No annoying sound on errors
-set t_vb=           " │
-set tm=500          " ┘
+set noerrorbells               " ┐
+set novisualbell               " │ No annoying sound
+set t_vb=                      " │ on errors
+set tm=500                     " ┘
 
-" Resize splits when the window is resized
-au VimResized * :wincmd =
+au VimResized * :wincmd =      " Resize splits when the window is resized
 
-set magic " For regular expressions turn magic on
+set magic                      " For regular expressions turn magic on
 
-set showmatch " Show matching brackets when text indicator is over them
+set showmatch                  " Show matching brackets when text indicator
+                               " is over them
 
-" Interpret numbers with leading zeroes as decimal, not octal
-set nrformats-=octal
-set iskeyword+=- " Makes foo-bar considered one word
+set nrformats-=octal           " Interpret numbers with leading zeroes as
+                               " decimal, not octal
+set iskeyword+=-               " Makes foo-bar considered one word
 
-set display=lastline " Show as much as possible of the last line
+set display=lastline           " Show as much as possible of the last line
 
-set nojoinspaces " No extra spaces when joining lines
+set nojoinspaces               " No extra spaces when joining lines
 
-set spelllang=en,nl " Set spelling language
+set spelllang=en,nl            " Set spelling language
 
 " <leader>+ss` -- Toggle spell checking
 map <leader>ss :setlocal spell!<CR>
@@ -322,12 +382,14 @@ map <leader>ss :setlocal spell!<CR>
 " z= -- autocorrect words
 
 
-" -- SEARCH --------------------------------------------------------------------
+" ==============================================================================
+" SEARCH
+" ==============================================================================
 
-set ignorecase " Case insensitive search
-set smartcase  " ... except if we input a capital letter
-set hlsearch   " Highlight search terms
-set hlsearch   " Find as you type search
+set ignorecase                 " Case insensitive search
+set smartcase                  " ... except if we input a capital letter
+set hlsearch                   " Highlight search terms
+set hlsearch                   " Find as you type search
 
 " `<leader>+n` -- Disable highlight
 nmap <silent> <leader>n :silent :nohlsearch<CR>
@@ -358,19 +420,24 @@ vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 
-" -- TABS, SPACES, INDENTS AND WRAPPING ----------------------------------------
+" ==============================================================================
+" TABS, SPACES, INDENTS AND WRAPPING
+" ==============================================================================
 
-set wrap          " Wrap lines
-set autoindent    " Indent at the same level of the previous line
-set expandtab     " Use spaces instead of tabs
-set smarttab      " Smart tab
-set smartindent   " Automatically indent lines after opening brackets
-set softtabstop=2 " 1 tab == 2 spaces
-set shiftwidth=2  " 1 tab == 2 spaces
-set tabstop=2     " 1 tab == 2 spaces
+set wrap                       " Wrap lines
+set autoindent                 " Indent at the same level of the previous line
+set expandtab                  " Use spaces instead of tabs
+set smarttab                   " Smart tab
+set smartindent                " Automatically indent lines after opening brackets
+
+set softtabstop=2              " ┐
+set shiftwidth=2               " │ 1 tab == 2 spaces
+set tabstop=2                  " ┘
 
 
-" -- FILETYPES -----------------------------------------------------------------
+" ==============================================================================
+" FILETYPES
+" ==============================================================================
 
 " Jump to last edit position on opening file
 if has("autocmd")
@@ -384,7 +451,9 @@ autocmd FileType vue syntax sync fromstart
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
 
 
-" -- KEYBOARD SHORTCUTS --------------------------------------------------------
+" ==============================================================================
+" KEYBOARD SHORTCUTS
+" ==============================================================================
 
 " Remap : to ; to strip off two full keystrokes from almost every Vim command
 nnoremap ; :
@@ -440,6 +509,18 @@ nnoremap <leader>q :q<CR>
 nnoremap <C-q> :q<CR>
 vnoremap <C-q> :q<CR>
 
+" `<leader>+qq` -- Close the QuickFix window
+nnoremap <leader>qq :ccl<CR>
+
+" `<leader>+qp` -- Close the Preview window
+nnoremap <leader>qp :pc<CR>
+
+" `<leader>+ql` -- Close the Location List window
+nnoremap <leader>ql :lcl<CR>
+
+" `<leader>+qb` -- Close the current buffer
+nnoremap <leader>qb :bdel<CR>
+
 " `<leader>+w / <leader>+s` -- Save the current buffer
 nnoremap <leader>s :w<CR>
 nnoremap <leader>w :w<CR>
@@ -456,7 +537,20 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <Leader>p :echo expand('%')<CR>
 
 " `<leader>+e` -- Open new file adjacent to current file
-nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+" nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+" `<leader>+e[s,v]` -- Edit file, starting in same directory as current file
+" `<leader>+e`  -- Edit file in current buffer
+" `<leader>+es` -- Edit file in new horizontal split
+" `<leader>+ev` -- Edit file in new vertical split
+nnoremap <leader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
+nnoremap <leader>es :split <C-R>=expand('%:p:h') . '/'<CR>
+nnoremap <leader>ev :vsplit <C-R>=expand('%:p:h') . '/'<CR>
+
+" `vs` -- Edit file in a new vertical split
+nnoremap vs :vsplit<Space>
+
+" `<leader>+o` -- Close all buffers except for the current one
+nnoremap <Leader>o :only<CR>
 
 " `Ctrl+c / Ctrl+j` -- Map to Escape
 inoremap <C-j> <Esc>
@@ -520,22 +614,7 @@ nnoremap <leader>tw :%s/ \+$//<CR>
 nnoremap <Leader>sr :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 
-" ------------------------------------------------------------------------------
-
-" netrw
-" Initialize netrw with dot files hidden. Press `gh` to toggle dot file hiding.
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-
-let g:netrw_liststyle=3
-
-" Allow netrw to remove non-empty local directories
-let g:netrw_localrmdir='rm -r'
-
-" Open vertical splits on the right
-let g:netrw_altv=1
-
-" Open preview windows in a vertical split
-let g:netrw_preview=1
+" ==============================================================================
 
 " https://www.reddit.com/r/vim/comments/6bq9ln/vim_for_php_development/
 " au Filetype php        setlocal iskeyword+=$
@@ -546,12 +625,10 @@ let g:netrw_preview=1
 "vmap  <expr>  j        DVB_Drag('down')
 "vmap  <expr>  k        DVB_Drag('up')
 
-let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-
-" ------------------------------------------------------------------------------
-" Plugin Settings
-" ------------------------------------------------------------------------------
+" ==============================================================================
+" PLUGIN SETTINGS
+" ==============================================================================
 
 let plugin_settings='~/.config/vim/plugin_settings'
 for fpath in split(globpath(plugin_settings, '*.vim'), '\n')
@@ -559,9 +636,9 @@ for fpath in split(globpath(plugin_settings, '*.vim'), '\n')
 endfor
 
 
-" ------------------------------------------------------------------------------
+" ==============================================================================
 " HOST-SPECIFIC SETTINGS
-" ------------------------------------------------------------------------------
+" ==============================================================================
 
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local

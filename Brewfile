@@ -52,7 +52,9 @@ tap "universal-ctags/universal-ctags"
 brew "universal-ctags", args: ["HEAD"]
 
 brew "reattach-to-user-namespace"
-brew "the_silver_searcher"
+brew "ack"
+brew "ag"
+brew "z"
 brew "exa"
 brew "bat"
 brew "fd"
@@ -63,15 +65,15 @@ brew "prettyping"
 brew "ren"
 brew "shellcheck"
 
-#brew install ack
-#brew install z
+
+brew "youtube-dl"
 #brew install ssh-copy-id
 #brew install wifi-password
-brew install youtube-dl
 
 brew "node", args: ["without-npm"]
 brew "yarn", args: ["without-node"]
 brew "rbenv"
+brew "python3"
 
 # Editors
 brew "nano"
@@ -104,8 +106,7 @@ cask "imageoptim"
 
 ## Personal ##
 cask "fontplop"
-# cask "rightfont"
-# Not correct version yet?
+cask "rightfont"
 cask "sip"
 
 tap "dteoh/sqa"
@@ -143,8 +144,8 @@ cask "visual-studio-code"
 # Media Playback
 cask "spotify"
 cask "plexamp"
-#brew cask install plex-media-player
 cask "vlc"
+#brew cask install plex-media-player
 #brew cask install silverlight
 
 # Communication
@@ -181,7 +182,7 @@ cask "qlmarkdown"
 cask "quicklook-json"
 cask "qlprettypatch"
 cask "quicklook-csv"
-##cask "betterzipql"
+#cask "betterzipql"
 cask "qlimagesize"
 cask "webpquicklook"
 cask "suspicious-package"
@@ -207,7 +208,6 @@ mas "Pages", id: 409201541
 mas "Numbers", id: 409203825
 mas "Keynote", id: 409183694
 
-### Personal ###
 mas "Fantastical 2", id: 975937182
 mas "Todoist", id: 585829637
 mas "Tweetbot", id: 557168941

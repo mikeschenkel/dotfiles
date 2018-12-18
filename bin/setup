@@ -4,38 +4,50 @@ set -euo pipefail
 # Ask for the administrator password upfront
 sudo -v
 
-# Keep-alive: update existing `sudo` time stamp until `osxprep.sh` has finished
+# Keep-alive
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# Update the OS
+
+# ==============================================================================
+# MACOS
+# ==============================================================================
+
 echo "------------------------------"
 echo "Updating macOS. If this requires a restart, run the script again."
-
-# Install all available updates
 sudo softwareupdate -iva
 
-# Install Xcode Tools
-echo "------------------------------"
-echo "Installing Xcode Command Line Tools."
 
-# Install Xcode command line tools
-xcode-select --install
+# ==============================================================================
+# XCODE COMMAND LINE TOOLS
+# ==============================================================================
 
-# Check for Homebrew, install if we don't have it
+if test ! "$(xcode-select -v)"; then
+  echo "------------------------------"
+  echo "Installing Xcode Command Line Tools."
+  xcode-select --install
+fi
+
+
+# ==============================================================================
+# HOMEBREW
+# ==============================================================================
+
 if test ! "$(brew -v)"; then
   echo "------------------------------"
   echo "Installing Homebrew."
+
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+  brew update
+  brew upgrade
+  brew cleanup
+  brew prune
 fi
 
-# Make sure we’re using the latest Homebrew.
-brew update
-brew upgrade
 
-# Remove outdated versions from the cellar.
-brew cleanup
+# ==============================================================================
+# RESTART
+# ==============================================================================
 
-# Restart
 sudo shutdown -r now
 
-# https://github.com/trevordmiller/shell-scripts/blob/master/scripts/setup

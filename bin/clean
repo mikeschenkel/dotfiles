@@ -1,12 +1,14 @@
 #!/bin/bash
 set -euo pipefail
 
-# -- APPS ----------------------------------------------------------------------
+# ==============================================================================
+# APPS
+# ==============================================================================
 
+echo "------------------------------"
 echo "Closing apps"
 
 foregroundAppsString=$(osascript -e 'tell application "System Events" to get name of (processes where background only is false)')
-
 IFS=',' read -r -a foregroundApps <<<"$foregroundAppsString"
 
 for foregroundApp in "${foregroundApps[@]}"; do
@@ -17,46 +19,68 @@ for foregroundApp in "${foregroundApps[@]}"; do
 done
 
 
-# -- PROCESSES -----------------------------------------------------------------
+# ==============================================================================
+# PROCESSES
+# ==============================================================================
 
+echo "------------------------------"
 echo "Quitting processes"
+
 tmux kill-server || true
 killall node || true
 
 
-# -- DOTFILES ------------------------------------------------------------------
+# ==============================================================================
+# DOTFILES
+# ==============================================================================
 
+echo "------------------------------"
 echo "Pulling latest dotfiles and shell scripts"
 
 # cd "$HOME/repos/dotfiles"
 # git pull
 
 
-# -- HOMEBREW CLEANUP ----------------------------------------------------------
+# ==============================================================================
+# HOMEBREW CLEANUP
+# ==============================================================================
 
-echo "Removing homebrew artifacts"
+echo "------------------------------"
+echo "Removing Homebrew artifacts"
+
 brew cleanup
 brew prune
 
 
-# -- macOS ARTIFACTS -----------------------------------------------------------
+# ==============================================================================
+# MACOS ARTIFACTS
+# ==============================================================================
+
+echo "------------------------------"
+echo "Removing OS artifacts"
 
 cd "$HOME"
-echo "Removing OS artifacts"
 find . -type f -name '*.DS_Store' -ls -delete
 
 
-# -- GIT-DELETE-SQUASHED -------------------------------------------------------
+# ==============================================================================
+# GIT-DELETE-SQUASHED
+# ==============================================================================
 
+echo "------------------------------"
 echo "Removing merged local branches in each git repo"
 
 cd "$HOME/repos"
 find . -name .git -type d -execdir git-delete-squashed --dry-run ';'
 
 
-# -- REPO STATES ---------------------------------------------------------------
+# ==============================================================================
+# REPO STATES
+# ==============================================================================
 
+echo "------------------------------"
 echo "Checking the status of each git repo"
+
 cd "$HOME/repos"
 deep-git-status
 

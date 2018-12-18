@@ -1,32 +1,51 @@
 #!/bin/bash
+
 set -euo pipefail
 
+default='true'
 homebrew=''
-mas=''
 npm=''
-os=''
 ruby=''
 vim=''
+mas=''
+os=''
 
-print_usage() {
-  printf "Usage: ..."
+# print_usage() {
+#   printf "Usage: ..."
+# }
+NORM=`tput sgr0`
+BOLD=`tput bold`
+REV=`tput smso`
+function HELP {
+  echo -e \\n"Help documentation for ${BOLD}.${NORM}"\\n
+  echo -e "${REV}Basic usage:${NORM} ${BOLD}file.ext${NORM}"\\n
+  echo "Command line switches are optional. The following switches are recognized."
+  echo "${REV}-a${NORM}  --Sets the value for option ${BOLD}a${NORM}. Default is ${BOLD}A${NORM}."
+  echo "${REV}-b${NORM}  --Sets the value for option ${BOLD}b${NORM}. Default is ${BOLD}B${NORM}."
+  echo "${REV}-c${NORM}  --Sets the value for option ${BOLD}c${NORM}. Default is ${BOLD}C${NORM}."
+  echo "${REV}-d${NORM}  --Sets the value for option ${BOLD}d${NORM}. Default is ${BOLD}D${NORM}."
+  echo -e "${REV}-h${NORM}  --Displays this help message. No further functions are performed."\\n
+  echo -e "Example: ${BOLD} -a foo -b man -c chu -d bar file.ext${NORM}"\\n
+  exit 1
 }
 
-while getopts 'abmsnorv' flag; do
+while getopts 'abhmsnorv' flag; do
   case "${flag}" in
-    b) homebrew='true' ;;
-    m) mas='true' ;;
-    n) npm='true' ;;
-    o) os='true' ;;
-    r) ruby='true' ;;
-    v) vim='true' ;;
+    b) homebrew='true' default='' ;;
+    n) npm='true' default='' ;;
+    r) ruby='true' default='' ;;
+    v) vim='true' default='' ;;
+    m) mas='true' default='' ;;
+    o) os='true' default='' ;;
     a) homebrew='true'
        mas='true'
        npm='true'
        os='true'
        ruby='true'
        vim='true' ;;
-    *) print_usage
+    h) HELP
+       exit 1 ;;
+    *) HELP
        exit 1 ;;
   esac
 done
@@ -36,8 +55,7 @@ done
 # HOMEBREW
 # ==============================================================================
 
-if [ $homebrew ]
-then
+if [ $homebrew ] || [ $default ] ; then
   echo "------------------------------"
   echo "Upgrading global Homebrew packages"
   brew -v update
@@ -50,23 +68,10 @@ fi
 
 
 # ==============================================================================
-# MAC APP STORE
-# ==============================================================================
-
-if [ $mas ]
-then
-  echo "------------------------------"
-  echo "Upgrading Mac App Store apps"
-  mas upgrade
-fi
-
-
-# ==============================================================================
 # NODE & NPM
 # ==============================================================================
 
-if [ $npm ]
-then
+if [ $npm ] || [ $default ] ; then
   echo "------------------------------"
   echo "Upgrading Node"
   echo "------------------------------"
@@ -76,23 +81,10 @@ fi
 
 
 # ==============================================================================
-# MACOS
-# ==============================================================================
-
-if [ $os ]
-then
-  echo "------------------------------"
-  echo "Upgrading macOS"
-  sudo softwareupdate -iaR
-fi
-
-
-# ==============================================================================
 # RUBY
 # ==============================================================================
 
-if [ $ruby ]
-then
+if [ $ruby ] || [ $default ] ; then
   echo "------------------------------"
   echo "Upgrading Gems"
   gem update --system
@@ -104,10 +96,31 @@ fi
 # VIM
 # ==============================================================================
 
-if [ $vim ]
-then
+if [ $vim ] || [ $default ] ; then
   echo "------------------------------"
   echo "Upgrading Vim plugins"
   nvim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
+fi
+
+
+# ==============================================================================
+# MAC APP STORE
+# ==============================================================================
+
+if [ $mas ] || [ $default ] ; then
+  echo "------------------------------"
+  echo "Upgrading Mac App Store apps"
+  mas upgrade
+fi
+
+
+# ==============================================================================
+# MACOS
+# ==============================================================================
+
+if [ $os ] ; then
+  echo "------------------------------"
+  echo "Upgrading macOS"
+  sudo softwareupdate -iaR
 fi
 

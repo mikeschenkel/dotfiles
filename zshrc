@@ -23,6 +23,7 @@ if [ -s "$ZPLUG" ]; then
   zplug "zsh-users/zsh-completions"
   zplug "zsh-users/zsh-autosuggestions"
   zplug "zsh-users/zsh-history-substring-search"
+  zplug "andrewferrier/fzf-z"
   zplug "bobthecow/git-flow-completion"
   zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
   zplug "plugins/colored-man-pages", from:oh-my-zsh
@@ -147,6 +148,12 @@ local AUTOJUMP="/usr/local/etc/profile.d/autojump.sh"
 [ -r "$AUTOJUMP" ] && . "$AUTOJUMP"
 
 
+# -- Z -------------------------------------------------------------------------
+
+local Z="/usr/local/etc/profile.d/z.sh"
+[ -r "$Z" ] && . "$Z"
+
+
 # -- FUNCTIONS & ALIASES -------------------------------------------------------
 
 [ -r "${ZSH_CONF}/.functions" ] && source "${ZSH_CONF}/.functions"
@@ -161,9 +168,7 @@ if [[ -r $LOCAL_ZSHRC ]]; then
 fi
 
 
-# -- WAKTIME ---------------------------------------------------------------
+# -- WAKTIME -------------------------------------------------------------------
 
 WAKATIME_HOME="${HOME}/.config/wakatime"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
