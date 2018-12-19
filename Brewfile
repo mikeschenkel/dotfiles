@@ -73,6 +73,7 @@ brew "youtube-dl"
 brew "node", args: ["without-npm"]
 brew "yarn", args: ["without-node"]
 brew "rbenv"
+brew "composer"
 brew "python3"
 
 # Editors
