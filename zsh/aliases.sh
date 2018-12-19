@@ -20,9 +20,19 @@ alias clr="clear"
 alias g='hub'
 alias git='hub'
 alias gl='git lg'
-alias gapa='git patch'
 alias gst='git s'
+
+alias gapa='git patch'
 alias gaa='git add -A'
+alias gac="git add -A && git commit -m"
+
+alias gp="git push"
+alias gpo="git push origin"
+alias gpom="git push origin master"
+
+alias gb="git branch"
+alias gc="git checkout"
+alias gcb="git checkout -b"
 
 # Vim
 alias v='nvim'
