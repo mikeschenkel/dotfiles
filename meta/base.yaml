@@ -13,21 +13,11 @@
     ~/.ctags.d/config.ctags: ctags
     ~/.gitconfig: git/gitconfig
     ~/.gitignore.global: git/gitignore.global
-    ~/tmux-256color.terminfo: resources/tmux-256color.terminfo
-    ~/xterm-256color-italic.terminfo: resources/xterm-256color-italic.terminfo
-    ~/bin:
-      create: true
-      relink: true
-      glob: true
-      path: bin/*
 
 - shell:
   -
     description: "Installing submodules"
     command: "git submodule update --init --recursive"
-  -
-    command: "mkdir -p ${HOME}/bin"
-    command: "chmod u+x ${HOME}/bin/*"
   -
     command: "mkdir -p ${HOME}/.ssh/sockets"
   -
