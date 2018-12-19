@@ -1,6 +1,0 @@
-- shell:
-  -
-    description: "Installing global Ruby gems"
-    command: "gem install bundler"
-    stdout: true
-    stderr: true
