@@ -6,31 +6,14 @@
 
 
 " ==============================================================================
-" VIM-PLUG
+" PLUGINS
 " ==============================================================================
-
-if has('nvim')
-  let plugpath = '~/.local/share/nvim/site/autoload/plug.vim'
-else
-  let plugpath = '~/.vim/autoload/plug.vim'
-endif
-
-if empty(glob(plugpath))
-  silent !curl -flo plugpath --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd vimenter * pluginstall --sync | source $MYVIMRC
-endif
 
 " Conditional activation
 function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
-
-
-" ==============================================================================
-" PLUGINS
-" ==============================================================================
 
 call plug#begin()
 
@@ -43,11 +26,6 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
-Plug 'bounceme/remote-viewer'
-
-Plug 'wincent/ferret'
-
-Plug 'atweiden/vim-dragvisuals'
 
 " A Vim plugin for more pleasant editing on commit messages
 Plug 'rhysd/committia.vim'
@@ -197,6 +175,12 @@ let $LANG='en_US'               " │ Set language to
 source $VIMRUNTIME/delmenu.vim  " │ English US
 source $VIMRUNTIME/menu.vim     " ┘
 
+" Jump to last edit position on opening file
+if has("autocmd")
+  " https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
+  au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 
 " ==============================================================================
 " OPTIONS
@@ -273,6 +257,12 @@ autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*prettierrc setlocal 
 " Markdown
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown tw=80 fo+=t colorcolumn=80
 " let g:vim_markdown_conceal = 0
+
+" Vue
+autocmd BufReadPre *.vue let b:javascript_lib_use_vue=1
+let g:vue_disable_pre_processors=1
+autocmd FileType vue syntax sync fromstart
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
 
 
 " ==============================================================================
@@ -391,13 +381,6 @@ set smartcase                  " ... except if we input a capital letter
 set hlsearch                   " Highlight search terms
 set hlsearch                   " Find as you type search
 
-" `<leader>+n` -- Disable highlight
-nmap <silent> <leader>n :silent :nohlsearch<CR>
-
-" Don't jump directly to the next or previous result
-nnoremap * *<C-o>
-nnoremap # #<C-o>
-
 function! VisualSelection(direction, extra_filter) range
   let l:saved_reg = @"
   execute "normal! vgvy"
@@ -414,6 +397,13 @@ function! VisualSelection(direction, extra_filter) range
   let @/ = l:pattern
   let @" = l:saved_reg
 endfunction
+
+" `<leader>+n` -- Disable highlight
+nmap <silent> <leader>n :silent :nohlsearch<CR>
+
+" Don't jump directly to the next or previous result
+nnoremap * *<C-o>
+nnoremap # #<C-o>
 
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
@@ -433,22 +423,6 @@ set smartindent                " Automatically indent lines after opening bracke
 set softtabstop=2              " ┐
 set shiftwidth=2               " │ 1 tab == 2 spaces
 set tabstop=2                  " ┘
-
-
-" ==============================================================================
-" FILETYPES
-" ==============================================================================
-
-" Jump to last edit position on opening file
-if has("autocmd")
-  " https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
-  au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
-
-autocmd BufReadPre *.vue let b:javascript_lib_use_vue=1
-let g:vue_disable_pre_processors=1
-autocmd FileType vue syntax sync fromstart
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
 
 
 " ==============================================================================
@@ -612,18 +586,6 @@ nnoremap <leader>tw :%s/ \+$//<CR>
 
 " `<leader>+sr` -- Search and replace the word under the cursor
 nnoremap <Leader>sr :%s/\<<C-r><C-w>\>//g<Left><Left>
-
-
-" ==============================================================================
-
-" https://www.reddit.com/r/vim/comments/6bq9ln/vim_for_php_development/
-" au Filetype php        setlocal iskeyword+=$
-" au Filetype javascript setlocal iskeyword+=$
-
-"vmap  <expr>  h        DVB_Drag('left')
-"vmap  <expr>  l        DVB_Drag('right')
-"vmap  <expr>  j        DVB_Drag('down')
-"vmap  <expr>  k        DVB_Drag('up')
 
 
 " ==============================================================================
