@@ -2,6 +2,8 @@ zsh
 terminfo
 git
 vim
+tmux
+ctags
 macos/brew
 macos/npm
 macos/http-server
