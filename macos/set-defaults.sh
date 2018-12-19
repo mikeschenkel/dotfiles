@@ -1,4 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/sh
+#
+# Sets macOS defaults
+
+set -euo pipefail
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -7,12 +11,13 @@ osascript -e 'tell application "System Preferences" to quit'
 # Ask for the administrator password upfront
 sudo -v
 
-# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+# Keep-alive: update existing `sudo` time stamp until `set-defautls` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-###############################################################################
-# General UI/UX                                                               #
-###############################################################################
+
+# ==============================================================================
+# General UI/UX
+# ==============================================================================
 
 # Set standby delay to 12 hours (default is 1 hour)
 sudo pmset -a standbydelay 43200
@@ -32,7 +37,7 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
 # Bring back "Save As..." as a menu item
 # https://discussions.apple.com/thread/6437457
-defaults write -globalDomain NSUserKeyEquivalents -dict-add 'Save As...' '@$S'
+defaults write -globalDomain NSUserKeyEquivalents -dict-add 'Save As...' "@$S"
 
 # Expand print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
@@ -82,11 +87,10 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 
-
-###############################################################################
-# SSD-specific tweaks                                                         #
-# You might want to disable these if you are not running an SSD               #
-###############################################################################
+# ==============================================================================
+# SSD-specific tweaks
+# You might want to disable these if you are not running an SSD
+# ==============================================================================
 
 # Disable hibernation (speeds up entering sleep mode)
 sudo pmset -a hibernatemode 0
@@ -104,10 +108,9 @@ sudo chflags uchg /private/var/vm/sleepimage
 sudo pmset -a sms 0
 
 
-
-###############################################################################
-# Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
-###############################################################################
+# ==============================================================================
+# Trackpad, mouse, keyboard, Bluetooth accessories, and input
+# ==============================================================================
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
@@ -165,10 +168,9 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bo
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
 
-
-###############################################################################
-# Screen                                                                      #
-###############################################################################
+# ==============================================================================
+# Screen
+# ==============================================================================
 
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
@@ -191,9 +193,9 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 
-###############################################################################
-# Finder                                                                      #
-###############################################################################
+# ==============================================================================
+# Finder
+# ==============================================================================
 
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
@@ -308,10 +310,9 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 	Privileges -bool true
 
 
-
-###############################################################################
-# Dock, Dashboard, and hot corners                                            #
-###############################################################################
+# ==============================================================================
+# Dock, Dashboard, and hot corners
+# ==============================================================================
 
 # Enable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
@@ -360,10 +361,9 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock showhidden -bool true
 
 
-
-###############################################################################
-# Safari & WebKit                                                             #
-###############################################################################
+# ==============================================================================
+# Safari & WebKit
+# ==============================================================================
 
 # Privacy: don’t send search queries to Apple
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
@@ -389,10 +389,9 @@ defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.25
 defaults write com.apple.Safari WebKitResourceTimedLayoutDelay 0.0001
 
 
-
-###############################################################################
-# Terminal & iTerm 2                                                          #
-###############################################################################
+# ==============================================================================
+# Terminal & iTerm 2
+# ==============================================================================
 
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
@@ -401,10 +400,9 @@ defaults write com.apple.terminal StringEncodings -array 4
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 
-
-###############################################################################
-# Time Machine                                                                #
-###############################################################################
+# ==============================================================================
+# Time Machine
+# ==============================================================================
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
@@ -413,10 +411,9 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 
-
-###############################################################################
-# Activity Monitor                                                            #
-###############################################################################
+# ==============================================================================
+# Activity Monitor
+# ==============================================================================
 
 # Show the main window when launching Activity Monitor
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
@@ -432,10 +429,9 @@ defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
 
 
-
-###############################################################################
-# Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
-###############################################################################
+# ==============================================================================
+# Address Book, Dashboard, iCal, TextEdit, and Disk Utility
+# ==============================================================================
 
 # Enable the debug menu in Address Book
 defaults write com.apple.addressbook ABShowDebugMenu -bool true
@@ -456,19 +452,17 @@ defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
 defaults write com.apple.DiskUtility advanced-image-options -bool true
 
 
-
-###############################################################################
-# Photos                                                                      #
-###############################################################################
+# ==============================================================================
+# Photos
+# ==============================================================================
 
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
 
-
-###############################################################################
-# Messages                                                                    #
-###############################################################################
+# ==============================================================================
+# Messages
+# ==============================================================================
 
 # Disable smart quotes as it’s annoying for messages that contain code
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
@@ -477,10 +471,9 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
 
-
-###############################################################################
-# Google Chrome & Google Chrome Canary                                        #
-###############################################################################
+# ==============================================================================
+# Google Chrome & Google Chrome Canary
+# ==============================================================================
 
 # Allow installing user scripts via GitHub Gist or Userscripts.org
 defaults write com.google.Chrome ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
@@ -499,9 +492,9 @@ defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
 
 
-###############################################################################
-# Transmission.app                                                            #
-###############################################################################
+# ==============================================================================
+# Transmission.app
+# ==============================================================================
 
 # Use `~/Downloads` to store completed downloads
 defaults write org.m0k.transmission DownloadLocationConstant -bool true
@@ -530,39 +523,41 @@ defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.n
 defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 
 
-###############################################################################
-# SlowQuitApps                                                                #
-###############################################################################
+# ==============================================================================
+# SlowQuitApps
+# ==============================================================================
 
 defaults write com.dteoh.SlowQuitApps delay -int 1000
 
 
-###############################################################################
-# Kill affected applications                                                  #
-###############################################################################
+# ==============================================================================
+# Kill affected applications
+# ==============================================================================
+
 for app in "Activity Monitor" \
-	"Address Book" \
-	"Calendar" \
-	"cfprefsd" \
-	"Contacts" \
-	"Dock" \
-	"Finder" \
-	"Google Chrome Canary" \
-	"Google Chrome" \
-	"Mail" \
-	"Messages" \
-	"Opera" \
-	"Photos" \
-	"Safari" \
-	"SizeUp" \
-	"Spectacle" \
-	"SystemUIServer" \
-	"Terminal" \
-	"Transmission" \
-	"Tweetbot" \
-	"Twitter" \
-	"SlowQuitApps" \
-	"iCal"; do
-	killall "${app}" &> /dev/null
+  "Address Book" \
+  "Calendar" \
+  "cfprefsd" \
+  "Contacts" \
+  "Dock" \
+  "Finder" \
+  "Google Chrome Canary" \
+  "Google Chrome" \
+  "Mail" \
+  "Messages" \
+  "Opera" \
+  "Photos" \
+  "Safari" \
+  "SizeUp" \
+  "Spectacle" \
+  "SystemUIServer" \
+  "Terminal" \
+  "Transmission" \
+  "Tweetbot" \
+  "Twitter" \
+  "SlowQuitApps" \
+  "iCal"; do
+  killall "${app}" &> /dev/null
 done
+
 echo "Done. Note that some of these changes require a logout/restart to take effect."
