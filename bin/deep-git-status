@@ -1,7 +1,6 @@
-#!/bin/sh
-
+#!/bin/bash
+#
 # https://github.com/fboender/multi-git-status
-# MIT license
 
 if [ -t 1 ]; then
     # Our output is not being redirected, so we can use colors.

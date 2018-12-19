@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# Download videos or extract audio files from streaming websites such as
+# YouTube, DailyMotion and Vimeo.
+
+cd ~/Desktop && youtube-dl "$1"
