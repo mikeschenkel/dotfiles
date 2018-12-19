@@ -17,7 +17,7 @@ function HELP {
   echo "Options:"
   echo "-a  --Upgrade all"
   echo "-b  --Upgrade Homebrew packages"
-  echo "-n  --Upgrade Node & npm"
+  echo "-n  --Upgrade npm packages"
   echo "-r  --Upgrade Ruby gems"
   echo "-c  --Upgrade Composer packages"
   echo "-v  --Upgrade Vim plugins"
@@ -67,14 +67,12 @@ fi
 
 
 # ==============================================================================
-# NODE & NPM
+# NPM
 # ==============================================================================
 
 if [ $npm ] || [ $default ]; then
   echo "------------------------------"
-  echo "Upgrading Node"
-  echo "------------------------------"
-  echo "Upgrading npm"
+  echo "Upgrading npm packages"
   npm-check -gu
 fi
 
