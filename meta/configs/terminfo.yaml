@@ -1,17 +1,8 @@
 - link:
     ~/tmux-256color.terminfo: resources/tmux-256color.terminfo
     ~/xterm-256color-italic.terminfo: resources/xterm-256color-italic.terminfo
-    ~/bin:
-      create: true
-      relink: true
-      glob: true
-      path: bin/*
 
 - shell:
-  -
-    command: "mkdir -p ${HOME}/bin"
-  -
-    command: "chmod u+x ${HOME}/bin/*"
   -
     command: "tic -x -v ${HOME}/xterm-256color-italic.terminfo"
     stdout: true

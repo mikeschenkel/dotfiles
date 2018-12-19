@@ -9,6 +9,28 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 
 # ==============================================================================
+# HOME
+# ==============================================================================
+
+echo "------------------------------"
+echo "Adding home folders"
+
+home_folders=(
+  ".ctags.d"
+  ".npm-packages"
+  ".ssh/sockets"
+  ".ssl"
+  ".zsh/cache"
+  "bin"
+  "labs"
+  "repos"
+)
+for home_folder in "${home_folders[@]}"; do
+  mkdir -p "${HOME}/$home_folder"
+done
+
+
+# ==============================================================================
 # MACOS
 # ==============================================================================
 
@@ -43,7 +65,6 @@ if test ! "$(brew -v)"; then
   brew update
   brew upgrade
   brew cleanup
-  brew prune
 fi
 
 

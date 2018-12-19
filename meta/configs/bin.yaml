@@ -1,0 +1,12 @@
+- link:
+    ~/bin:
+      create: true
+      relink: true
+      glob: true
+      path: bin/*
+
+- shell:
+  -
+    command: "mkdir -p ${HOME}/bin"
+  -
+    command: "chmod u+x ${HOME}/bin/*"

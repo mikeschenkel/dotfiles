@@ -1,4 +1,7 @@
+zsh
+terminfo
+git
+vim
 macos/brew
 macos/npm
-zsh
-composer
+macos/http-server

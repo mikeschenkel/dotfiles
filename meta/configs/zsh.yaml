@@ -5,6 +5,7 @@
     ~/.zshrc: zshrc
     ~/.zsh/.aliases: zsh/aliases.sh
     ~/.zsh/.functions: zsh/functions.sh
+    ~/.zsh/.fzf-base16.config: zsh/fzf-base16.config
 
 - shell:
   -
