@@ -136,16 +136,18 @@ if [ -s "$RBENV" ]; then
 fi
 
 
+# -- COMPOSER ------------------------------------------------------------------
+
+COMPOSER="${HOME}/.composer"
+if [ -s "$COMPOSER" ]; then
+  path+=(${COMPOSER}/vendor/bin)
+fi
+
+
 # -- FZF -----------------------------------------------------------------------
 
 [ -r "${ZSH_CONF}/.fzf-base16.config" ] && source "${ZSH_CONF}/.fzf-base16.config"
 [ -r "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
-
-
-# -- AUTOJUMP ------------------------------------------------------------------
-
-local AUTOJUMP="/usr/local/etc/profile.d/autojump.sh"
-[ -r "$AUTOJUMP" ] && . "$AUTOJUMP"
 
 
 # -- Z -------------------------------------------------------------------------
