@@ -1,6 +1,6 @@
 - link:
-    ~/.common_profile: common_profile
-    ~/.bashenv: bashenv
+    ~/.common_profile: shell/common_profile
+    ~/.bashenv: shell/bashenv
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
     ~/.zsh/.aliases: zsh/aliases.sh

@@ -1,6 +1,6 @@
 - link:
-    ~/tmux-256color.terminfo: resources/tmux-256color.terminfo
-    ~/xterm-256color-italic.terminfo: resources/xterm-256color-italic.terminfo
+    ~/tmux-256color.terminfo: shell/tmux-256color.terminfo
+    ~/xterm-256color-italic.terminfo: shell/xterm-256color-italic.terminfo
 
 - shell:
   -
