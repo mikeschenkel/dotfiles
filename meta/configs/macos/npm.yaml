@@ -30,6 +30,6 @@
     stderr: true
   -
     description: "Globally install npm packges"
-    command: "${HOME}/.npm-packages/bin/npm install -g npm-check fkill-cli emma-cli git-open http-server"
+    command: "./npm/global-npm-packages.sh"
     stdout: true
     stderr: true
