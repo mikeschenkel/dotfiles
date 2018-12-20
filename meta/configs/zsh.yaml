@@ -1,8 +1,8 @@
 - link:
     ~/.common_profile: shell/common_profile
     ~/.bashenv: shell/bashenv
-    ~/.zshenv: zshenv
-    ~/.zshrc: zshrc
+    ~/.zshenv: zsh/zshenv
+    ~/.zshrc: zsh/zshrc
     ~/.zsh/.aliases: zsh/aliases.sh
     ~/.zsh/.functions: zsh/functions.sh
     ~/.zsh/.fzf-base16.config: zsh/fzf-base16.config
