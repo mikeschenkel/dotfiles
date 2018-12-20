@@ -1,4 +1,4 @@
 - link:
-    ~/.vimrc: vimrc
-    ~/.config/nvim/init.vim: vimrc
+    ~/.vimrc: vim/vimrc
+    ~/.config/nvim/init.vim: vim/vimrc
     ~/.config/vim/plugin_settings: vim/plugin_settings
