@@ -38,3 +38,4 @@ map <Leader>k <Plug>(easymotion-k)
 " different highlight method and have some other features )
 " map  n <Plug>(easymotion-next)
 " map  N <Plug>(easymotion-prev)
+

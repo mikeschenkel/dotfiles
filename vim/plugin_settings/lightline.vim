@@ -26,9 +26,9 @@ let g:lightline = {
 
 let g:lightline#ale#indicator_checking="..."
 
-
 function! LightlineFilename()
   let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
   let modified = &modified ? ' +' : ''
   return filename . modified
 endfunction
+

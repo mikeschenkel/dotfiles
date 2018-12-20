@@ -4,14 +4,15 @@
 #  / /\__ \ | | | | | (__
 # /___|___/_| |_|_|  \___|
 
-
 source "${HOME}/.common_profile"
 export BASH_ENV="${HOME}/.bashenv"
 
 local ZSH_CONF="${HOME}/.zsh"
 local ZSH_CACHE="${ZSH_CONF}/cache"
 
-# -- ZPLUG----------------------------------------------------------------------
+# ==============================================================================
+# ZPLUG
+# ==============================================================================
 
 ZPLUG="${HOME}/.zplug/init.zsh"
 if [ -s "$ZPLUG" ]; then
@@ -42,8 +43,9 @@ if [ -s "$ZPLUG" ]; then
   zplug load
 fi
 
-
-# -- MISC ----------------------------------------------------------------------
+# ==============================================================================
+# MISC
+# ==============================================================================
 
 setopt ZLE                          # Enable the ZLE line editor, which is default behavior, but to be sure
 declare -U path                     # prevent duplicate entries in path
@@ -60,8 +62,9 @@ unsetopt FLOW_CONTROL               # Ctrl+S and Ctrl+Q usually disable/enable t
 setopt LONG_LIST_JOBS               # List jobs in the long format by default. (I don't know what this does but it sounds good)
 setopt vi                           # Make the shell act like vi if i hit escape
 
-
-# -- ZSH HISTORY ---------------------------------------------------------------
+# ==============================================================================
+# ZSH HISTORY
+# ==============================================================================
 
 alias history='fc -fl 1'
 HISTFILE="${ZSH_CACHE}/history"     # Keep our home directory neat by keeping the histfile somewhere else
@@ -78,14 +81,16 @@ setopt HIST_IGNORE_DUPS             # Do not write events to history that are du
 setopt INC_APPEND_HISTORY           # Add commands to history as they are typed, don't wait until shell exit
 setopt HIST_REDUCE_BLANKS           # Remove extra blanks from each command line being added to history
 
-
-# -- ZSH SPACESHIP PROMPT ------------------------------------------------------
+# ==============================================================================
+# ZSH SPACESHIP PROMPT
+# ==============================================================================
 
 # SPACESHIP="${HOME}/dotbot-dotfiles/shell/spaceship-prompt.zsh"
 # [ -s "$SPACESHIP" ] && source "$SPACESHIP"
 
-
-# -- ZSH AUTOCOMPLETION --------------------------------------------------------
+# ==============================================================================
+# ZSH AUTOCOMPLETION
+# ==============================================================================
 
 # Figure out the short hostname
 if [[ "$OSTYPE" = darwin* ]]; then
@@ -109,15 +114,17 @@ setopt MENU_COMPLETE                                     # When using auto-compl
 setopt COMPLETE_ALIASES                                  # Turn on completion for aliases as well
 setopt LIST_ROWS_FIRST                                   # Cycle through menus horizontally instead of vertically
 
-
-# -- GLOBBING ------------------------------------------------------------------
+# ==============================================================================
+# GLOBBING
+# ==============================================================================
 
 setopt NO_CASE_GLOB                                      # Case insensitive globbing
 setopt EXTENDED_GLOB                                     # Allow the powerful zsh globbing features
 setopt NUMERIC_GLOB_SORT                                 # Sort globs that expand to numbers numerically, not by letter (i.e. 01 2 03)
 
-
-# -- NPM -----------------------------------------------------------------------
+# ==============================================================================
+# NPM
+# ==============================================================================
 
 NPM_PACKAGES="${HOME}/.npm-packages"
 if [ -s "$NPM_PACKAGES" ]; then
@@ -126,8 +133,9 @@ if [ -s "$NPM_PACKAGES" ]; then
   export N_PREFIX="${NPM_PACKAGES}/node"
 fi
 
-
-# -- RUBY ----------------------------------------------------------------------
+# ==============================================================================
+# RUBY
+# ==============================================================================
 
 RBENV="${HOME}/.rbenv"
 if [ -s "$RBENV" ]; then
@@ -135,42 +143,48 @@ if [ -s "$RBENV" ]; then
   eval "$(rbenv init - --no-rehash)"
 fi
 
-
-# -- COMPOSER ------------------------------------------------------------------
+# ==============================================================================
+# COMPOSER
+# ==============================================================================
 
 COMPOSER="${HOME}/.composer"
 if [ -s "$COMPOSER" ]; then
   path+=(${COMPOSER}/vendor/bin)
 fi
 
-
-# -- FZF -----------------------------------------------------------------------
+# ==============================================================================
+# FZF
+# ==============================================================================
 
 [ -r "${ZSH_CONF}/.fzf-base16.config" ] && source "${ZSH_CONF}/.fzf-base16.config"
 [ -r "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
 
-
-# -- Z -------------------------------------------------------------------------
+# ==============================================================================
+# Z
+# ==============================================================================
 
 local Z="/usr/local/etc/profile.d/z.sh"
 [ -r "$Z" ] && . "$Z"
 
-
-# -- FUNCTIONS & ALIASES -------------------------------------------------------
+# ==============================================================================
+# FUNCTIONS & ALIASES
+# ==============================================================================
 
 [ -r "${ZSH_CONF}/.functions" ] && source "${ZSH_CONF}/.functions"
 [ -r "${ZSH_CONF}/.aliases" ] && source "${ZSH_CONF}/.aliases"
 
-
-# -- LOCAL ZSHRC ---------------------------------------------------------------
+# ==============================================================================
+# HOST-SPECIFIC SETTINGS
+# ==============================================================================
 
 local LOCAL_ZSHRC="${HOME}/.zshrc.local"
 if [[ -r $LOCAL_ZSHRC ]]; then
   source $LOCAL_ZSHRC
 fi
 
-
-# -- WAKTIME -------------------------------------------------------------------
+# ==============================================================================
+# WAKTIME
+# ==============================================================================
 
 WAKATIME_HOME="${HOME}/.config/wakatime"
 

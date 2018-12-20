@@ -4,7 +4,6 @@
 "  \ V /| | | | | | | | | (__
 "   \_/ |_|_| |_| |_|_|  \___|
 
-
 " ==============================================================================
 " PLUGINS
 " ==============================================================================
@@ -108,7 +107,6 @@ Plug 'w0rp/ale'
 " ALE indicator for the lightline vim plugin
 Plug 'maximbaz/lightline-ale'
 
-
 " -- THEME / INTERFACE ---------------------------------------------------------
 
 " Base16 for Vim
@@ -117,7 +115,6 @@ Plug 'mike-hearn/base16-vim-lightline'
 
 " A light and configurable statusline/tabline plugin for Vim
 Plug 'itchyny/lightline.vim'
-
 
 " -- FILETYPES -----------------------------------------------------------------
 
@@ -136,7 +133,6 @@ Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript'] }
 " Generate phpDocumentor documentation blocks for PHP code
 Plug 'Rican7/php-doc-modded', { 'for': ['php'] }
 
-
 " -- TMUX ----------------------------------------------------------------------
 
 " vim-tmux-navigator - Seamless navigation between tmux panes and vim splits
@@ -146,7 +142,6 @@ Plug 'christoomey/vim-tmux-navigator', Cond(exists('$TMUX'))
 Plug 'tmux-plugins/vim-tmux-focus-events', Cond(exists('$TMUX'))
 
 call plug#end()
-
 
 " ==============================================================================
 " GENERAL
@@ -180,7 +175,6 @@ if has("autocmd")
   " https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
   au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
-
 
 " ==============================================================================
 " OPTIONS
@@ -218,7 +212,6 @@ if has("unnamedplus")           " │ Use the system clipboard
   set clipboard+=unnamedplus    " │ as the default register
 endif                           " ┘
 
-
 " ==============================================================================
 " COLORS
 " ==============================================================================
@@ -238,7 +231,6 @@ highlight WildMenu guifg=#2c2421
 " Italicised comments and attributes
 highlight Comment gui=italic
 highlight htmlArg gui=italic
-
 
 " ==============================================================================
 " FILETYPES
@@ -264,7 +256,6 @@ let g:vue_disable_pre_processors=1
 autocmd FileType vue syntax sync fromstart
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
 
-
 " ==============================================================================
 " UI
 " ==============================================================================
@@ -286,7 +277,6 @@ set wildignore+=*.pdf,*.psd
 set wildignore+=*.map,*.min.css
 set wildignore+=node_modules/*,bower_components/*
 
-
 " ==============================================================================
 " FILES, BACKUPS AND UNDO
 " ==============================================================================
@@ -303,7 +293,6 @@ set undofile                    " ┘ undo
 
 " set hidden                    " Allow buffer switching without saving
 
-
 " ==============================================================================
 " ABBREVIATIONS AND AUTO-COMPLETIONS
 " ==============================================================================
@@ -317,7 +306,6 @@ iab target="_blank" target="_blank" rel="noopener noreferrer nofollow"
 
 " `todo` will be capitalized
 iab todo TODO
-
 
 " ==============================================================================
 
@@ -371,7 +359,6 @@ map <leader>ss :setlocal spell!<CR>
 " ]s and [s -- move to misspelled words
 " z= -- autocorrect words
 
-
 " ==============================================================================
 " SEARCH
 " ==============================================================================
@@ -409,7 +396,6 @@ nnoremap # #<C-o>
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
-
 " ==============================================================================
 " TABS, SPACES, INDENTS AND WRAPPING
 " ==============================================================================
@@ -423,7 +409,6 @@ set smartindent                " Automatically indent lines after opening bracke
 set softtabstop=2              " ┐
 set shiftwidth=2               " │ 1 tab == 2 spaces
 set tabstop=2                  " ┘
-
 
 " ==============================================================================
 " KEYBOARD SHORTCUTS
@@ -587,7 +572,6 @@ nnoremap <leader>tw :%s/ \+$//<CR>
 " `<leader>+sr` -- Search and replace the word under the cursor
 nnoremap <Leader>sr :%s/\<<C-r><C-w>\>//g<Left><Left>
 
-
 " ==============================================================================
 " PLUGIN SETTINGS
 " ==============================================================================
@@ -596,7 +580,6 @@ let plugin_settings='~/.config/vim/plugin_settings'
 for fpath in split(globpath(plugin_settings, '*.vim'), '\n')
   exe 'source' fpath
 endfor
-
 
 " ==============================================================================
 " HOST-SPECIFIC SETTINGS

@@ -14,7 +14,6 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `set-defautls` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-
 # ==============================================================================
 # General UI/UX
 # ==============================================================================
@@ -86,7 +85,6 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 # Disable smart dashes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
-
 # ==============================================================================
 # SSD-specific tweaks
 # You might want to disable these if you are not running an SSD
@@ -106,7 +104,6 @@ sudo chflags uchg /private/var/vm/sleepimage
 
 # Disable the sudden motion sensor as it’s not useful for SSDs
 sudo pmset -a sms 0
-
 
 # ==============================================================================
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input
@@ -167,7 +164,6 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bo
 # Stop iTunes from responding to the keyboard media keys
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
-
 # ==============================================================================
 # Screen
 # ==============================================================================
@@ -191,7 +187,6 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 # Enable HiDPI display modes (requires restart)
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
-
 
 # ==============================================================================
 # Finder
@@ -309,7 +304,6 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 	OpenWith -bool true \
 	Privileges -bool true
 
-
 # ==============================================================================
 # Dock, Dashboard, and hot corners
 # ==============================================================================
@@ -360,7 +354,6 @@ defaults write com.apple.dock autohide -bool true
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
 
-
 # ==============================================================================
 # Safari & WebKit
 # ==============================================================================
@@ -388,7 +381,6 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.25
 defaults write com.apple.Safari WebKitResourceTimedLayoutDelay 0.0001
 
-
 # ==============================================================================
 # Terminal & iTerm 2
 # ==============================================================================
@@ -399,7 +391,6 @@ defaults write com.apple.terminal StringEncodings -array 4
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
-
 # ==============================================================================
 # Time Machine
 # ==============================================================================
@@ -409,7 +400,6 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
 hash tmutil &> /dev/null && sudo tmutil disablelocal
-
 
 # ==============================================================================
 # Activity Monitor
@@ -427,7 +417,6 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 # Sort Activity Monitor results by CPU usage
 defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
-
 
 # ==============================================================================
 # Address Book, Dashboard, iCal, TextEdit, and Disk Utility
@@ -451,14 +440,12 @@ defaults write com.apple.TextEdit "TabWidth" '4'
 defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
 defaults write com.apple.DiskUtility advanced-image-options -bool true
 
-
 # ==============================================================================
 # Photos
 # ==============================================================================
 
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
-
 
 # ==============================================================================
 # Messages
@@ -469,7 +456,6 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 
 # Disable continuous spell checking
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
-
 
 # ==============================================================================
 # Google Chrome & Google Chrome Canary
@@ -490,7 +476,6 @@ defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://
 # Expand the print dialog by default
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
-
 
 # ==============================================================================
 # Transmission.app
@@ -522,13 +507,11 @@ defaults write org.m0k.transmission BlocklistNew -bool true
 defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
 defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 
-
 # ==============================================================================
 # SlowQuitApps
 # ==============================================================================
 
 defaults write com.dteoh.SlowQuitApps delay -int 1000
-
 
 # ==============================================================================
 # Kill affected applications
@@ -561,3 +544,4 @@ for app in "Activity Monitor" \
 done
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
+

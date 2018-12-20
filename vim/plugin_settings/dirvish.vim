@@ -18,3 +18,4 @@ augroup dirvish_config
     \ cd :Dirvish 
 
 augroup END
+

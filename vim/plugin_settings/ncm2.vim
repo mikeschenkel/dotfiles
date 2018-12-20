@@ -1,9 +1,9 @@
+" ==============================================================================
+" GENERAL
+" ==============================================================================
+
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
-
-" `<Tab>` -- select the popup menu
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 call ncm2#register_source({'name' : 'css',
   \ 'priority': 9,
@@ -17,3 +17,12 @@ call ncm2#register_source({'name' : 'css',
   \   'csscomplete#CompleteCSS'
   \ ],
 \ })
+
+" ==============================================================================
+" MAPPINGS
+" ==============================================================================
+
+" `<Tab>` -- select the popup menu
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+

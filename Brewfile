@@ -1,17 +1,23 @@
-# ------------------------------------------------------------------------------
-# ~/Brewfile
-# ------------------------------------------------------------------------------
+#  _                        __ _ _
+# | |__  _ __ _____      __/ _(_) | ___
+# | '_ \| '__/ _ \ \ /\ / / |_| | |/ _ \
+# | |_) | | |  __/\ V  V /|  _| | |  __/
+# |_.__/|_|  \___| \_/\_/ |_| |_|_|\___|
 
-# -- TAPS ----------------------------------------------------------------------
+# ==============================================================================
+# TAPS
+# ==============================================================================
 
 tap "caskroom/cask"
 tap "caskroom/versions"
 tap "neovim/neovim"
 tap "bramstein/webfonttools"
 tap "buo/cask-upgrade"
+tap "universal-ctags/universal-ctags"
 
-
-# -- HOMEBREW ------------------------------------------------------------------
+# ==============================================================================
+# HOMEBREW
+# ==============================================================================
 
 ### Personal/Logitech ###
 tap "homebrew/cask-drivers"
@@ -48,9 +54,7 @@ brew "make"
 brew "less"
 brew "imagemagick", args: ["with-webp"]
 
-tap "universal-ctags/universal-ctags"
 brew "universal-ctags", args: ["HEAD"]
-
 brew "reattach-to-user-namespace"
 brew "ack"
 brew "ag"
@@ -64,7 +68,6 @@ brew "tldr"
 brew "prettyping"
 brew "ren"
 brew "shellcheck"
-
 
 brew "youtube-dl"
 #brew install ssh-copy-id
@@ -95,8 +98,9 @@ brew "woff2"
 brew "sfnt2woff"
 brew "sfnt2woff-zopfli"
 
-
-# -- HOMEBREW CASK -------------------------------------------------------------
+# ==============================================================================
+# HOMEBREW CASK
+# ==============================================================================
 
 cask_args appdir: "/Applications"
 
@@ -197,8 +201,9 @@ cask "quicklook-pat"
 cask "logitech-control-center"
 cask "exifrenamer"
 
-
-# -- APP STORE -----------------------------------------------------------------
+# ==============================================================================
+# APP STORE
+# ==============================================================================
 
 brew "mas"
 
@@ -216,3 +221,4 @@ mas "Reeder", id: 880001334
 mas "Enpass", id: 732710998
 mas "Wunderlist", id: 410628904
 mas "The Unarchiver", id: 425424353
+
