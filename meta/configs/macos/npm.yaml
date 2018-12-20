@@ -1,5 +1,5 @@
 - link:
-    ~/.npmrc: npmrc
+    ~/.npmrc: npm/npmrc
 
 - shell:
   -
