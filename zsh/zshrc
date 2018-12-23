@@ -160,8 +160,26 @@ fi
 # FZF
 # ==============================================================================
 
-[ -r "${ZSH_CONF}/.fzf-base16.config" ] && source "${ZSH_CONF}/.fzf-base16.config"
-[ -r "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
+local FZF="${HOME}/.fzf"
+local FZF_zsh="${HOME}/.fzf.zsh"
+local FZF_base16="${ZSH_CONF}/.fzf-base16.config"
+if [ -s "${FZF}" ]; then
+  [ -r "${FZF_zsh}" ] && source "${FZF_zsh}"
+  [ -r "${FZF_base16}" ] && source "${FZF_base16}"
+
+  # Use fd (https://github.com/sharkdp/fd) instead of the default find
+  # command for listing path candidates.
+  _fzf_compgen_path() {
+    fd --hidden --follow --exclude ".git" . "$1"
+  }
+
+  # Use fd to generate the list for directory completion
+  _fzf_compgen_dir() {
+    fd --type d --hidden --follow --exclude ".git" . "$1"
+  }
+
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+fi
 
 # ==============================================================================
 # Z
