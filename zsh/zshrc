@@ -81,6 +81,10 @@ setopt HIST_IGNORE_DUPS             # Do not write events to history that are du
 setopt INC_APPEND_HISTORY           # Add commands to history as they are typed, don't wait until shell exit
 setopt HIST_REDUCE_BLANKS           # Remove extra blanks from each command line being added to history
 
+# zsh history substring search in VI-mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
 # ==============================================================================
 # ZSH SPACESHIP PROMPT
 # ==============================================================================
