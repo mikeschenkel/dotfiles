@@ -134,7 +134,6 @@ NPM_PACKAGES="${HOME}/.npm-packages"
 if [ -s "$NPM_PACKAGES" ]; then
   path+=(${NPM_PACKAGES}/bin)
   export NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
-  export N_PREFIX="${NPM_PACKAGES}/node"
 fi
 
 # ==============================================================================
