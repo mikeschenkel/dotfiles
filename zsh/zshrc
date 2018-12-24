@@ -6,7 +6,7 @@
 
 source "${HOME}/.common_profile"
 export BASH_ENV="${HOME}/.bashenv"
-
+export DOTFILES="${HOME}/repos/dotfiles"
 local ZSH_CONF="${HOME}/.zsh"
 local ZSH_CACHE="${ZSH_CONF}/cache"
 
