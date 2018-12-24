@@ -119,11 +119,11 @@ cask "slowquitapps"
 cask "apptrap"
 cask "onyx"
 cask "xld"
+cask "transmission"
 
 cask "dropbox"
 #brew cask install macdown
 #brew cask install stack
-#brew cask install transmission
 #brew cask install caption
 #brew cask install adapter
 #brew cask install flux
