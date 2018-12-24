@@ -4,6 +4,7 @@
       relink: true
       glob: true
       path: bin/*
+    ~/bin/git-friendly: vendor/git-friendly
 
 - shell:
   -

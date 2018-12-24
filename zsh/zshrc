@@ -189,6 +189,18 @@ local Z="/usr/local/etc/profile.d/z.sh"
 [ -r "$Z" ] && . "$Z"
 
 # ==============================================================================
+# GIT-FRIENDLY
+# ==============================================================================
+
+local GIT_FRIENDLY="${HOME}/bin/git-friendly"
+if [ -s "$GIT_FRIENDLY" ]; then
+  path+=(${GIT_FRIENDLY})
+  fpath=($(brew --prefix)/share/zsh/functions $fpath)
+  autoload -Uz _git && _git
+  compdef __git_branch_names branch
+fi
+
+# ==============================================================================
 # FUNCTIONS & ALIASES
 # ==============================================================================
 
