@@ -49,8 +49,7 @@ echo "Pulling latest dotfiles and shell scripts"
 echo "------------------------------"
 echo "Removing Homebrew artifacts"
 
-brew cleanup
-brew prune
+brew -v cleanup
 
 
 # ==============================================================================

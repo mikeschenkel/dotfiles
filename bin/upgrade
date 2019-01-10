@@ -60,8 +60,7 @@ if [ $homebrew ] || [ $default ]; then
   brew -v update
   brew upgrade --force-bottle
   brew cu --all
-  brew cleanup
-  brew -v prune
+  brew -v cleanup
   brew -v doctor
 fi
 
