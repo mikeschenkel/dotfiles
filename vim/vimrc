@@ -62,6 +62,9 @@ Plug 'machakann/vim-highlightedyank'
 " Display indention levels with thin vertical lines
 Plug 'Yggdroot/IndentLine', { 'on': 'IndentLinesToggle' }
 
+" A different approach to code highlighting
+Plug 'thiagoalessio/rainbow_levels.vim'
+
 " Show Git diff in the gutter and stages/undoes hunks
 Plug 'airblade/vim-gitgutter'
 
