@@ -136,6 +136,9 @@ Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript'] }
 " Generate phpDocumentor documentation blocks for PHP code
 Plug 'Rican7/php-doc-modded', { 'for': ['php'] }
 
+" Distraction-free writing in Vim
+Plug 'junegunn/goyo.vim'
+
 " -- TMUX ----------------------------------------------------------------------
 
 " vim-tmux-navigator - Seamless navigation between tmux panes and vim splits
@@ -250,7 +253,7 @@ autocmd BufNewFile,BufRead *.ts,*.snap,*.es6,*.tsx setlocal filetype=javascript.
 autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*prettierrc setlocal syntax=json
 
 " Markdown
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown tw=80 fo+=t colorcolumn=80
+au BufNewFile,BufFilePre,BufRead *.md,*.txt set filetype=markdown tw=80 fo+=t colorcolumn=80
 " let g:vim_markdown_conceal = 0
 
 " Vue
