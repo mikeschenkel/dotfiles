@@ -50,6 +50,7 @@
   pom = push origin master
   pod = push origin develop
   force = push --force-with-lease
+  fam = "!f() { git add . && git amend && git force; }; f"
 
   # Mistake related aliases
   abort = checkout -- .
