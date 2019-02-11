@@ -55,8 +55,9 @@ done
 # ==============================================================================
 
 if [ $homebrew ] || [ $default ]; then
-  echo "------------------------------"
+  echo ""
   echo "Upgrading Homebrew packages"
+  echo ""
   brew -v update
   brew upgrade --force-bottle
   brew cu --all
@@ -70,8 +71,9 @@ fi
 # ==============================================================================
 
 if [ $npm ] || [ $default ]; then
-  echo "------------------------------"
+  echo ""
   echo "Upgrading npm packages"
+  echo ""
   npx npm-check -gu
 fi
 
@@ -81,8 +83,9 @@ fi
 # ==============================================================================
 
 if [ $ruby ] || [ $default ]; then
-  echo "------------------------------"
+  echo ""
   echo "Upgrading Ruby gems"
+  echo ""
   gem update --system
   gem update --no-document
 fi
@@ -93,8 +96,9 @@ fi
 # ==============================================================================
 
 if [ $composer ] || [ $default ]; then
-  echo "------------------------------"
+  echo ""
   echo "Upgrading Composer packages"
+  echo ""
   composer global update
 fi
 
@@ -104,8 +108,9 @@ fi
 # ==============================================================================
 
 if [ $vim ] || [ $default ]; then
-  echo "------------------------------"
+  echo ""
   echo "Upgrading Vim plugins"
+  echo ""
   nvim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
 fi
 
@@ -115,8 +120,9 @@ fi
 # ==============================================================================
 
 if [ $mas ] || [ $default ]; then
-  echo "------------------------------"
+  echo ""
   echo "Upgrading Mac App Store apps"
+  echo ""
   mas upgrade
 fi
 
@@ -126,8 +132,9 @@ fi
 # ==============================================================================
 
 if [ $os ]; then
-  echo "------------------------------"
+  echo ""
   echo "Upgrading macOS"
+  echo ""
   sudo softwareupdate -iaR --verbose
 fi
 
