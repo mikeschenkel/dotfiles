@@ -72,7 +72,7 @@ fi
 if [ $npm ] || [ $default ]; then
   echo "------------------------------"
   echo "Upgrading npm packages"
-  npm-check -gu
+  npx npm-check -gu
 fi
 
 
