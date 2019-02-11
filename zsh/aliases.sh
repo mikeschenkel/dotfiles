@@ -34,6 +34,10 @@ alias gb="git branch"
 alias gc="git checkout"
 alias gcb="git checkout -b"
 
+# npm
+alias nis="npm install --save"
+alias nid="npm install --save-dev"
+
 # Vim
 alias v='nvim'
 alias vim='nvim'
