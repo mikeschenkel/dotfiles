@@ -214,8 +214,9 @@ mas "Pages", id: 409201541
 mas "Numbers", id: 409203825
 mas "Keynote", id: 409183694
 
+mas "Things", id: 904280696
 mas "Fantastical 2", id: 975937182
-mas "Todoist", id: 585829637
+mas "Ulysses", id: 1225570693
 mas "Tweetbot", id: 557168941
 mas "Reeder", id: 880001334
 mas "Enpass", id: 732710998
