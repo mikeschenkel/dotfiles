@@ -1,7 +1,6 @@
 #!/bin/bash
 
 npm_packages=(
-  "npm-check"
   "fkill-cli"
   "emma-cli"
   "git-open"
