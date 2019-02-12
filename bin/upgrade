@@ -110,7 +110,6 @@ fi
 if [ $vim ] || [ $default ]; then
   echo ""
   echo "Upgrading Vim plugins"
-  echo ""
   nvim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
 fi
 
