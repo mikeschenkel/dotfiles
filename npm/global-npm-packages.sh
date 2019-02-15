@@ -3,6 +3,7 @@
 npm_packages=(
   "fkill-cli"
   "emma-cli"
+  "gulp-cli"
   "git-open"
   "http-server"
 )
