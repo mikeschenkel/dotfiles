@@ -5,17 +5,13 @@
   -
     command: "brew update"
   -
-    description: "Installing Node.js"
-    command: "brew install node --without-npm"
+    description: "Installing Node.js with npm"
+    command: "brew install node"
     stdout: true
     stderr: true
   -
     description: "Installing Yarn"
-    command: "brew install yarn --without-node"
-    stdout: true
-    stderr: true
-  -
-    command: "yarn global add rimraf"
+    command: "brew install yarn"
     stdout: true
     stderr: true
   -
@@ -23,11 +19,6 @@
   -
     description: "Create a directory for global npm packages"
     command: "mkdir -p \"${HOME}/.npm-packages\""
-  -
-    description: "Install the latest version of npm"
-    command: "curl -L https://www.npmjs.com/install.sh | sh"
-    stdout: true
-    stderr: true
   -
     description: "Globally install npm packges"
     command: "./npm/global-npm-packages.sh"
