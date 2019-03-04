@@ -8,6 +8,15 @@
     ~/.zsh/.fzf-base16.config: zsh/fzf-base16.config
 
 - shell:
+ -
+    command: "brew update"
+  -
+    description: "Installing zsh"
+    command: "brew install zsh"
+    stdout: true
+    stderr: true
+  -
+    command: "brew cleanup"
   -
     command: "zsh"
   -

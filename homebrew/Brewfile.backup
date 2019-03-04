@@ -1,0 +1,50 @@
+# Logitech Mouse Driver
+tap "homebrew/cask-drivers"
+cask "logitech-control-center"
+
+# brew "ssh-copy-id"
+# brew "wifi-password"
+
+cask "nightowl"
+cask "exifrenamer"
+# cask "xld"
+# cask "onyx"
+# cask "macdown"
+# cask "stack"
+# cask "caption"
+# cask "adapter"
+# cask "flux"
+
+# Media Playback
+# cask "plex-media-player"
+# cask "silverlight"
+
+# Communication
+# cask "skype"
+# cask "slack"
+
+# Browsers
+cask "google-chrome"
+cask "google-chrome-canary"
+cask "firefox"
+cask "firefox-developer-edition"
+cask "opera"
+
+# Virtual Machines
+cask "virtualbox"
+cask "vagrant"
+cask "vagrant-manager"
+cask "docker"
+cask "local-by-flywheel"
+cask "lando"
+
+# Security
+cask "little-snitch"
+cask "micro-snitch"
+# cask "virustotaluploader"
+# cask "malwarebytes-anti-malware"
+
+# Misc
+# cask "cakebrew"
+# cask "java"
+# cask "xquartz"

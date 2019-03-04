@@ -1,9 +1,10 @@
+bin
+homebrew
 zsh
 terminfo
 git
 vim
 tmux
 ctags
-macos/brew
-macos/npm
-macos/http-server
+npm
+http-server

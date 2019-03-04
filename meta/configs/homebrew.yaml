@@ -1,0 +1,13 @@
+- shell:
+  -
+    command: "ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
+  -
+    command: "brew update"
+  -
+    command: "brew upgrade"
+  -
+    command: "brew bundle --file=./homebrew/Brewfile.base"
+    stdout: true
+    stderr: true
+  -
+    command: "brew cleanup"

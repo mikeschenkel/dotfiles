@@ -23,4 +23,4 @@
     description: "Globally install npm packges"
     command: "./npm/global-npm-packages.sh"
     stdout: true
-    stderr: true
+stderr: true
