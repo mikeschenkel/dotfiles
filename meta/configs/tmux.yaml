@@ -1,3 +1,6 @@
 - link:
     ~/.tmux.conf: tmux.conf
 
+- shell:
+  -
+    command: "tmux source ~/.tmux.conf"

@@ -2,12 +2,10 @@
     ~/.vimrc: vim/vimrc
     ~/.config/nvim/init.vim: vim/vimrc
     ~/.config/vim/plugin_settings: vim/plugin_settings
+
+- shell:
   -
-    command: "brew update"
-  -
-    description: "Installing Vim and Neovim"
-    command: "brew install vim neovim"
+    description: "Installing Vim plugins"
+    command: "nvim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall"
     stdout: true
     stderr: true
-  -
-    command: "brew cleanup"
