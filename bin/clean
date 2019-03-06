@@ -6,8 +6,9 @@ set -euo pipefail
 # APPS
 # ==============================================================================
 
-echo "------------------------------"
+echo
 echo "Closing apps"
+echo
 
 foregroundAppsString=$(osascript -e 'tell application "System Events" to get name of (processes where background only is false)')
 IFS=',' read -r -a foregroundApps <<<"$foregroundAppsString"
@@ -19,68 +20,67 @@ for foregroundApp in "${foregroundApps[@]}"; do
   fi
 done
 
-
 # ==============================================================================
 # PROCESSES
 # ==============================================================================
 
-echo "------------------------------"
+echo
 echo "Quitting processes"
+echo
 
 tmux kill-server || true
 killall node || true
-
 
 # ==============================================================================
 # DOTFILES
 # ==============================================================================
 
-echo "------------------------------"
+echo
 echo "Pulling latest dotfiles and shell scripts"
+echo
 
 # cd "$HOME/repos/dotfiles"
 # git pull
-
 
 # ==============================================================================
 # HOMEBREW CLEANUP
 # ==============================================================================
 
-echo "------------------------------"
+echo
 echo "Removing Homebrew artifacts"
+echo
 
 brew -v cleanup
-
 
 # ==============================================================================
 # MACOS ARTIFACTS
 # ==============================================================================
 
-echo "------------------------------"
+echo
 echo "Removing OS artifacts"
+echo
 
 cd "$HOME"
 find . -type f -name '*.DS_Store' -ls -delete
-
 
 # ==============================================================================
 # GIT-DELETE-SQUASHED
 # ==============================================================================
 
-echo "------------------------------"
+echo
 echo "Removing merged local branches in each git repo"
+echo
 
 cd "$HOME/repos"
 find . -name .git -type d -execdir git-delete-squashed --dry-run ';'
-
 
 # ==============================================================================
 # REPO STATES
 # ==============================================================================
 
-echo "------------------------------"
+echo
 echo "Checking the status of each git repo"
+echo
 
 cd "$HOME/repos"
 deep-git-status
-
