@@ -11,3 +11,7 @@
     command: "tic -x -v ${HOME}/tmux-256color.terminfo"
     stdout: true
     stderr: true
+  -
+    description: "Check if italics work"
+    command: "echo `tput sitm`italics`tput ritm`"
+    stdout: true
