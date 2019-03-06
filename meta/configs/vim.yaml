@@ -6,7 +6,12 @@
 - shell:
   -
     description: "Installing Vim and Neovim"
-    command: "brew install vim neovim"
+    command: "brew install vim neovim python3"
+    stdout: true
+    stderr: true
+  -
+    description: "Installing python support for neovim"
+    command: "pip3 install neovim"
     stdout: true
     stderr: true
   -
