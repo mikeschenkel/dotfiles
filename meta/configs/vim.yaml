@@ -5,6 +5,11 @@
 
 - shell:
   -
+    description: "Installing Vim and Neovim"
+    command: "brew install vim neovim"
+    stdout: true
+    stderr: true
+  -
     description: "Installing Vim plugins"
     command: "nvim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall"
     stdout: true

@@ -9,3 +9,5 @@
   -
     description: "Installing submodules"
     command: "git submodule update --init --recursive"
+  -
+    command: "brew update"

@@ -9,6 +9,11 @@
 
 - shell:
   -
+    description: "Installing zsh"
+    command: "brew install zsh"
+    stdout: true
+    stderr: true
+  -
     command: "zsh"
   -
     description: "Change user shell to zsh"

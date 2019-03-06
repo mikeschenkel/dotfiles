@@ -1,2 +1,9 @@
 - link:
     ~/.ctags.d/config.ctags: ctags
+
+- shell:
+  -
+    description: "Installing Universal Ctags"
+    command: "brew install --HEAD universal-ctags/universal-ctags/universal-ctags"
+    stdout: true
+    stderr: true

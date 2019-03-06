@@ -3,8 +3,6 @@
 
 - shell:
   -
-    command: "brew update"
-  -
     description: "Installing Node.js with npm"
     command: "brew install node"
     stdout: true
@@ -15,12 +13,10 @@
     stdout: true
     stderr: true
   -
-    command: "brew cleanup"
-  -
     description: "Create a directory for global npm packages"
     command: "mkdir -p \"${HOME}/.npm-packages\""
   -
     description: "Globally install npm packges"
     command: "./npm/global-npm-packages.sh"
     stdout: true
-stderr: true
+    stderr: true

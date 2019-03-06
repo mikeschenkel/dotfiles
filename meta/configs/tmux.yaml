@@ -3,4 +3,9 @@
 
 - shell:
   -
+    description: "Installing tmux"
+    command: "brew install tmux"
+    stdout: true
+    stderr: true
+  -
     command: "tmux source ~/.tmux.conf"
