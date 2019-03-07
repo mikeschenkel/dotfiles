@@ -1,3 +1,8 @@
+# This file is used as a reference for brew formulas which are not (yet) part
+# of my base Brewfiles. Formulas listed below are for single use cases or act
+# as a reminder to add them to my base Brewfiles later. I know, this file is
+# messy.
+
 # Logitech Mouse Driver
 tap "homebrew/cask-drivers"
 cask "logitech-control-center"
