@@ -12,6 +12,5 @@
     stdout: true
     stderr: true
   -
-    description: "Check if italics work"
-    command: "echo `tput sitm`italics`tput ritm`"
+    command: "./bin/colors-italics-test.sh"
     stdout: true
