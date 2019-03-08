@@ -15,21 +15,21 @@
 cask_args appdir: "/Applications"
 
 # Productivity Tools
-cask "dropbox"
-cask "notion"
-cask "contexts"
 cask "alfred"
 cask "bartender"
+cask "contexts"
+cask "dropbox"
 cask "istat-menus"
+cask "notion"
 cask "transmit"
 
 # Media Playback
-cask "spotify"
 cask "plexamp"
+cask "spotify"
 
 # Communication
-cask "telegram"
 cask "franz"
+cask "telegram"
 
 # Tools
 cask "rightfont"
@@ -41,18 +41,17 @@ cask "sip"
 
 brew "mas"
 
-mas "Magnet", id: 441258766
-mas "Spark", id: 1176895641
-
 mas "Pages", id: 409201541
 mas "Numbers", id: 409203825
 mas "Keynote", id: 409183694
 
-mas "Things", id: 904280696
-mas "Fantastical 2", id: 975937182
-mas "Ulysses", id: 1225570693
-mas "Tweetbot", id: 557168941
-mas "Reeder", id: 880001334
 mas "Enpass", id: 732710998
-mas "Wunderlist", id: 410628904
+mas "Fantastical 2", id: 975937182
+mas "Magnet", id: 441258766
+mas "Reeder", id: 880001334
+mas "Spark", id: 1176895641
+mas "Things", id: 904280696
+mas "Tweetbot", id: 557168941
+mas "Ulysses", id: 1225570693
 mas "The Unarchiver", id: 425424353
+mas "Wunderlist", id: 410628904

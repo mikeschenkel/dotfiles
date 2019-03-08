@@ -24,11 +24,11 @@ brew "bash", link: true
 brew "zsh"
 
 # Core Utilities
-brew "coreutils"
 brew "binutils"
+brew "coreutils"
 brew "diffutils"
-brew "moreutils"
 brew "findutils"
+brew "moreutils"
 brew "gnu-indent"
 brew "gnu-sed"
 brew "gnu-tar"
@@ -55,19 +55,20 @@ brew "imagemagick"
 
 brew "universal-ctags", args: ["HEAD"]
 brew "reattach-to-user-namespace"
+
 brew "ack"
 brew "ag"
-brew "z"
-brew "exa"
 brew "bat"
+brew "exa"
 brew "fd"
-brew "ripgrep"
 brew "ncdu"
-brew "tldr"
 brew "prettyping"
 brew "ren"
+brew "ripgrep"
 brew "shellcheck"
+brew "tldr"
 brew "youtube-dl"
+brew "z"
 
 # Development
 brew "node"
@@ -90,7 +91,7 @@ brew "git-flow-avh"
 brew "hub"
 brew "diff-so-fancy"
 
-# Font Tools
+# Fonts
 brew "woff2"
 brew "sfnt2woff"
 brew "sfnt2woff-zopfli"
@@ -101,24 +102,25 @@ brew "sfnt2woff-zopfli"
 
 cask_args appdir: "/Applications"
 
-# Utilities
-cask "iterm2"
 tap "dteoh/sqa"
-cask "slowquitapps"
+
+# Utilities
 cask "apptrap"
+cask "iterm2"
+cask "slowquitapps"
 cask "transmission"
 cask "vlc"
 
 # Tools
-cask "imageoptim"
 cask "fontplop"
+cask "imageoptim"
 
 # Editors
 cask "visual-studio-code"
 
 # Browsers
-cask "google-chrome"
 cask "firefox"
+cask "google-chrome"
 
 # Quick Look Plugins
 # https://github.com/sindresorhus/quick-look-plugins
