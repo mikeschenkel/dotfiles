@@ -3,6 +3,10 @@
 
 - shell:
   -
+    command: "brew update -v"
+    stdout: true
+    stderr: true
+  -
     description: "Installing tmux"
     command: "brew install tmux"
     stdout: true

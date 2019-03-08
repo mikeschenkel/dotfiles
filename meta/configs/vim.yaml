@@ -5,6 +5,10 @@
 
 - shell:
   -
+    command: "brew update -v"
+    stdout: true
+    stderr: true
+  -
     description: "Installing Vim and Neovim"
     command: "brew install vim neovim python3"
     stdout: true

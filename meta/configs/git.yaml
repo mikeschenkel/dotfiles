@@ -4,6 +4,10 @@
 
 - shell:
   -
+    command: "brew update -v"
+    stdout: true
+    stderr: true
+  -
     description: "Installing Git and Hub"
     command: "brew install git hub"
     stdout: true

@@ -3,6 +3,10 @@
 
 - shell:
   -
+    command: "brew update -v"
+    stdout: true
+    stderr: true
+  -
     description: "Installing Node.js with npm"
     command: "brew install node"
     stdout: true

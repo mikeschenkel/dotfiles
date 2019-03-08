@@ -1,5 +1,9 @@
 - shell:
   -
+    command: "brew update -v"
+    stdout: true
+    stderr: true
+  -
     description: "Installing rbenv"
     command: "brew install rbenv"
     stdout: true

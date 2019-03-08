@@ -9,6 +9,10 @@
 
 - shell:
   -
+    command: "brew update -v"
+    stdout: true
+    stderr: true
+  -
     description: "Installing zsh"
     command: "brew install zsh"
     stdout: true

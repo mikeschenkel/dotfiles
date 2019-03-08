@@ -1,6 +1,8 @@
 - shell:
   -
-    command: "brew update"
+    command: "brew update -v"
+    stdout: true
+    stderr: true
   -
     command: "brew upgrade"
   -
@@ -8,4 +10,6 @@
     stdout: true
     stderr: true
   -
-    command: "brew cleanup"
+    command: "brew cleanup -v"
+    stdout: true
+    stderr: true
