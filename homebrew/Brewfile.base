@@ -107,6 +107,11 @@ tap "dteoh/sqa"
 cask "slowquitapps"
 cask "apptrap"
 cask "transmission"
+cask "vlc"
+
+# Tools
+cask "imageoptim"
+cask "fontplop"
 
 # Editors
 cask "visual-studio-code"

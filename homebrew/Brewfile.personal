@@ -26,15 +26,12 @@ cask "transmit"
 # Media Playback
 cask "spotify"
 cask "plexamp"
-cask "vlc"
 
 # Communication
 cask "telegram"
 cask "franz"
 
-# Fonts, Images and Color Tools
-cask "imageoptim"
-cask "fontplop"
+# Tools
 cask "rightfont"
 cask "sip"
 
