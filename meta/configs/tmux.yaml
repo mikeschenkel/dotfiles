@@ -12,4 +12,6 @@
     stdout: true
     stderr: true
   -
-    command: "tmux source ~/.tmux.conf"
+    command: "tmux source-file ~/.tmux.conf || true"
+    stdout: true
+    stderr: true
