@@ -5,19 +5,13 @@
 # |_.__/|_|  \___| \_/\_/ |_| |_|_|\___|
 
 # ==============================================================================
-# TAPS
-# ==============================================================================
-
-tap "caskroom/cask"
-tap "caskroom/versions"
-tap "neovim/neovim"
-tap "bramstein/webfonttools"
-tap "buo/cask-upgrade"
-tap "universal-ctags/universal-ctags"
-
-# ==============================================================================
 # HOMEBREW
 # ==============================================================================
+
+tap "bramstein/webfonttools"
+tap "buo/cask-upgrade"
+tap "neovim/neovim"
+tap "universal-ctags/universal-ctags"
 
 # Shells
 brew "bash", link: true
@@ -38,23 +32,22 @@ brew "gawk"
 brew "grep"
 
 # Command-line Utilities
-brew "wget"
-brew "nmap"
-brew "ngrep"
-brew "htop"
-brew "tree"
-brew "openssh"
-brew "screen"
-brew "rsync"
 brew "gzip"
-brew "unzip"
-brew "unrar"
-brew "make"
-brew "less"
+brew "htop"
 brew "imagemagick"
-
-brew "universal-ctags", args: ["HEAD"]
+brew "less"
+brew "make"
+brew "ngrep"
+brew "nmap"
+brew "openssh"
 brew "reattach-to-user-namespace"
+brew "rsync"
+brew "screen"
+brew "tree"
+brew "universal-ctags", args: ["HEAD"]
+brew "unrar"
+brew "unzip"
+brew "wget"
 
 brew "ack"
 brew "ag"
@@ -100,20 +93,23 @@ brew "sfnt2woff-zopfli"
 # HOMEBREW CASK
 # ==============================================================================
 
-cask_args appdir: "/Applications"
-
+tap "caskroom/cask"
+tap "caskroom/versions"
 tap "dteoh/sqa"
+cask_args appdir: "/Applications"
 
 # Utilities
 cask "apptrap"
-cask "iterm2"
 cask "slowquitapps"
-cask "transmission"
-cask "vlc"
 
 # Tools
 cask "fontplop"
 cask "imageoptim"
+
+# Apps
+cask "iterm2"
+cask "transmission"
+cask "vlc"
 
 # Editors
 cask "visual-studio-code"

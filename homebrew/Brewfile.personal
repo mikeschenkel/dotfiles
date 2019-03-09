@@ -12,14 +12,22 @@
 # HOMEBREW CASK
 # ==============================================================================
 
+tap "caskroom/cask"
+tap "caskroom/versions"
 cask_args appdir: "/Applications"
 
-# Productivity Tools
+# Utilities
 cask "alfred"
 cask "bartender"
 cask "contexts"
 cask "dropbox"
 cask "istat-menus"
+
+# Tools
+cask "rightfont"
+cask "sip"
+
+# Apps
 cask "notion"
 cask "transmit"
 
@@ -30,10 +38,6 @@ cask "spotify"
 # Communication
 cask "franz"
 cask "telegram"
-
-# Tools
-cask "rightfont"
-cask "sip"
 
 # ==============================================================================
 # APP STORE
