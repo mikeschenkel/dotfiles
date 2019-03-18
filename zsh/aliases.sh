@@ -161,7 +161,7 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
 # Combine multiple cleanup scripts
-alias deepclean='cleanup && lscleanup && emptytrash'
+alias deepclean='cd ~/ && cleanup && lscleanup && emptytrash'
 
 # Get week number
 alias week='date +%V'
