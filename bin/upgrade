@@ -3,13 +3,14 @@
 set -euo pipefail
 
 default='true'
-homebrew=''
-npm=''
-ruby=''
 composer=''
-vim=''
+homebrew=''
 mas=''
+npm=''
 os=''
+ruby=''
+tmux=''
+vim=''
 
 function HELP {
   echo "Usage:"
@@ -17,38 +18,41 @@ function HELP {
   echo "Options:"
   echo "-a  --Upgrade all"
   echo "-b  --Upgrade Homebrew packages"
-  echo "-n  --Upgrade npm packages"
-  echo "-r  --Upgrade Ruby gems"
   echo "-c  --Upgrade Composer packages"
-  echo "-v  --Upgrade Vim plugins"
   echo "-m  --Upgrade Mac App Store apps"
-  echo -e "-o  --Upgrade macOS"\\n
-  echo -e "Default: upgrade -b -n -r -c -v -m"
+  echo "-n  --Upgrade npm packages"
+  echo "-o  --Upgrade macOS"
+  echo "-r  --Upgrade Ruby gems"
+  echo "-t  --Upgrade Tmux plugins"
+  echo "-v  --Upgrade Vim plugins"
+  echo
+  echo -e "Default: upgrade -b -c -m -n -r -t -v"
   exit 1
 }
 
-while getopts 'bnrcvmoah' flag; do
+while getopts 'bnrcvmoaht' flag; do
   case "${flag}" in
     b) homebrew='true' default='' ;;
-    n) npm='true' default='' ;;
-    r) ruby='true' default='' ;;
     c) composer='true' default='' ;;
-    v) vim='true' default='' ;;
     m) mas='true' default='' ;;
+    n) npm='true' default='' ;;
     o) os='true' default='' ;;
+    r) ruby='true' default='' ;;
+    t) tmux='true' default='' ;;
+    v) vim='true' default='' ;;
     a) homebrew='true'
        mas='true'
        npm='true'
        os='true'
        ruby='true'
-       vim='true' ;;
+       vim='true'
+       tmux='true' ;;
     h) HELP
        exit 1 ;;
     *) HELP
        exit 1 ;;
   esac
 done
-
 
 # ==============================================================================
 # HOMEBREW
@@ -65,7 +69,6 @@ if [ $homebrew ] || [ $default ]; then
   brew -v doctor
 fi
 
-
 # ==============================================================================
 # NPM
 # ==============================================================================
@@ -76,7 +79,6 @@ if [ $npm ] || [ $default ]; then
   echo
   npx npm-check -gu
 fi
-
 
 # ==============================================================================
 # RUBY
@@ -90,7 +92,6 @@ if [ $ruby ] || [ $default ]; then
   gem update --no-document
 fi
 
-
 # ==============================================================================
 # COMPOSER
 # ==============================================================================
@@ -102,7 +103,6 @@ if [ $composer ] || [ $default ]; then
   composer global update
 fi
 
-
 # ==============================================================================
 # VIM
 # ==============================================================================
@@ -113,6 +113,17 @@ if [ $vim ] || [ $default ]; then
   nvim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
 fi
 
+# ==============================================================================
+# TMUX
+# ==============================================================================
+
+if [ $tmux ] || [ $default ]; then
+  echo
+  echo "Upgrading Tmux plugins"
+  echo
+  ~/.tmux/plugins/tpm/bin/update_plugins all
+  ~/.tmux/plugins/tpm/bin/clean_plugins
+fi
 
 # ==============================================================================
 # MAC APP STORE
@@ -124,7 +135,6 @@ if [ $mas ] || [ $default ]; then
   echo
   mas upgrade
 fi
-
 
 # ==============================================================================
 # MACOS
