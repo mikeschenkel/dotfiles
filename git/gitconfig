@@ -1,10 +1,26 @@
+[include]
+  # Use custom `.gitconfig` for username / github token / etc.
+  path = ~/.gitconfig.local
+
 [core]
+  # Use custom `.gitignore`
   excludesfile = ~/.gitignore.global
+
+  # Treat spaces before tabs and all kinds of trailing whitespace as an error
+  # [default] trailing-space: looks for spaces at the end of a line
+  # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+  # Make `git rebase` safer on macOS
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
+
+  # Use Neovim
   editor = nvim
 
-[include]
-  path = ~/.gitconfig.local
-  # use separate file for username / github token / etc
+[apply]
+  # Detect whitespace errors when applying a patch
+  whitespace = fix
 
 [alias]
   s = status --branch --short
@@ -18,6 +34,12 @@
   unstage-patch = reset HEAD --patch
   follow = log --follow -p
 
+  # Commit all changes
+  ca = !git add -A && git commit -av
+
+  # Clone a repository including all submodules
+  c = clone --recursive
+
   # James Brown version control!
   up = push
   down = pull
@@ -25,13 +47,16 @@
   # Branch related aliases
   br = branch
   cd = checkout
-  co = checkout
+  co = checkout -B
   com = checkout master
   cod = checkout develop
 
   # Syncing related aliases
   pur = pull --rebase
   prune = fetch --prune
+
+  # Pull in remote changes for the current repository and all its submodules
+  p = !"git pull; git submodule foreach git pull origin master"
 
   # Rebase related aliases
   ri = rebase -i
@@ -56,37 +81,55 @@
   abort = checkout -- .
   nope = checkout -- .
   wait = reset HEAD
+
   # Undo the last commit, but preserve the staging area
   undo = reset --soft HEAD^
+
   # Sneak changes into your previous commit
   amend = commit --amend --no-edit
   sneak = commit -a --amend --no-edit
 
   # Log related aliases
-  lg = log --pretty=oneline --abbrev-commit --graph --decorate
+  lg = log --pretty=oneline -n 20 --abbrev-commit --graph --decorate
+
   # See everything everyone has done recently
   overview = log --all --oneline --no-merges
+
   # See today’s work
   today = log --since=\"00:00:00\" --all --no-merges --oneline --author=mikeschenkel@gmail.com
+
   # Show detailed logs
   graph = log --graph --decorate --stat --date=iso --all
+
   # See everything I have done recently
   recap = log --oneline --no-merges --author=mikeschenkel@gmail.com
+
   # Show very last commit
   last = log --oneline -1
+
   # Show number of commits from all authors.
   stats = shortlog -sn --all --no-merges
-  # changelog style
+
+  # Changelog style
   changelog = "!sh -c \"git log --oneline --no-merges $1..HEAD\" -"
+
+  # Show verbose output about tags, branches or remotes
+  tags = tag -l
+  branches = branch -a
+  remotes = remote -v
 
   # Empty line between results from different files.
   find = "!git grep --break -C1"
+
   # See which commits are on your local branch that aren’t on the remote
   local = "! git log --oneline --no-merges origin/$(git rev-parse --abbrev-ref HEAD).."
+
   # See which commits are on the remote that aren’t on your local branch
   upstream = "! git fetch && git log --oneline --no-merges ..origin/$(git rev-parse --abbrev-ref HEAD)"
+
   # Nicer diffs for prose
   wdiff = diff --word-diff
+
   # Make it possible to diff minified code (eww…)
   mindiff = diff -w --word-diff-regex=. --color-words -U0
 
@@ -95,10 +138,10 @@
   date = rfc
 
 [http]
-	sslBackend = openssl
+  sslBackend = openssl
 
 [help]
-  # correct typos
+  # Correct typos
   autocorrect = 1
 
 [color]
@@ -150,14 +193,14 @@
   # https://git-scm.com/docs/git-config#git-config-commitgpgSign
 
 [push]
-  default = simple
   # "push the current branch back to the branch whose changes are usually integrated into the current branch"
   # "refuse to push if the upstream branch’s name is different from the local one"
   # https://git-scm.com/docs/git-config#git-config-pushdefault
+  default = simple
 
-  followTags = true
   # Because I get sick of telling git to do it manually
   # https://git-scm.com/docs/git-config#git-config-pushfollowTags
+  followTags = true
 
 [fetch]
   prune = true
@@ -166,18 +209,18 @@
   compactionHeuristic = true
 
 [transfer]
-  fsckobjects = true
   # To combat repository corruption!
   # Note: this global option applies during receive and transmit
   # https://git-scm.com/docs/git-config#git-config-transferfsckObjects
   # via https://groups.google.com/forum/#!topic/binary-transparency/f-BI4o8HZW0
+  fsckobjects = true
 
 [filter "lfs"]
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
   required = true
 
-# rewrites of repo paths
+# Rewrite repo paths
 [url "git@github.com:"]
   insteadOf = "https://github.com/"
   pushInsteadOf = "github:"
