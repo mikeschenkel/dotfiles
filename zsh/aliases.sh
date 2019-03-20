@@ -22,9 +22,10 @@ alias git='hub'
 alias gl='git lg'
 alias gst='git s'
 
-alias gapa='git patch'
+alias ga='git add'
 alias gaa='git add -A'
 alias gac="git add -A && git commit -m"
+alias gapa='git patch'
 
 alias gp="git push"
 alias gpo="git push origin"
