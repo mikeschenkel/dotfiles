@@ -12,5 +12,5 @@
     stdout: true
     stderr: true
   -
-    command: "bash <(curl -s https://gist.githubusercontent.com/mikeschenkel/18d2d85f5cff9efb7a703266c7f0fc12/raw/24-bit-color-and-italics-test.sh)"
+    command: "curl -s https://gist.githubusercontent.com/mikeschenkel/18d2d85f5cff9efb7a703266c7f0fc12/raw/24-bit-color-and-italics-test.sh | bash"
     stdout: true

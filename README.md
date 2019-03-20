@@ -7,7 +7,7 @@ Your dotfiles are how you personalize your system. These are mine.
 Run this:
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/mikeschenkel/dotfiles/master/bin/setup)
+cd; curl -s https://raw.githubusercontent.com/mikeschenkel/dotfiles/master/bin/setup | bash
 ```
 
 ```bash
