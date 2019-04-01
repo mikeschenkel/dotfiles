@@ -118,11 +118,13 @@ fi
 # ==============================================================================
 
 if [ $tmux ] || [ $default ]; then
-  echo
-  echo "Upgrading Tmux plugins"
-  echo
-  ~/.tmux/plugins/tpm/bin/update_plugins all
-  ~/.tmux/plugins/tpm/bin/clean_plugins
+  if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
+    echo
+    echo "Upgrading Tmux plugins"
+    echo
+    ~/.tmux/plugins/tpm/bin/update_plugins all
+    ~/.tmux/plugins/tpm/bin/clean_plugins
+  fi
 fi
 
 # ==============================================================================
