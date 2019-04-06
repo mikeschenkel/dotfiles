@@ -1,6 +1,57 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Download videos or extract audio files from streaming websites such as
 # YouTube, DailyMotion and Vimeo.
 
-cd ~/Desktop && youtube-dl "$1"
+set -euo pipefail
+
+default='true'
+audio=''
+video=''
+
+function HELP {
+  echo "Usage:"
+  echo -e "yt [options]"\\n
+  echo "Options:"
+  echo "-a  --Download audio only"
+  echo "-v  --Download video only"
+  exit 1
+}
+
+while getopts 'av' flag; do
+  case "${flag}" in
+    a) audio='true' default='' ;;
+    v) video='true' default='' ;;
+    h) HELP
+       exit 1 ;;
+    *) HELP
+       exit 1 ;;
+  esac
+done
+
+# ==============================================================================
+# AUDIO
+# ==============================================================================
+
+if [ $audio ]; then
+  cd ~/Desktop
+  youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' -x "$2"
+fi
+
+# ==============================================================================
+# VIDEO
+# ==============================================================================
+
+if [ $video ]; then
+  cd ~/Desktop
+  youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' "$2"
+fi
+
+# ==============================================================================
+# DEFAULT
+# ==============================================================================
+
+if [ $default ]; then
+  cd ~/Desktop
+  youtube-dl "$1"
+fi
