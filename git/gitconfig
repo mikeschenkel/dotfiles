@@ -98,7 +98,8 @@
   sneak = commit -a --amend --no-edit
 
   # Log related aliases
-  lg = log --pretty=oneline -n 20 --abbrev-commit --graph --decorate
+  lg = log -n 20 --abbrev-commit --graph --decorate --pretty=format:\"%C(auto)%h%C(auto)%d %C(auto)%s -%C(yellow) %cd\" --date=human
+  lg2 = log --pretty=oneline -n 20 --abbrev-commit --graph --decorate
 
   # See everything everyone has done recently
   overview = log --all --oneline --no-merges
