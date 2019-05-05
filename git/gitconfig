@@ -1,8 +1,13 @@
 [include]
+
   # Use custom `.gitconfig` for username / github token / etc.
   path = ~/.gitconfig.local
 
 [core]
+
+  # Use Neovim
+  editor = nvim
+
   # Use custom `.gitignore`
   excludesfile = ~/.gitignore.global
 
@@ -15,14 +20,17 @@
   # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
   trustctime = false
 
-  # Use Neovim
-  editor = nvim
+  # Speed up commands involving untracked files such as `git status`.
+  # https://git-scm.com/docs/git-update-index#_untracked_cache
+  untrackedCache = true
 
 [apply]
+
   # Detect whitespace errors when applying a patch
   whitespace = fix
 
 [alias]
+
   s = status --branch --short
   st = status
   ci = commit
@@ -134,24 +142,30 @@
   mindiff = diff -w --word-diff-regex=. --color-words -U0
 
 [log]
+
   # Better date formats in logs
   date = rfc
 
 [http]
+
   sslBackend = openssl
 
 [help]
-  # Correct typos
+
+  # Automatically correct and execute mistyped commands
   autocorrect = 1
 
-[color]
-  ui = always
-
 [pager]
+
   diff = diff-so-fancy | less --tabs=1,5 -RFX
   show = diff-so-fancy | less --tabs=1,5 -RFX
 
+[color]
+
+  ui = always
+
 [color "diff"]
+
   meta = yellow bold
   commit = green bold
   frag = magenta bold
@@ -162,37 +176,45 @@
   oldMoved = blue
 
 [color "diff-highlight"]
+
   oldNormal = red bold
   oldHighlight = "red bold 52"
   newNormal = "green bold"
   newHighlight = "green bold 22"
 
 [color "branch"]
+
   current = yellow reverse
   local = yellow
   remote = green
 
 [color "status"]
+
   added = yellow
   changed = green
   untracked = cyan
 
-[merge]
-  tool = opendiff
-
 [status]
-  showUntrackedFiles = all
+
   # Sometimes a newly-added folder, since it's only one line in git status, can slip under the radar.
   # https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles
+  showUntrackedFiles = all
 
-#[commit]
+# [commit]
+
   # template = ~/.git-commit-template
-  # gpgSign = true
+
   # "other people can trust that the changes you've made really were made by you"
   # https://help.github.com/articles/about-gpg/
   # https://git-scm.com/docs/git-config#git-config-commitgpgSign
+  # gpgSign = true
+
+[merge]
+
+  tool = opendiff
 
 [push]
+
   # "push the current branch back to the branch whose changes are usually integrated into the current branch"
   # "refuse to push if the upstream branch’s name is different from the local one"
   # https://git-scm.com/docs/git-config#git-config-pushdefault
@@ -203,12 +225,16 @@
   followTags = true
 
 [fetch]
+
   prune = true
 
 [diff]
-  compactionHeuristic = true
+
+  # Detect copies as well as renames
+  renames = copies
 
 [transfer]
+
   # To combat repository corruption!
   # Note: this global option applies during receive and transmit
   # https://git-scm.com/docs/git-config#git-config-transferfsckObjects
@@ -216,23 +242,29 @@
   fsckobjects = true
 
 [filter "lfs"]
+
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
   required = true
 
-# Rewrite repo paths
+# URL shorthands
+
 [url "git@github.com:"]
-  insteadOf = "https://github.com/"
+
+  insteadOf = "gh:"
   pushInsteadOf = "github:"
   pushInsteadOf = "git://github.com/"
-  pushInsteadOf = "https://github.com/"
 
 [url "git://github.com/"]
+
   insteadOf = "github:"
 
 [url "git@gist.github.com:"]
+
+  insteadOf = "gst:"
   pushInsteadOf = "gist:"
   pushInsteadOf = "git://gist.github.com/"
 
 [url "git://gist.github.com/"]
+
   insteadOf = "gist:"
