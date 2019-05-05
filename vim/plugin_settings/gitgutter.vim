@@ -16,4 +16,3 @@ let g:gitgutter_sign_modified_removed = '∙'
 
 nmap ]g :GitGutterNextHunk<CR>
 nmap [g :GitGutterPrevHunk<CR>
-

@@ -10,4 +10,3 @@ nnoremap <leader>gpl :Gpull<cr>
 nnoremap <leader>gh :Gbrowse<cr>
 
 let g:fugitive_git_executable='hub'
-

@@ -96,7 +96,7 @@ do
     # they need a push or pull. We do this with various tests and put the name
     # of the branches in NEEDS_XXXX, seperated by newlines. After we're done,
     # we remove duplicates from NEEDS_XXX.
-    NEEDS_PUSH_BRANCHES="" 
+    NEEDS_PUSH_BRANCHES=""
     NEEDS_PULL_BRANCHES=""
     NEEDS_UPSTREAM_BRANCHES=""
 
@@ -192,4 +192,3 @@ do
         printf "${PROJ_DIR}: $STATUS_NEEDS\n"
     fi
 done
-

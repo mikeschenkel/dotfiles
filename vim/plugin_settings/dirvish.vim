@@ -15,7 +15,6 @@ augroup dirvish_config
 
   " `cd` -- Change directory
   autocmd FileType dirvish nnoremap <buffer>
-    \ cd :Dirvish 
+    \ cd :Dirvish
 
 augroup END
-

@@ -25,4 +25,3 @@ call ncm2#register_source({'name' : 'css',
 " `<Tab>` -- select the popup menu
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-

@@ -42,4 +42,3 @@ let g:ale_pattern_options = {
 nmap ]w :ALENextWrap<CR>
 nmap [w :ALEPreviousWrap<CR>
 nmap <Leader>f <Plug>(ale_fix)
-

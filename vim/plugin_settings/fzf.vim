@@ -33,4 +33,3 @@ endfunction
 
 " command! ProjectFiles execute 'Files' s:find_git_root()
 command! ProjectFiles execute 'Files' s:find_git_root()
-

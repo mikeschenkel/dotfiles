@@ -11,4 +11,3 @@ npm_packages=(
 for npm_package in "${npm_packages[@]}"; do
   npm install -g "$npm_package"
 done
-

@@ -148,4 +148,3 @@ if [ $os ]; then
   echo
   sudo softwareupdate -iaR --verbose
 fi
-
