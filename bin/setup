@@ -2,6 +2,16 @@
 
 set -euo pipefail
 
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+FUNCTIONS="${DIR}/functions"
+
+if [ -e "$FUNCTIONS" ]; then
+  source "$FUNCTIONS"
+else
+  printf "\n ⚠️ functions not found!\n"
+  exit 1
+fi
+
 # Ask for the administrator password upfront
 sudo -v
 
@@ -12,8 +22,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # HOME
 # ==============================================================================
 
-echo "------------------------------"
-echo "Adding home folders"
+title "Adding home folders"
 
 home_folders=(
   ".ctags.d"
@@ -28,25 +37,26 @@ home_folders=(
 for home_folder in "${home_folders[@]}"; do
   mkdir -p "${HOME}/$home_folder"
 done
+print_success "Done!"
 
 # ==============================================================================
 # MACOS
 # ==============================================================================
 
-echo "------------------------------"
-echo "Updating macOS. If this requires a restart, run the script again."
+title "Updating macOS. If this requires a restart, run the script again."
 
 sudo softwareupdate -iaR --verbose
+print_success "Done!"
 
 # ==============================================================================
 # XCODE COMMAND LINE TOOLS
 # ==============================================================================
 
 if [ -f "$(xcode-select -v)" ]; then
-  echo "------------------------------"
-  echo "Installing Xcode Command Line Tools"
+  title "Installing Xcode Command Line Tools"
 
   xcode-select --install
+  print_success "Done!"
 fi
 
 # ==============================================================================
@@ -54,17 +64,16 @@ fi
 # ==============================================================================
 
 if [ -f "$(brew -v)" ]; then
-  echo "------------------------------"
-  echo "Installing Homebrew"
+  title "Installing Homebrew"
 
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  print_success "Done!"
 fi
 
-echo "------------------------------"
-echo "Installing global Homebrew packages"
+title "Installing global Homebrew packages"
 
-brew update
-brew upgrade
+brew -v update
+brew upgrade --force-bottle
 
 homebrew_packages=(
   "git"
@@ -79,7 +88,9 @@ for homebrew_package in "${homebrew_packages[@]}"; do
   brew install "$homebrew_package"
 done
 
-brew cleanup
+brew -v cleanup
+brew -v doctor
+print_success "Done!"
 
 # ==============================================================================
 # ZPLUG
@@ -87,10 +98,10 @@ brew cleanup
 
 ZPLUG_DIR="${HOME}/.zplug"
 if [ ! -s "$ZPLUG_DIR" ]; then
-  echo "------------------------------"
-  echo "Installing zplug"
+  title "Installing zplug"
 
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+  print_success "Done!"
 fi
 
 # ==============================================================================
@@ -99,11 +110,11 @@ fi
 
 VIMPLUG_DIR="${HOME}/.local/share/nvim/site/autoload/plug.vim"
 if [ ! -s "$VIMPLUG_DIR" ]; then
-  echo "------------------------------"
-  echo "Installing vim-plug"
+  title "Installing vim-plug"
 
   curl -fLo "$VIMPLUG_DIR" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  print_success "Done!"
 fi
 
 # ==============================================================================
@@ -112,14 +123,17 @@ fi
 
 TPM_DIR="${HOME}/.tmux/plugins/tpm"
 if [ ! -s "$TPM_DIR" ]; then
-  echo "------------------------------"
-  echo "Installing Tmux Plugin Manager"
+  title "Installing Tmux Plugin Manager"
 
   git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+  print_success "Done!"
 fi
 
 # ==============================================================================
 # RESTART
 # ==============================================================================
 
-sudo shutdown -r now
+echo
+if ask "Do you want to restart your computer?" Y; then
+  osascript -e 'tell app "loginwindow" to «event aevtrrst»'
+fi

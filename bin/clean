@@ -2,13 +2,21 @@
 
 set -euo pipefail
 
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+FUNCTIONS="${DIR}/functions"
+
+if [ -e "$FUNCTIONS" ]; then
+  source "$FUNCTIONS"
+else
+  printf "\n ⚠️ functions not found!\n"
+  exit 1
+fi
+
 # ==============================================================================
 # APPS
 # ==============================================================================
 
-echo
-echo "Closing apps"
-echo
+title "Closing apps"
 
 foregroundAppsString=$(osascript -e 'tell application "System Events" to get name of (processes where background only is false)')
 IFS=',' read -r -a foregroundApps <<<"$foregroundAppsString"
@@ -19,68 +27,71 @@ for foregroundApp in "${foregroundApps[@]}"; do
     osascript -e 'quit app "'"$appName"'"'
   fi
 done
+print_success "Done!"
 
 # ==============================================================================
 # PROCESSES
 # ==============================================================================
 
-echo
-echo "Quitting processes"
-echo
+title "Quitting processes"
 
 tmux kill-server || true
 killall node || true
+print_success "Done!"
 
 # ==============================================================================
 # DOTFILES
 # ==============================================================================
 
-echo
-echo "Pulling latest dotfiles and shell scripts"
-echo
+# title "Pulling latest dotfiles and shell scripts"
 
 # cd "$HOME/repos/dotfiles"
-# git pull
+# git pull --rebase
+# print_success "Done!"
 
 # ==============================================================================
 # HOMEBREW CLEANUP
 # ==============================================================================
 
-echo
-echo "Removing Homebrew artifacts"
-echo
+title "Removing Homebrew artifacts"
 
 brew -v cleanup
+print_success "Done!"
 
 # ==============================================================================
 # MACOS ARTIFACTS
 # ==============================================================================
 
-echo
-echo "Removing OS artifacts"
-echo
+title "Removing OS artifacts"
 
 cd "$HOME"
 find . -type f -name '*.DS_Store' -ls -delete
+print_success "Done!"
 
 # ==============================================================================
 # GIT-DELETE-SQUASHED
 # ==============================================================================
 
-echo
-echo "Removing merged local branches in each git repo"
-echo
+title "Removing merged local branches in each git repo"
 
 cd "$HOME/repos"
 find . -name .git -type d -execdir git-delete-squashed --dry-run ';'
+print_success "Done!"
 
 # ==============================================================================
 # REPO STATES
 # ==============================================================================
 
-echo
-echo "Checking the status of each git repo"
-echo
+title "Checking the status of each git repo"
 
 cd "$HOME/repos"
 deep-git-status
+
+# ==============================================================================
+# SHUTDOWN
+# ==============================================================================
+
+echo
+if ask "Do you want to shut down your computer?" Y; then
+  osascript -e 'tell app "loginwindow" to «event aevtrsdn»'
+fi
