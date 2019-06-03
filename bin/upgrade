@@ -2,6 +2,16 @@
 
 set -euo pipefail
 
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+FUNCTIONS="${DIR}/functions"
+
+if [ -e "$FUNCTIONS" ]; then
+  source "$FUNCTIONS"
+else
+  printf "\n ⚠️ functions not found!\n"
+  exit 1
+fi
+
 default='true'
 composer=''
 homebrew=''
@@ -13,27 +23,31 @@ tmux=''
 vim=''
 
 function HELP {
-  echo "Usage:"
-  echo -e "upgrade [options]"\\n
-  echo "Options:"
-  echo "-a  --Upgrade all"
-  echo "-b  --Upgrade Homebrew packages"
-  echo "-c  --Upgrade Composer packages"
-  echo "-m  --Upgrade Mac App Store apps"
-  echo "-n  --Upgrade npm packages"
-  echo "-o  --Upgrade macOS"
-  echo "-r  --Upgrade Ruby gems"
-  echo "-t  --Upgrade Tmux plugins"
-  echo "-v  --Upgrade Vim plugins"
   echo
-  echo -e "Default: upgrade -b -c -m -n -r -t -v"
+  printf "  Usage:\n"
+  printf "    $ upgrade [options]\n\n"
+  echo "  Options:"
+  echo "    -a   Upgrade all"
+  echo "    -c   Upgrade Composer packages"
+  echo "    -h   Upgrade Homebrew packages"
+  echo "    -m   Upgrade Mac App Store apps"
+  echo "    -n   Upgrade npm packages"
+  echo "    -o   Upgrade macOS"
+  echo "    -r   Upgrade Ruby gems"
+  echo "    -t   Upgrade Tmux plugins"
+  echo "    -v   Upgrade Vim plugins"
+  echo
+  printf "  Other options:\n"
+  printf "    -H   Display command-specific help\n\n"
+  echo "  Default:"
+  echo "    $ upgrade -c -h -m -n -r -t -v"
   exit 1
 }
 
-while getopts 'bnrcvmoaht' flag; do
+while getopts 'achmnortvH' flag; do
   case "${flag}" in
-    b) homebrew='true' default='' ;;
     c) composer='true' default='' ;;
+    h) homebrew='true' default='' ;;
     m) mas='true' default='' ;;
     n) npm='true' default='' ;;
     o) os='true' default='' ;;
@@ -47,7 +61,7 @@ while getopts 'bnrcvmoaht' flag; do
        ruby='true'
        vim='true'
        tmux='true' ;;
-    h) HELP
+    H) HELP
        exit 1 ;;
     *) HELP
        exit 1 ;;
@@ -59,12 +73,15 @@ done
 # ==============================================================================
 
 if [ $homebrew ] || [ $default ]; then
-  echo
-  echo "Upgrading Homebrew packages"
+  title "Upgrading Homebrew packages"
   echo
   brew -v update
   brew upgrade --force-bottle
+  title "Upgrading Homebrew casks"
+  echo
   brew cu --all
+  title "Brew cleanup"
+  echo
   brew -v cleanup
   brew -v doctor
 fi
@@ -74,8 +91,7 @@ fi
 # ==============================================================================
 
 if [ $npm ] || [ $default ]; then
-  echo
-  echo "Upgrading npm packages"
+  title "Upgrading npm packages"
   echo
   npx npm-check -gu
 fi
@@ -85,8 +101,7 @@ fi
 # ==============================================================================
 
 if [ $ruby ] || [ $default ]; then
-  echo
-  echo "Upgrading Ruby gems"
+  title "Upgrading Ruby gems"
   echo
   gem update --system
   gem update --no-document
@@ -97,8 +112,7 @@ fi
 # ==============================================================================
 
 if [ $composer ] || [ $default ]; then
-  echo
-  echo "Upgrading Composer packages"
+  title "Upgrading Composer packages"
   echo
   composer global update
 fi
@@ -108,9 +122,10 @@ fi
 # ==============================================================================
 
 if [ $vim ] || [ $default ]; then
+  title "Upgrading Vim plugins"
   echo
-  echo "Upgrading Vim plugins"
   nvim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
+  printf "Done!\n"
 fi
 
 # ==============================================================================
@@ -119,8 +134,7 @@ fi
 
 if [ $tmux ] || [ $default ]; then
   if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
-    echo
-    echo "Upgrading Tmux plugins"
+    title "Upgrading Tmux plugins"
     echo
     ~/.tmux/plugins/tpm/bin/update_plugins all
     ~/.tmux/plugins/tpm/bin/clean_plugins
@@ -132,8 +146,7 @@ fi
 # ==============================================================================
 
 if [ $mas ] || [ $default ]; then
-  echo
-  echo "Upgrading Mac App Store apps"
+  title "Upgrading Mac App Store apps"
   echo
   mas upgrade
 fi
@@ -143,8 +156,7 @@ fi
 # ==============================================================================
 
 if [ $os ]; then
-  echo
-  echo "Upgrading macOS"
+  title "Upgrading macOS"
   echo
   sudo softwareupdate -iaR --verbose
 fi
