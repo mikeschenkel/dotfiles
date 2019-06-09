@@ -19,7 +19,7 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # ==============================================================================
-# HOME
+# HOME FOLDERS
 # ==============================================================================
 
 title "Adding home folders"
@@ -37,6 +37,7 @@ home_folders=(
 for home_folder in "${home_folders[@]}"; do
   mkdir -p "${HOME}/$home_folder"
 done
+
 print_success "Done!"
 
 # ==============================================================================
@@ -52,25 +53,34 @@ print_success "Done!"
 # XCODE COMMAND LINE TOOLS
 # ==============================================================================
 
+title "Xcode Command Line Tools"
 if [ -f "$(xcode-select -v)" ]; then
-  title "Installing Xcode Command Line Tools"
-
-  xcode-select --install
-  print_success "Done!"
+  if ask "Do you want to install Xcode Command Line Tools?" Y; then
+    echo_install "Installing Xcode Command Line Tools"
+    xcode-select --install
+    print_success "Done!"
+  fi
+else
+  print_success "Xcode Command Line Tools are already installed!"
 fi
 
 # ==============================================================================
 # HOMEBREW
 # ==============================================================================
 
+title "Homebrew"
 if [ -f "$(brew -v)" ]; then
+  if ask "Do you want to install Homebrew" Y; then
+    echo_install "Installing Homebrew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    print_success "Done!"
+  fi
   title "Installing Homebrew"
-
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  print_success "Done!"
+else
+  print_success "Homebrew is already installed!"
 fi
 
-title "Installing global Homebrew packages"
+echo_install "Installing global Homebrew packages"
 
 brew -v update
 brew upgrade --force-bottle
@@ -96,37 +106,49 @@ print_success "Done!"
 # ZPLUG
 # ==============================================================================
 
+title "zplug"
 ZPLUG_DIR="${HOME}/.zplug"
 if [ ! -s "$ZPLUG_DIR" ]; then
-  title "Installing zplug"
-
-  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-  print_success "Done!"
+  if ask "Do you want to install zplug" Y; then
+    echo_install "Installing zplug"
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+    print_success "Done!"
+  fi
+else
+  print_success "zplug is already installed!"
 fi
 
 # ==============================================================================
 # VIM-PLUG
 # ==============================================================================
 
+title "vim-plug"
 VIMPLUG_DIR="${HOME}/.local/share/nvim/site/autoload/plug.vim"
 if [ ! -s "$VIMPLUG_DIR" ]; then
-  title "Installing vim-plug"
-
-  curl -fLo "$VIMPLUG_DIR" --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  print_success "Done!"
+  if ask "Do you want to install vim-plug" Y; then
+    echo_install "Installing vim-plug"
+    curl -fLo "$VIMPLUG_DIR" --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    print_success "Done!"
+  fi
+else
+  print_success "vim-plug is already installed!"
 fi
 
 # ==============================================================================
 # TMUX PLUGIN MANAGER
 # ==============================================================================
 
+title "Tmux Plugin Manager"
 TPM_DIR="${HOME}/.tmux/plugins/tpm"
 if [ ! -s "$TPM_DIR" ]; then
-  title "Installing Tmux Plugin Manager"
-
-  git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
-  print_success "Done!"
+  if ask "Do you want to install Tmux Plugin Manager" Y; then
+    echo_install "Installing Tmux Plugin Manager"
+    git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+    print_success "Done!"
+  fi
+else
+  print_success "Tmux Plugin Manager is already installed!"
 fi
 
 # ==============================================================================
