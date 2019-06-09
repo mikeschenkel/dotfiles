@@ -152,6 +152,22 @@ else
 fi
 
 # ==============================================================================
+# COMPUTER NAME
+# ==============================================================================
+
+title "Computer name"
+if ask "Do you want to set a computer name?" Y; then
+  echo
+  read -p "  Please enter a computer name: " uservar
+
+  sudo scutil --set ComputerName $uservar
+  sudo scutil --set HostName $uservar
+  sudo scutil --set LocalHostName $uservar
+
+  print_success "Done!"
+fi
+
+# ==============================================================================
 # RESTART
 # ==============================================================================
 
