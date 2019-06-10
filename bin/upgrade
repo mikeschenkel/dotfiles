@@ -74,14 +74,13 @@ done
 
 if [ $homebrew ] || [ $default ]; then
   title "Upgrading Homebrew packages"
-  echo
   brew -v update
   brew upgrade --force-bottle
+
   title "Upgrading Homebrew casks"
-  echo
   brew cu --all
+
   title "Brew cleanup"
-  echo
   brew -v cleanup
   brew -v doctor
 fi
@@ -92,7 +91,6 @@ fi
 
 if [ $npm ] || [ $default ]; then
   title "Upgrading npm packages"
-  echo
   npx npm-check -gu
 fi
 
@@ -102,7 +100,6 @@ fi
 
 if [ $ruby ] || [ $default ]; then
   title "Upgrading Ruby gems"
-  echo
   gem update --system
   gem update --no-document
 fi
@@ -113,7 +110,6 @@ fi
 
 if [ $composer ] || [ $default ]; then
   title "Upgrading Composer packages"
-  echo
   composer global update
 fi
 
@@ -123,9 +119,8 @@ fi
 
 if [ $vim ] || [ $default ]; then
   title "Upgrading Vim plugins"
-  echo
   nvim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
-  printf "Done!\n"
+  printf "Everything is up-to-date\n"
 fi
 
 # ==============================================================================
@@ -135,7 +130,6 @@ fi
 if [ $tmux ] || [ $default ]; then
   if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
     title "Upgrading Tmux plugins"
-    echo
     ~/.tmux/plugins/tpm/bin/update_plugins all
     ~/.tmux/plugins/tpm/bin/clean_plugins
   fi
@@ -147,7 +141,6 @@ fi
 
 if [ $mas ] || [ $default ]; then
   title "Upgrading Mac App Store apps"
-  echo
   mas upgrade
 fi
 
@@ -157,6 +150,5 @@ fi
 
 if [ $os ]; then
   title "Upgrading macOS"
-  echo
   sudo softwareupdate -iaR --verbose
 fi
