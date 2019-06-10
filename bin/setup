@@ -22,7 +22,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # HOME FOLDERS
 # ==============================================================================
 
-title "Adding home folders"
+title "Home folders"
+printf "${indent}Adding home folders...\n"
 
 home_folders=(
   ".ctags.d"
@@ -44,7 +45,8 @@ print_success "Done!"
 # MACOS
 # ==============================================================================
 
-title "Updating macOS. If this requires a restart, run the script again."
+title "macOS"
+inform "If this requires a restart, run the script again."
 
 sudo softwareupdate -iaR --verbose
 print_success "Done!"
@@ -54,6 +56,7 @@ print_success "Done!"
 # ==============================================================================
 
 title "Xcode Command Line Tools"
+
 if [ -f "$(xcode-select -v)" ]; then
   if ask "Do you want to install Xcode Command Line Tools?" Y; then
     echo_install "Installing Xcode Command Line Tools"
@@ -69,6 +72,7 @@ fi
 # ==============================================================================
 
 title "Homebrew"
+
 if [ -f "$(brew -v)" ]; then
   if ask "Do you want to install Homebrew" Y; then
     echo_install "Installing Homebrew"
@@ -100,6 +104,7 @@ done
 
 brew -v cleanup
 brew -v doctor
+
 print_success "Done!"
 
 # ==============================================================================
@@ -107,6 +112,7 @@ print_success "Done!"
 # ==============================================================================
 
 title "zplug"
+
 ZPLUG_DIR="${HOME}/.zplug"
 if [ ! -s "$ZPLUG_DIR" ]; then
   if ask "Do you want to install zplug" Y; then
@@ -123,6 +129,7 @@ fi
 # ==============================================================================
 
 title "vim-plug"
+
 VIMPLUG_DIR="${HOME}/.local/share/nvim/site/autoload/plug.vim"
 if [ ! -s "$VIMPLUG_DIR" ]; then
   if ask "Do you want to install vim-plug" Y; then
@@ -140,6 +147,7 @@ fi
 # ==============================================================================
 
 title "Tmux Plugin Manager"
+
 TPM_DIR="${HOME}/.tmux/plugins/tpm"
 if [ ! -s "$TPM_DIR" ]; then
   if ask "Do you want to install Tmux Plugin Manager" Y; then
@@ -156,6 +164,7 @@ fi
 # ==============================================================================
 
 title "Computer name"
+
 if ask "Do you want to set a computer name?" Y; then
   echo
   read -p "${indent}Please enter a computer name: " uservar
@@ -171,7 +180,8 @@ fi
 # RESTART
 # ==============================================================================
 
-echo
+title "Restart"
+
 if ask "Do you want to restart your computer?" Y; then
   osascript -e 'tell app "loginwindow" to «event aevtrrst»'
 fi
