@@ -1,5 +1,5 @@
 - link:
-    ~/.ctags.d/config.ctags: ctags
+    ~/.ctags.d/config.ctags: system/ctags
 
 - shell:
   -
