@@ -213,6 +213,8 @@ set shortmess=atOI              " No help Uganda information
 set title                       " Show file title in terminal tab
 set fillchars+=vert:│           " Change vertical split character to │
 
+set diffopt+=vertical           " Prefer vertical orientation for diffs
+
 set clipboard=unnamed           " ┐
 if has("unnamedplus")           " │ Use the system clipboard
   set clipboard+=unnamedplus    " │ as the default register
