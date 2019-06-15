@@ -1,6 +1,6 @@
 " Open hotkeys
 map <C-p> :Files<CR>
-nmap <leader>; :Buffers<CR>
+nmap <Leader>; :Buffers<CR>
 
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow -g "!{.git,node_modules}/*" 2>/dev/null'
 command! -bang -nargs=* Rg

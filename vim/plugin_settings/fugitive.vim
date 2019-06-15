@@ -1,12 +1,12 @@
-nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gm :Gmove<cr>
-nnoremap <leader>gr :Gremove<cr>
-nnoremap <leader>gps :Gpush<cr>
-nnoremap <leader>gpl :Gpull<cr>
-nnoremap <leader>gh :Gbrowse<cr>
+nnoremap <Leader>gd :Gdiff<cr>
+nnoremap <Leader>gs :Gstatus<cr>
+nnoremap <Leader>gw :Gwrite<cr>
+nnoremap <Leader>gb :Gblame<cr>
+nnoremap <Leader>gc :Gcommit<cr>
+nnoremap <Leader>gm :Gmove<cr>
+nnoremap <Leader>gr :Gremove<cr>
+nnoremap <Leader>gps :Gpush<cr>
+nnoremap <Leader>gpl :Gpull<cr>
+nnoremap <Leader>gh :Gbrowse<cr>
 
 let g:fugitive_git_executable='hub'

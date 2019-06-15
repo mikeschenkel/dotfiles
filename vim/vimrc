@@ -359,8 +359,8 @@ set nojoinspaces               " No extra spaces when joining lines
 
 set spelllang=en,nl            " Set spelling language
 
-" <leader>+ss` -- Toggle spell checking
-map <leader>ss :setlocal spell!<CR>
+" <Leader>+ss` -- Toggle spell checking
+map <Leader>ss :setlocal spell!<CR>
 " nmap ;s :setlocal spell!<CR>
 " ]s and [s -- move to misspelled words
 " z= -- autocorrect words
@@ -391,8 +391,8 @@ function! VisualSelection(direction, extra_filter) range
   let @" = l:saved_reg
 endfunction
 
-" `<leader>+n` -- Disable highlight
-nmap <silent> <leader>n :silent :nohlsearch<CR>
+" `<Leader>+n` -- Disable highlight
+nmap <silent> <Leader>n :silent :nohlsearch<CR>
 
 " Don't jump directly to the next or previous result
 nnoremap * *<C-o>
@@ -434,8 +434,8 @@ vmap Q gq
 nnoremap <C-Left> <C-w>5<
 nnoremap <C-Right> <C-w>5>
 
-" `<leader>+<leader>` -- Toggle between buffers
-nnoremap <leader><leader> <c-^>
+" `<Leader>+<Leader>` -- Toggle between buffers
+nnoremap <Leader><Leader> <c-^>
 " You don't know what you're missing if you don't use this.
 nmap <C-e> :e#<CR>
 
@@ -467,54 +467,54 @@ nmap k gk
 vmap j gj
 vmap k gk
 
-" `<leader>+q` -- Close the current window
-nnoremap <leader>q :q<CR>
+" `<Leader>+q` -- Close the current window
+nnoremap <Leader>q :q<CR>
 
 " `Ctrl+q` -- Close the current window
 nnoremap <C-q> :q<CR>
 vnoremap <C-q> :q<CR>
 
-" `<leader>+qq` -- Close the QuickFix window
-nnoremap <leader>qq :ccl<CR>
+" `<Leader>+qq` -- Close the QuickFix window
+nnoremap <Leader>qq :ccl<CR>
 
-" `<leader>+qp` -- Close the Preview window
-nnoremap <leader>qp :pc<CR>
+" `<Leader>+qp` -- Close the Preview window
+nnoremap <Leader>qp :pc<CR>
 
-" `<leader>+ql` -- Close the Location List window
-nnoremap <leader>ql :lcl<CR>
+" `<Leader>+ql` -- Close the Location List window
+nnoremap <Leader>ql :lcl<CR>
 
-" `<leader>+qb` -- Close the current buffer
-nnoremap <leader>qb :bdel<CR>
+" `<Leader>+qb` -- Close the current buffer
+nnoremap <Leader>qb :bdel<CR>
 
-" `<leader>+w / <leader>+s` -- Save the current buffer
-nnoremap <leader>s :w<CR>
-nnoremap <leader>w :w<CR>
+" `<Leader>+w / <Leader>+s` -- Save the current buffer
+nnoremap <Leader>s :w<CR>
+nnoremap <Leader>w :w<CR>
 
-" `<leader>+x` -- Save and exit the current buffer
+" `<Leader>+x` -- Save and exit the current buffer
 " `ZZ` -- Save and exit the current buffer
-nnoremap <leader>x :xit<CR>
+nnoremap <Leader>x :xit<CR>
 
-" `<leader>+cd` -- Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+" `<Leader>+cd` -- Switch CWD to the directory of the open buffer
+map <Leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " `<Leader>+p` -- Show the path of the current file
 " Useful when you have a lot of splits and the status line gets truncated.
 nnoremap <Leader>p :echo expand('%')<CR>
 
-" `<leader>+e` -- Open new file adjacent to current file
-" nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-" `<leader>+e[s,v]` -- Edit file, starting in same directory as current file
-" `<leader>+e`  -- Edit file in current buffer
-" `<leader>+es` -- Edit file in new horizontal split
-" `<leader>+ev` -- Edit file in new vertical split
-nnoremap <leader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
-nnoremap <leader>es :split <C-R>=expand('%:p:h') . '/'<CR>
-nnoremap <leader>ev :vsplit <C-R>=expand('%:p:h') . '/'<CR>
+" `<Leader>+e` -- Open new file adjacent to current file
+" nnoremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+" `<Leader>+e[s,v]` -- Edit file, starting in same directory as current file
+" `<Leader>+e`  -- Edit file in current buffer
+" `<Leader>+es` -- Edit file in new horizontal split
+" `<Leader>+ev` -- Edit file in new vertical split
+nnoremap <Leader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
+nnoremap <Leader>es :split <C-R>=expand('%:p:h') . '/'<CR>
+nnoremap <Leader>ev :vsplit <C-R>=expand('%:p:h') . '/'<CR>
 
 " `vs` -- Edit file in a new vertical split
 nnoremap vs :vsplit<Space>
 
-" `<leader>+o` -- Close all buffers except for the current one
+" `<Leader>+o` -- Close all buffers except for the current one
 nnoremap <Leader>o :only<CR>
 
 " `Ctrl+c / Ctrl+j` -- Map to Escape
@@ -569,13 +569,13 @@ nnoremap J mzJ`z
 " `<return>` -- Insert a break at the cursor and enter insert mode
 " nnoremap <CR> i<CR><ESC>I
 
-" `<leader>+rt` -- Convert tabs to spaces
+" `<Leader>+rt` -- Convert tabs to spaces
 nnoremap <Leader>rt :retab<CR>
 
-" `<leader>+tw` -- Remove trailing whitespace
-nnoremap <leader>tw :%s/ \+$//<CR>
+" `<Leader>+tw` -- Remove trailing whitespace
+nnoremap <Leader>tw :%s/ \+$//<CR>
 
-" `<leader>+sr` -- Search and replace the word under the cursor
+" `<Leader>+sr` -- Search and replace the word under the cursor
 nnoremap <Leader>sr :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " ==============================================================================
