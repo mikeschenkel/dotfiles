@@ -41,9 +41,6 @@ Plug 'airblade/vim-rooter'
 " A Vim plugin that manages your tag files
 Plug 'ludovicchabant/vim-gutentags'
 
-" Combine with netrw to create a delicious salad dressing
-" Plug 'tpope/vim-vinegar'
-
 " -- EDITING -------------------------------------------------------------------
 
 " Enable repeating supported plugin maps with '.'
@@ -158,15 +155,6 @@ Plug 'christoomey/vim-tmux-navigator', Cond(exists('$TMUX'))
 Plug 'tmux-plugins/vim-tmux-focus-events', Cond(exists('$TMUX'))
 
 " -- MISC ----------------------------------------------------------------------
-
-" Damian Conway's vmath.vim plugin
-" Plug 'nixon/vim-vmath'
-
-" Automatically discover and properly update ctags files on save
-" Plug 'craigemery/vim-autotag'
-
-" Plugin to help you stop repeating the basic movement keys
-" Plug 'takac/vim-hardtime'
 
 call plug#end()
 
