@@ -16,29 +16,70 @@ endfunction
 
 call plug#begin()
 
-" Utility
-" Generic Programming Support
+" -- FILE / BUFFER MANAGEMENT --------------------------------------------------
 
 " Command-line fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'justinmk/vim-dirvish'
-Plug 'kristijanhusak/vim-dirvish-git'
-
-" A Vim plugin for more pleasant editing on commit messages
-Plug 'rhysd/committia.vim'
-
-Plug 'jiangmiao/auto-pairs'
-Plug 'docunext/closetag.vim'
-
 " EditorConfig plugin for Vim
 Plug 'editorconfig/editorconfig-vim'
 
-" emmet for vim
-Plug 'mattn/emmet-vim'
+" Helpers for UNIX
+Plug 'tpope/vim-eunuch'
 
-" Completion plugins
+" Directory viewer for Vim
+Plug 'justinmk/vim-dirvish'
+Plug 'kristijanhusak/vim-dirvish-git'
+
+" Pairs of handy bracket mappings
+Plug 'tpope/vim-unimpaired'
+
+" Changes Vim working directory to project root
+Plug 'airblade/vim-rooter'
+
+" A Vim plugin that manages your tag files
+Plug 'ludovicchabant/vim-gutentags'
+
+" Combine with netrw to create a delicious salad dressing
+" Plug 'tpope/vim-vinegar'
+
+" -- EDITING -------------------------------------------------------------------
+
+" Enable repeating supported plugin maps with '.'
+Plug 'tpope/vim-repeat'
+
+" Comment stuff out
+Plug 'tpope/vim-commentary'
+
+" Quoting/parenthesizing made simple
+Plug 'tpope/vim-surround'
+
+" Insert or delete brackets, parens, quotes in pair
+Plug 'jiangmiao/auto-pairs'
+
+" Functions and mappings to close open HTML/XML tags
+Plug 'docunext/closetag.vim'
+
+" Make the yanked region apparent!
+Plug 'machakann/vim-highlightedyank'
+
+" Display indention levels with thin vertical lines
+Plug 'Yggdroot/IndentLine', { 'on': 'IndentLinesToggle' }
+
+" A different approach to code highlighting
+Plug 'thiagoalessio/rainbow_levels.vim'
+
+" -- MOVEMENT ------------------------------------------------------------------
+
+" The missing motion for Vim
+Plug 'justinmk/vim-sneak'
+
+" Extended f, F, t and T key mappings for Vim
+Plug 'rhysd/clever-f.vim'
+
+" -- COMPLETION ----------------------------------------------------------------
+
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
@@ -50,59 +91,7 @@ Plug 'ncm2/ncm2-path'
 Plug 'phpactor/phpactor', { 'do': 'composer install', 'for': ['php'] }
 Plug 'phpactor/ncm2-phpactor', { 'for': ['php'] }
 
-" The missing motion for Vim
-Plug 'justinmk/vim-sneak'
-
-" Extended f, F, t and T key mappings for Vim
-Plug 'rhysd/clever-f.vim'
-
-" Make the yanked region apparent!
-Plug 'machakann/vim-highlightedyank'
-
-" Display indention levels with thin vertical lines
-Plug 'Yggdroot/IndentLine', { 'on': 'IndentLinesToggle' }
-
-" A different approach to code highlighting
-Plug 'thiagoalessio/rainbow_levels.vim'
-
-" Show Git diff in the gutter and stages/undoes hunks
-Plug 'airblade/vim-gitgutter'
-
-" Changes Vim working directory to project root
-Plug 'airblade/vim-rooter'
-
-" A Vim plugin that manages your tag files
-Plug 'ludovicchabant/vim-gutentags'
-
-" Damian Conway's vmath.vim plugin
-Plug 'nixon/vim-vmath'
-
-" Automatically discover and properly update ctags files on save
-" Plug 'craigemery/vim-autotag'
-
-" Plugin to help you stop repeating the basic movement keys
-" Plug 'takac/vim-hardtime'
-
-" Combine with netrw to create a delicious salad dressing
-" Plug 'tpope/vim-vinegar'
-
-" Pairs of handy bracket mappings
-Plug 'tpope/vim-unimpaired'
-
-" Helpers for UNIX
-Plug 'tpope/vim-eunuch'
-
-" A Git wrapper so awesome, it should be illegal
-Plug 'tpope/vim-fugitive'
-
-" Quoting/parenthesizing made simple
-Plug 'tpope/vim-surround'
-
-" Comment stuff out
-Plug 'tpope/vim-commentary'
-
-" Enable repeating supported plugin maps with '.'
-Plug 'tpope/vim-repeat'
+" -- LINTING -------------------------------------------------------------------
 
 " Asynchronous Lint Engine
 Plug 'w0rp/ale'
@@ -110,8 +99,26 @@ Plug 'w0rp/ale'
 " ALE indicator for the lightline vim plugin
 Plug 'maximbaz/lightline-ale'
 
+" -- SEARCH --------------------------------------------------------------------
+
 " Start a * or # search from a visual block
 Plug 'nelstrom/vim-visual-star-search'
+
+" -- SNIPPETS ------------------------------------------------------------------
+
+" Emmet for vim
+Plug 'mattn/emmet-vim'
+
+" -- GIT / GITHUB --------------------------------------------------------------
+
+" A Git wrapper so awesome, it should be illegal
+Plug 'tpope/vim-fugitive'
+
+" Show Git diff in the gutter and stages/undoes hunks
+Plug 'airblade/vim-gitgutter'
+
+" A Vim plugin for more pleasant editing on commit messages
+Plug 'rhysd/committia.vim'
 
 " -- THEME / INTERFACE ---------------------------------------------------------
 
@@ -149,6 +156,17 @@ Plug 'christoomey/vim-tmux-navigator', Cond(exists('$TMUX'))
 
 " vim-tmux-focus-events - Make terminal vim and tmux work better together
 Plug 'tmux-plugins/vim-tmux-focus-events', Cond(exists('$TMUX'))
+
+" -- MISC ----------------------------------------------------------------------
+
+" Damian Conway's vmath.vim plugin
+" Plug 'nixon/vim-vmath'
+
+" Automatically discover and properly update ctags files on save
+" Plug 'craigemery/vim-autotag'
+
+" Plugin to help you stop repeating the basic movement keys
+" Plug 'takac/vim-hardtime'
 
 call plug#end()
 
