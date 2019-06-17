@@ -248,24 +248,39 @@ highlight htmlArg gui=italic
 " ==============================================================================
 
 " Quickfix
-au FileType qf setlocal norelativenumber colorcolumn=
+if has("autocmd")
+  autocmd FileType qf setlocal norelativenumber colorcolumn=
+endif
 
 " Gitcommit
 " Force the cursor onto a new line after 72 characters and color the 51st colomn (for titles)
-autocmd FileType gitcommit set textwidth=72 colorcolumn+=51
+if has("autocmd")
+  autocmd FileType gitcommit set textwidth=72 colorcolumn+=51
+endif
 
-autocmd BufNewFile,BufRead *.ts,*.snap,*.es6,*.tsx setlocal filetype=javascript.jsx
-autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*prettierrc setlocal syntax=json
+" JavaScript
+if has("autocmd")
+  autocmd BufNewFile,BufRead *.ts,*.snap,*.es6,*.tsx setlocal filetype=javascript.jsx
+endif
+
+" JSON
+if has("autocmd")
+  autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*prettierrc setlocal syntax=json
+endif
 
 " Markdown
-au BufNewFile,BufFilePre,BufRead *.md,*.txt set filetype=markdown tw=80 fo+=t colorcolumn=80
 " let g:vim_markdown_conceal = 0
+if has("autocmd")
+  autocmd BufNewFile,BufFilePre,BufRead *.md,*.txt set filetype=markdown tw=80 fo+=t colorcolumn=80
+endif
 
 " Vue
-autocmd BufReadPre *.vue let b:javascript_lib_use_vue=1
 let g:vue_disable_pre_processors=1
-autocmd FileType vue syntax sync fromstart
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
+if has("autocmd")
+  autocmd FileType vue syntax sync fromstart
+  autocmd BufReadPre *.vue let b:javascript_lib_use_vue=1
+  autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
+endif
 
 " ==============================================================================
 " UI
