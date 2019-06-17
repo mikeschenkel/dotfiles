@@ -110,6 +110,9 @@ Plug 'w0rp/ale'
 " ALE indicator for the lightline vim plugin
 Plug 'maximbaz/lightline-ale'
 
+" Start a * or # search from a visual block
+Plug 'nelstrom/vim-visual-star-search'
+
 " -- THEME / INTERFACE ---------------------------------------------------------
 
 " Base16 for Vim
@@ -376,33 +379,12 @@ set smartcase                  " ... except if we input a capital letter
 set hlsearch                   " Highlight search terms
 set hlsearch                   " Find as you type search
 
-function! VisualSelection(direction, extra_filter) range
-  let l:saved_reg = @"
-  execute "normal! vgvy"
-
-  let l:pattern = escape(@", "\\/.*'$^~[]")
-  let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-  if a:direction == 'gv'
-    call CmdLine("Ack '" . l:pattern . "' " )
-  elseif a:direction == 'replace'
-    call CmdLine("%s" . '/'. l:pattern . '/')
-  endif
-
-  let @/ = l:pattern
-  let @" = l:saved_reg
-endfunction
-
 " `<Leader>+n` -- Disable highlight
 nmap <silent> <Leader>n :silent :nohlsearch<CR>
 
 " Don't jump directly to the next or previous result
 nnoremap * *<C-o>
 nnoremap # #<C-o>
-
-" Visual mode pressing * or # searches for the current selection
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 " ==============================================================================
 " TABS, SPACES, INDENTS AND WRAPPING
