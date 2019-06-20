@@ -1,8 +1,9 @@
 bin
+terminfo
 homebrew
 zsh
-terminfo
 git
+ruby
 vim
 tmux
 ctags
