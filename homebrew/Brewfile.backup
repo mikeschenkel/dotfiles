@@ -17,7 +17,7 @@
 
 # Logitech Control Center (Unifying Software)
 tap "homebrew/cask-drivers"
-cask "logitech-control-center"
+cask "logitech-options"
 
 # Utilities
 # cask "adapter"
