@@ -242,6 +242,8 @@ colorscheme base16-atelier-forest
 " Make WildMenu selections visible
 highlight WildMenu guifg=#2c2421
 
+" let &colorcolumn="80,".join(range(120,999),",")
+
 " highlight GitGutterChange guifg=#c38418
 " highlight GitGutterChangeDelete guifg=#c38418
 
@@ -341,7 +343,7 @@ iab todo TODO
 
 " ==============================================================================
 
-set colorcolumn=81              " Limit line-length to 80 columns
+" set colorcolumn=81              " Limit line-length to 80 columns
                                 " by highlighting col 81
 set list
 set listchars=tab:▸\            " ┐
