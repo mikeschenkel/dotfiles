@@ -212,3 +212,5 @@ local LOCAL_ZSHRC="${HOME}/.zshrc.local"
 if [[ -r $LOCAL_ZSHRC ]]; then
   source $LOCAL_ZSHRC
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

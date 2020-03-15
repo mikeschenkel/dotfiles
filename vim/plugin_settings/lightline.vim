@@ -1,5 +1,5 @@
 let g:lightline = {
-  \ 'colorscheme': 'base16_atelier_forest',
+  \ 'colorscheme': 'material_vim',
   \ 'active': {
   \   'left':  [ [ 'mode', 'paste' ],
   \              [ 'gitbranch', 'readonly', 'filename' ] ],

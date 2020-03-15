@@ -14,11 +14,9 @@ command! -bang -nargs=* Rg
 
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--color-path "1;36"', fzf#vim#with_preview(), <bang>0)
 
-" Customize fzf colors to match the color scheme
-
 " Hide statusline
 autocmd! FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " https://github.com/junegunn/fzf.vim/issues/47
 function! s:find_git_root()

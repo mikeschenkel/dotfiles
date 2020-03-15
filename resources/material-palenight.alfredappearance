@@ -1,0 +1,61 @@
+{
+  "alfredtheme" : {
+    "name" : "Material Palenight",
+    "credit" : "Mike Schenkel",
+    "result" : {
+      "textSpacing" : 8,
+      "subtext" : {
+        "size" : 11,
+        "colorSelected" : "#A5AACDFF",
+        "font" : "Helvetica",
+        "color" : "#676C96FF"
+      },
+      "shortcut" : {
+        "size" : 14,
+        "colorSelected" : "#FFCD00FF",
+        "font" : "System",
+        "color" : "#C78EECFF"
+      },
+      "backgroundSelected" : "#4E537966",
+      "text" : {
+        "size" : 18,
+        "colorSelected" : "#00B0E9FF",
+        "font" : "Helvetica",
+        "color" : "#A6AACDFF"
+      },
+      "iconPaddingHorizontal" : 5,
+      "paddingVertical" : 5,
+      "iconSize" : 40
+    },
+    "search" : {
+      "paddingVertical" : 0,
+      "background" : "#1B1E2A00",
+      "spacing" : 10,
+      "text" : {
+        "size" : 30,
+        "colorSelected" : "#000000FF",
+        "font" : "Helvetica",
+        "color" : "#FFCD00FF"
+      },
+      "backgroundSelected" : "#00B0E9FF"
+    },
+    "window" : {
+      "color" : "#272B3DEA",
+      "paddingHorizontal" : 10,
+      "width" : 575,
+      "borderPadding" : 0,
+      "borderColor" : "#00000000",
+      "blur" : 20,
+      "roundness" : -58,
+      "paddingVertical" : 10
+    },
+    "separator" : {
+      "color" : "#3A3E5700",
+      "thickness" : 2
+    },
+    "scrollbar" : {
+      "color" : "#656C9680",
+      "thickness" : 5
+    }
+  }
+}
