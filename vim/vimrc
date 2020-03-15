@@ -572,7 +572,7 @@ nnoremap N Nzz
 nnoremap G :norm! Gzz<CR>
 
 " `S` -- Split line (sister to [J]oin lines)
-" nnoremap S i<CR><ESC>^mwgk:silent! s/\v +$//<CR>:noh<CR>`w
+nnoremap S i<CR><ESC>^mwgk:silent! s/\v +$//<CR>:noh<CR>`w
 
 " `J` -- Keep cursor in place when joining lines
 nnoremap J mzJ`z
