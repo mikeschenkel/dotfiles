@@ -101,6 +101,9 @@ Plug 'maximbaz/lightline-ale'
 " Start a * or # search from a visual block
 Plug 'nelstrom/vim-visual-star-search'
 
+" Highlights the current search match
+Plug 'PeterRincker/vim-searchlight'
+
 " -- SNIPPETS ------------------------------------------------------------------
 
 " Emmet for vim
