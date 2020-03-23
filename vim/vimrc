@@ -248,17 +248,16 @@ let g:material_terminal_italics = 1
 let g:material_theme_style = 'palenight'
 colorscheme material
 
-" Make WildMenu selections visible
-highlight WildMenu guifg=#2c2421
-
-" let &colorcolumn="80,".join(range(120,999),",")
-
 " highlight GitGutterChange guifg=#c38418
 " highlight GitGutterChangeDelete guifg=#c38418
 
 " Italicised comments and attributes
-highlight Comment gui=italic
 highlight htmlArg gui=italic
+highlight htmlArg cterm=italic
+highlight Comment gui=italic
+highlight Comment cterm=italic
+highlight jsxAttrib gui=italic
+highlight jsxAttrib cterm=italic
 
 " ==============================================================================
 " FILETYPES
@@ -311,9 +310,9 @@ set wildmode=longest:list,full
 
 " Don’t offer to open certain files/directories
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*        " Version control
-set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png    " binary images
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
-set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png    " Binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " Compiled object files
+set wildignore+=*.spl                            " Compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store                       " OSX bullshit
 set wildignore+=*.pdf,*.psd
@@ -352,16 +351,17 @@ iab todo TODO
 
 " ==============================================================================
 
-" set colorcolumn=81              " Limit line-length to 80 columns
-                                " by highlighting col 81
+set colorcolumn=81,82           " Limit line-length to 80 columns
+                                " by highlighting col 81 and 82
+
 set list
 set listchars=tab:▸\            " ┐
 set listchars+=trail:·          " │
 " set listchars+=eol:¬          " │ Use custom symbols to
 set listchars+=extends:❯        " │ represent invisible characters
 set listchars+=precedes:❮       " │
-set listchars+=nbsp:_           " ┘
-set showbreak=↪
+set listchars+=nbsp:_           " │
+set showbreak=↪                 " ┘
 
 set scrolloff=5                " Minumum lines to keep above and below
                                " from the cursor
@@ -396,11 +396,10 @@ set nojoinspaces               " No extra spaces when joining lines
 
 set spelllang=en,nl            " Set spelling language
 
-" <Leader>+ss` -- Toggle spell checking
+" ``<Leader>+ss` -- Toggle spell checking
+" `]s / [s`      -- Move to misspelled words
+" `z=`           -- Autocorrect words
 map <Leader>ss :setlocal spell!<CR>
-" nmap ;s :setlocal spell!<CR>
-" ]s and [s -- move to misspelled words
-" z= -- autocorrect words
 
 " ==============================================================================
 " SEARCH
@@ -446,18 +445,13 @@ map <Tab> %
 nmap Q gqap
 vmap Q gq
 
-" `<Ctrl>+<Left>` or `<Ctrl>+<Right>` -- Resize splits
-nnoremap <C-Left> <C-w>5<
-nnoremap <C-Right> <C-w>5>
+" `<Leader>+Plus(+) / <Leader>+Minus(-)` -- Resize splits
+nnoremap <silent> <Leader>+ :exe "vertical resize +5"<CR>
+nnoremap <silent> <Leader>- :exe "vertical resize -5"<CR>
 
-" `<Leader>+<Leader>` -- Toggle between buffers
-nnoremap <Leader><Leader> <c-^>
-" You don't know what you're missing if you don't use this.
-nmap <C-e> :e#<CR>
-
-" Move between open buffers.
-nnoremap <Left> :bp<CR>
-nnoremap <Right> :bn<CR>
+" Move between open buffers
+" nnoremap <Left> :bp<CR>
+" nnoremap <Right> :bn<CR>
 
 " Vim-like window navigation
 nnoremap <C-h> <C-w>h
@@ -465,7 +459,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" No arrow keys --- force yourself to use the home row
+" No arrow keys -- Force yourself to use the home row
 nnoremap <Up> <nop>
 nnoremap <Down> <nop>
 inoremap <Up> <nop>
@@ -473,7 +467,7 @@ inoremap <Down> <nop>
 inoremap <Left> <nop>
 inoremap <Right> <nop>
 
-" `>` (forwards) / `<` (backwards) -- Shift selection in Visual mode
+" `> (forwards) / < (backwards)` -- Shift selection in Visual mode
 vnoremap > >gv
 vnoremap < <gv
 
@@ -502,31 +496,29 @@ nnoremap <Leader>ql :lcl<CR>
 " `<Leader>+qb` -- Close the current buffer
 nnoremap <Leader>qb :bdel<CR>
 
-" `<Leader>+w / <Leader>+s` -- Save the current buffer
-nnoremap <Leader>s :w<CR>
-" nnoremap <Leader>w :w<CR>
-nnoremap <silent><Leader>w :w!<CR>
-nnoremap /asdf :W<CR>
+" `<Leader>+o` -- Close all buffers except for the current one
+nnoremap <Leader>o :only<CR>
 
-" `<Leader>+x` -- Save and exit the current buffer
-" `ZZ` -- Save and exit the current buffer
-nnoremap <Leader>x :xit<CR>
-nnoremap <silent> <Leader>wc :w!<CR>:silent close<CR>
+" `<Leader>+wq` -- Save and exit the current buffer
 nnoremap <Leader>wq :w!<CR>:q!<CR>
 
-" `<Leader>+cd` -- Switch CWD to the directory of the open buffer
-map <Leader>cd :cd %:p:h<cr>:pwd<cr>
+" `<Leader>+x` -- Save and exit the current buffer
+" `ZZ`         -- Save and exit the current buffer
+nnoremap <Leader>x :xit<CR>
 
-" `<Leader>+p` -- Show the path of the current file
-" Useful when you have a lot of splits and the status line gets truncated.
-nnoremap <Leader>p :echo expand('%')<CR>
+" `<Leader>+w / <Leader>+s` -- Save the current buffer
+nnoremap <silent> <Leader>w :w!<CR>
+nnoremap <silent> <Leader>s :w!<CR>
 
-" `<Leader>+e` -- Open new file adjacent to current file
-" nnoremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+" `/asdf` -- Save the current buffer
+nnoremap /asdf :w<CR>
+nnoremap /asfd :w<CR>
+
+" `<Leader>+<Leader> / Ctrl+e` -- Edit last (most recent) file
+nnoremap <Leader><Leader> <c-^>
+nmap <C-e> :e#<CR>
+
 " `<Leader>+e[s,v]` -- Edit file, starting in same directory as current file
-" `<Leader>+e`  -- Edit file in current buffer
-" `<Leader>+es` -- Edit file in new horizontal split
-" `<Leader>+ev` -- Edit file in new vertical split
 nnoremap <Leader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 nnoremap <Leader>es :split <C-R>=expand('%:p:h') . '/'<CR>
 nnoremap <Leader>ev :vsplit <C-R>=expand('%:p:h') . '/'<CR>
@@ -534,8 +526,11 @@ nnoremap <Leader>ev :vsplit <C-R>=expand('%:p:h') . '/'<CR>
 " `vs` -- Edit file in a new vertical split
 nnoremap vs :vsplit<Space>
 
-" `<Leader>+o` -- Close all buffers except for the current one
-nnoremap <Leader>o :only<CR>
+" `<Leader>+cd` -- Switch CWD to the directory of the open buffer
+map <Leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" `<Leader>+p` -- Show the path of the current file
+nnoremap <Leader>p :echo expand('%')<CR>
 
 " `Ctrl+c / Ctrl+j` -- Map to Escape
 inoremap <C-j> <Esc>
@@ -543,22 +538,23 @@ vnoremap <C-j> <Esc>
 inoremap <C-c> <Esc>
 vnoremap <C-c> <Esc>
 
-" `Shift+UP/DOWN` -- Move current line(s) up or down
+" `jj` -- Map to Escape
+inoremap jj <Esc>
+
+" `Shift+Up/Down` -- Move current line(s) up or down
 nnoremap <S-Down> :m .+1<CR>==
 nnoremap <S-Up> :m .-2<CR>==
 
 inoremap <S-Down> <Esc>:m .+1<CR>==gi
 inoremap <S-Up> <Esc>:m .-2<CR>==gi
-" inoremap <S-j> <Esc>:m .+1<CR>==gi
-" inoremap <S-k> <Esc>:m .-2<CR>==gi
 
 vnoremap <S-Down> :m '>+1<CR>gv=gv
 vnoremap <S-Up> :m '<-2<CR>gv=gv
 vnoremap <S-j> :m '>+1<CR>gv=gv
 vnoremap <S-k> :m '<-2<CR>gv=gv
 
-" `jj` -- Map to Escape
-inoremap jj <ESC>
+" `G` -- Skip to bottom of file and place line in middle of the screen
+nnoremap G :norm! Gzz<CR>
 
 " `H` -- Go to the beginning of a line
 noremap H ^
@@ -566,22 +562,19 @@ noremap H ^
 " `L` -- Go to the end of a line
 noremap L $
 
-" `Y` -- Yank characters under the cursor until the end
-" This makes `Y` behave like `C` and `D`
+" `Y` -- Yank characters under the cursor until the end This makes `Y` behave
+" like `C` and `D`
 nnoremap Y y$
 
 " `vv` -- Highlight just the text (i.e. no indents) in a line
 nnoremap vv ^vg_
 
-" `n` / `N` -- Bring next/previous search result in middle of the screen
-nnoremap n nzz
-nnoremap N Nzz
-
-" `G` -- Skip to bottom of file and place line in middle of the screen
-nnoremap G :norm! Gzz<CR>
+" `n / N` -- Bring next/previous search result in middle of the screen
+" nnoremap n nzz
+" nnoremap N Nzz
 
 " `S` -- Split line (sister to [J]oin lines)
-nnoremap S i<CR><ESC>^mwgk:silent! s/\v +$//<CR>:noh<CR>`w
+nnoremap S i<CR><Esc>^mwgk:silent! s/\v +$//<CR>:noh<CR>`w
 
 " `J` -- Keep cursor in place when joining lines
 nnoremap J mzJ`z
@@ -597,6 +590,14 @@ nnoremap <Leader>tw :%s/ \+$//<CR>
 
 " `<Leader>+sr` -- Search and replace the word under the cursor
 nnoremap <Leader>sr :%s/\<<C-r><C-w>\>//g<Left><Left>
+
+" `<Leader>+d` -- Delete without yanking
+nnoremap <Leader>d "_d
+vnoremap <Leader>d "_d
+
+" `<Leader>+p` -- Replace currently selected text with default register
+" without yanking it
+vnoremap <Leader>p "_dP
 
 " ==============================================================================
 " PLUGIN SETTINGS
