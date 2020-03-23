@@ -43,6 +43,12 @@ Plug 'ludovicchabant/vim-gutentags'
 
 " -- EDITING -------------------------------------------------------------------
 
+" Only show relative numbers in the currently active window
+Plug 'vim-scripts/RelativeNumberCurrentWindow'
+
+" True Sublime Text style multiple selections for Vim
+Plug 'terryma/vim-multiple-cursors'
+
 " Enable repeating supported plugin maps with '.'
 Plug 'tpope/vim-repeat'
 
@@ -85,8 +91,8 @@ Plug 'ncm2/ncm2-path'
 " Plug 'ncm2/ncm2-tagprefix'
 
 " PHP completion, refactoring and introspection tool
-Plug 'phpactor/phpactor', { 'do': 'composer install', 'for': ['php'] }
-Plug 'phpactor/ncm2-phpactor', { 'for': ['php'] }
+" Plug 'phpactor/phpactor', { 'do': 'composer install', 'for': ['php'] }
+" Plug 'phpactor/ncm2-phpactor', { 'for': ['php'] }
 
 " -- LINTING -------------------------------------------------------------------
 
