@@ -81,18 +81,24 @@ Plug 'justinmk/vim-sneak'
 " Extended f, F, t and T key mappings for Vim
 Plug 'rhysd/clever-f.vim'
 
+" Smooth scrolling for Vim done right
+Plug 'psliwka/vim-smoothie'
+
 " -- COMPLETION ----------------------------------------------------------------
 
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux', Cond(exists('$TMUX'))
-Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2'
+" Plug 'roxma/nvim-yarp'
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-tmux', Cond(exists('$TMUX'))
+" Plug 'ncm2/ncm2-path'
 " Plug 'ncm2/ncm2-tagprefix'
 
 " PHP completion, refactoring and introspection tool
 " Plug 'phpactor/phpactor', { 'do': 'composer install', 'for': ['php'] }
 " Plug 'phpactor/ncm2-phpactor', { 'for': ['php'] }
+
+" Intellisense engine for Vim8 & Neovim
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " -- LINTING -------------------------------------------------------------------
 
