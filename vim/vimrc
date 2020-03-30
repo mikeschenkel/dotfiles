@@ -41,6 +41,9 @@ Plug 'airblade/vim-rooter'
 " A Vim plugin that manages your tag files
 Plug 'ludovicchabant/vim-gutentags'
 
+" The fancy start screen for Vim
+Plug 'mhinz/vim-startify'
+
 " -- EDITING -------------------------------------------------------------------
 
 " Only show relative numbers in the currently active window
@@ -63,6 +66,9 @@ Plug 'jiangmiao/auto-pairs'
 
 " Functions and mappings to close open HTML/XML tags
 Plug 'docunext/closetag.vim'
+
+" Highlight, navigate, and operate on sets of matching text
+Plug 'andymass/vim-matchup'
 
 " Make the yanked region apparent!
 Plug 'machakann/vim-highlightedyank'
@@ -131,6 +137,9 @@ Plug 'airblade/vim-gitgutter'
 
 " A Vim plugin for more pleasant editing on commit messages
 Plug 'rhysd/committia.vim'
+
+" A git commit browser in Vim
+Plug 'junegunn/gv.vim'
 
 " -- THEME / INTERFACE ---------------------------------------------------------
 
