@@ -39,7 +39,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-rooter'
 
 " A Vim plugin that manages your tag files
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 
 " The fancy start screen for Vim
 Plug 'mhinz/vim-startify'
@@ -262,9 +262,6 @@ set background=dark
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'palenight'
 colorscheme material
-
-" highlight GitGutterChange guifg=#c38418
-" highlight GitGutterChangeDelete guifg=#c38418
 
 " Italicised comments and attributes
 highlight htmlArg gui=italic
@@ -538,9 +535,6 @@ nnoremap <Leader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 nnoremap <Leader>es :split <C-R>=expand('%:p:h') . '/'<CR>
 nnoremap <Leader>ev :vsplit <C-R>=expand('%:p:h') . '/'<CR>
 
-" `vs` -- Edit file in a new vertical split
-nnoremap vs :vsplit<Space>
-
 " `<Leader>+cd` -- Switch CWD to the directory of the open buffer
 map <Leader>cd :cd %:p:h<CR>:pwd<CR>
 
@@ -603,8 +597,14 @@ nnoremap <Leader>rt :retab<CR>
 " `<Leader>+tw` -- Remove trailing whitespace
 nnoremap <Leader>tw :%s/ \+$//<CR>
 
-" `<Leader>+sr` -- Search and replace the word under the cursor
-nnoremap <Leader>sr :%s/\<<C-r><C-w>\>//g<Left><Left>
+" `<Ctrl>+r` -- Search and replace the word under the cursor (normal mode)
+" nnoremap <Leader>sr :%s/\<<C-r><C-w>\>//g<Left><Left>
+nnoremap <C-r> :%s/\<<C-r><C-w>\>//g<Left><Left>
+
+" `<Ctrl>+r` -- Search and replace selected text (visual mode)
+vnoremap <C-r> "hy:%s/<C-r>h//gc<Left><Left><Left>
+vnoremap s/ y:s/<C-r>"/
+"https://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
 
 " `<Leader>+d` -- Delete without yanking
 nnoremap <Leader>d "_d

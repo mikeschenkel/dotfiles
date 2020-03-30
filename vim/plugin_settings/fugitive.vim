@@ -1,4 +1,4 @@
-nnoremap <Leader>gd :Gdiff<cr>
+" nnoremap <Leader>gd :Gdiff<cr>
 nnoremap <Leader>gs :Gstatus<cr>
 nnoremap <Leader>gw :Gwrite<cr>
 nnoremap <Leader>gb :Gblame<cr>
