@@ -32,8 +32,9 @@ Plug 'tpope/vim-eunuch'
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
 
-" Pairs of handy bracket mappings
-Plug 'tpope/vim-unimpaired'
+" A tree explorer plugin for Vim
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 
 " Changes Vim working directory to project root
 Plug 'airblade/vim-rooter'
