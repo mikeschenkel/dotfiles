@@ -9,4 +9,8 @@ nnoremap <Leader>gps :Gpush<cr>
 nnoremap <Leader>gpl :Gpull<cr>
 nnoremap <Leader>gh :Gbrowse<cr>
 
+nnoremap <silent> <Leader>B :Gblame<CR>
+nnoremap <silent> <Leader>C :Gclog %<CR>
+nnoremap <silent> <Leader>G :Gstatus<CR>
+
 let g:fugitive_git_executable='hub'

@@ -2,8 +2,8 @@
 " MAPPINGS
 " ==============================================================================
 
-" `<Leader>+l` -- Toggle Rainbow Levels
-map <Leader>l :RainbowLevelsToggle<CR>
+" `<Leader>+I` -- Toggle Rainbow Levels
+map <Leader>I :RainbowLevelsToggle<CR>
 
 " ==============================================================================
 " COLORS

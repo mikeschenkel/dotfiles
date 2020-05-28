@@ -2,12 +2,11 @@
 " GENERAL
 " ==============================================================================
 
-let g:indentLine_enabled = 0
-let g:indentLine_faster = 1
+let g:undotree_HighlightChangedWithSign = 0
+let g:undotree_WindowLayout = 4
 
 " ==============================================================================
 " MAPPINGS
 " ==============================================================================
 
-" `<Leader>+i` -- Toggle indentLine on/off
-nnoremap <Leader>i :IndentLinesToggle<CR>
+nnoremap <Leader>u :UndotreeToggle<CR>

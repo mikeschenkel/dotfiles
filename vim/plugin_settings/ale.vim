@@ -14,7 +14,8 @@ let g:ale_sign_warning = '⚠'
 let g:ale_linters = {
 \  'css': [ 'prettier', 'stylelint' ],
 \  'scss': [ 'prettier', 'stylelint' ],
-\  'javascript': [ 'eslint', 'prettier' ]
+\  'javascript': [ 'eslint', 'prettier' ],
+\  'json': ['prettier'],
 \}
 
 " ==============================================================================
@@ -25,6 +26,7 @@ let g:ale_fixers = {
 \  'css': [ 'prettier', 'stylelint' ],
 \  'scss': [ 'prettier', 'stylelint' ],
 \  'javascript': [ 'prettier', 'eslint' ],
+\  'json':       ['jsonlint'],
 \  'markdown': [ 'prettier' ],
 \}
 
@@ -41,4 +43,5 @@ let g:ale_pattern_options = {
 
 nmap ]w :ALENextWrap<CR>
 nmap [w :ALEPreviousWrap<CR>
+nmap <Leader>l <Plug>(ale_lint)
 nmap <Leader>f <Plug>(ale_fix)

@@ -28,6 +28,12 @@ Plug 'editorconfig/editorconfig-vim'
 " Helpers for UNIX
 Plug 'tpope/vim-eunuch'
 
+" Pairs of handy bracket mappings
+Plug 'tpope/vim-unimpaired'
+
+" Easily search for, substitute, and abbreviate multiple variants of a word
+Plug 'tpope/vim-abolish'
+
 " Directory viewer for Vim
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
@@ -80,6 +86,12 @@ Plug 'Yggdroot/IndentLine', { 'on': 'IndentLinesToggle' }
 " A different approach to code highlighting
 Plug 'thiagoalessio/rainbow_levels.vim'
 
+" Undo history visualizer for Vim
+Plug 'mbbill/undotree'
+
+" A simple, easy-to-use Vim alignment plugin
+Plug 'junegunn/vim-easy-align'
+
 " -- MOVEMENT ------------------------------------------------------------------
 
 " The missing motion for Vim
@@ -88,21 +100,13 @@ Plug 'justinmk/vim-sneak'
 " Extended f, F, t and T key mappings for Vim
 Plug 'rhysd/clever-f.vim'
 
+" Vim plugin that provides additional text objects
+Plug 'wellle/targets.vim'
+
 " Smooth scrolling for Vim done right
 Plug 'psliwka/vim-smoothie'
 
 " -- COMPLETION ----------------------------------------------------------------
-
-" Plug 'ncm2/ncm2'
-" Plug 'roxma/nvim-yarp'
-" Plug 'ncm2/ncm2-bufword'
-" Plug 'ncm2/ncm2-tmux', Cond(exists('$TMUX'))
-" Plug 'ncm2/ncm2-path'
-" Plug 'ncm2/ncm2-tagprefix'
-
-" PHP completion, refactoring and introspection tool
-" Plug 'phpactor/phpactor', { 'do': 'composer install', 'for': ['php'] }
-" Plug 'phpactor/ncm2-phpactor', { 'for': ['php'] }
 
 " Intellisense engine for Vim8 & Neovim
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -128,7 +132,7 @@ Plug 'PeterRincker/vim-searchlight'
 " Emmet for vim
 Plug 'mattn/emmet-vim'
 
-" -- GIT / GITHUB --------------------------------------------------------------
+" -- GIT -----------------------------------------------------------------------
 
 " A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
@@ -180,7 +184,32 @@ Plug 'tmux-plugins/vim-tmux-focus-events', Cond(exists('$TMUX'))
 
 " -- MISC ----------------------------------------------------------------------
 
+" Automatically rename closing HTML/XML tags
+" Plug 'AndrewRadev/tagalong.vim'
+
+Plug 'yegappan/mru'
+
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+
+Plug 'ThePrimeagen/vim-be-good'
+
+" Plug 'chaoren/vim-wordmotion'
+
 call plug#end()
+
+let g:grepper = {}
+let g:grepper.tools = ["rg"]
+
+" nnoremap <C-f>
+"   \ :let @s='\<'.expand('<cword>').'\>'<CR>
+"   \ :Grepper -cword -noprompt<CR>
+"   \ :cfdo %s/<C-r>s// \| update
+"   \ <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+" xmap <C-f>
+"   \ "sy \|
+"   \ :GrepperRg <C-r>s<CR>
+"   \ :cfdo %s/<C-r>s// \| update
+"   \ <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
 " ==============================================================================
 " GENERAL
@@ -459,8 +488,10 @@ nmap Q gqap
 vmap Q gq
 
 " `<Leader>+Plus(+) / <Leader>+Minus(-)` -- Resize splits
-nnoremap <silent> <Leader>+ :exe "vertical resize +5"<CR>
-nnoremap <silent> <Leader>- :exe "vertical resize -5"<CR>
+" nnoremap <silent> <Leader>+ :exe "vertical resize +5"<CR>
+" nnoremap <silent> <Leader>- :exe "vertical resize -5"<CR>
+nnoremap <silent> <Leader>+ :vertical resize +5<CR>
+nnoremap <silent> <Leader>- :vertical resize -5<CR>
 
 " Move between open buffers
 " nnoremap <Left> :bp<CR>
@@ -473,12 +504,12 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " No arrow keys -- Force yourself to use the home row
-nnoremap <Up> <nop>
-nnoremap <Down> <nop>
-inoremap <Up> <nop>
-inoremap <Down> <nop>
-inoremap <Left> <nop>
-inoremap <Right> <nop>
+" nnoremap <Up> <nop>
+" nnoremap <Down> <nop>
+" inoremap <Up> <nop>
+" inoremap <Down> <nop>
+" inoremap <Left> <nop>
+" inoremap <Right> <nop>
 
 " `> (forwards) / < (backwards)` -- Shift selection in Visual mode
 vnoremap > >gv
@@ -522,6 +553,8 @@ nnoremap <Leader>x :xit<CR>
 " `<Leader>+w / <Leader>+s` -- Save the current buffer
 nnoremap <silent> <Leader>w :w!<CR>
 nnoremap <silent> <Leader>s :w!<CR>
+nnoremap <silent> <C-s> :update!<CR>
+nnoremap <silent> <C-w> :update!<CR>
 
 " `/asdf` -- Save the current buffer
 nnoremap /asdf :w<CR>
@@ -539,8 +572,8 @@ nnoremap <Leader>ev :vsplit <C-R>=expand('%:p:h') . '/'<CR>
 " `<Leader>+cd` -- Switch CWD to the directory of the open buffer
 map <Leader>cd :cd %:p:h<CR>:pwd<CR>
 
-" `<Leader>+p` -- Show the path of the current file
-nnoremap <Leader>p :echo expand('%')<CR>
+" `<Leader>+P` -- Show the path of the current file
+nnoremap <Leader>P :echo expand('%')<CR>
 
 " `Ctrl+c / Ctrl+j` -- Map to Escape
 inoremap <C-j> <Esc>
