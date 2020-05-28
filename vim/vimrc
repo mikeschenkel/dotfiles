@@ -38,10 +38,6 @@ Plug 'tpope/vim-abolish'
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
 
-" A tree explorer plugin for Vim
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
-
 " Changes Vim working directory to project root
 Plug 'airblade/vim-rooter'
 
