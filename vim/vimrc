@@ -47,6 +47,9 @@ Plug 'airblade/vim-rooter'
 " The fancy start screen for Vim
 Plug 'mhinz/vim-startify'
 
+" Most Recently Used (MRU) Vim plugin
+Plug 'yegappan/mru'
+
 " -- EDITING -------------------------------------------------------------------
 
 " Only show relative numbers in the currently active window
@@ -183,13 +186,12 @@ Plug 'tmux-plugins/vim-tmux-focus-events', Cond(exists('$TMUX'))
 " Automatically rename closing HTML/XML tags
 " Plug 'AndrewRadev/tagalong.vim'
 
-Plug 'yegappan/mru'
+" Plug 'chaoren/vim-wordmotion'
 
-Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
-
+" Games designed to make you better at Vim
 Plug 'ThePrimeagen/vim-be-good'
 
-" Plug 'chaoren/vim-wordmotion'
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 
 call plug#end()
 
