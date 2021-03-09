@@ -4,3 +4,6 @@
 [submodule "vendor/git-friendly"]
 	path = vendor/git-friendly
 	url = git@github.com:jamiew/git-friendly.git
+[submodule "vendor/git-fuzzy"]
+	path = vendor/git-fuzzy
+	url = git@github.com:bigH/git-fuzzy.git

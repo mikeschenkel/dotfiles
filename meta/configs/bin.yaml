@@ -5,6 +5,7 @@
       glob: true
       path: bin/*
     ~/bin/git-friendly: vendor/git-friendly
+    ~/bin/git-fuzzy: vendor/git-fuzzy/bin/git-fuzzy
     ~/bin/set-defaults: macos/set-defaults
 
 - shell:
