@@ -35,6 +35,9 @@ alias gb="git branch"
 alias gc="git checkout"
 alias gcb="git checkout -b"
 
+alias conflicts="git diff --name-only | uniq | grep -v '\.lock\.' | xargs nvim"
+alias git-recent="npx git-recent"
+
 # npm
 alias nis="npm install --save"
 alias nid="npm install --save-dev"
