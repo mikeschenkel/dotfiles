@@ -120,7 +120,7 @@ cask "google-chrome"
 
 # Quick Look Plugins
 # https://github.com/sindresorhus/quick-look-plugins
-cask "qlcolorcode"
+cask "syntax-highlight"
 cask "qlstephen"
 cask "qlmarkdown"
 cask "quicklook-json"
