@@ -75,6 +75,9 @@ alias help='tldr'
 alias ping='prettyping --nolegend'
 alias top="sudo htop"
 
+# Grab local versions of sites to experiment and learn from
+alias bringhome='wget -H -E -k -p '
+
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 
 alias ag="ag -f --hidden"
