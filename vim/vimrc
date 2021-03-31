@@ -544,23 +544,6 @@ nnoremap <Leader>qb :bdel<CR>
 " `<Leader>+o` -- Close all buffers except for the current one
 nnoremap <Leader>o :only<CR>
 
-" `<Leader>+wq` -- Save and exit the current buffer
-nnoremap <Leader>wq :w!<CR>:q!<CR>
-
-" `<Leader>+x` -- Save and exit the current buffer
-" `ZZ`         -- Save and exit the current buffer
-nnoremap <Leader>x :xit<CR>
-
-" `<Leader>+w / <Leader>+s` -- Save the current buffer
-nnoremap <silent> <Leader>w :w!<CR>
-nnoremap <silent> <Leader>s :w!<CR>
-nnoremap <silent> <C-s> :update!<CR>
-nnoremap <silent> <C-w> :update!<CR>
-
-" `/asdf` -- Save the current buffer
-nnoremap /asdf :w<CR>
-nnoremap /asfd :w<CR>
-
 " `<Leader>+<Leader> / Ctrl+e` -- Edit last (most recent) file
 nnoremap <Leader><Leader> <c-^>
 nmap <C-e> :e#<CR>
