@@ -158,6 +158,9 @@ Plug 'itchyny/lightline.vim'
 " A collection of language packs for Vim
 Plug 'sheerun/vim-polyglot'
 
+" Jinja2 syntax file language support
+Plug 'Glench/Vim-Jinja2-Syntax'
+
 " Extra syntax support for CSS3
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss', 'sass', 'less'] }
 
