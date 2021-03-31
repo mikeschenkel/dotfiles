@@ -126,6 +126,9 @@ Plug 'nelstrom/vim-visual-star-search'
 " Highlights the current search match
 Plug 'PeterRincker/vim-searchlight'
 
+" Helps you win at grep
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+
 " -- SNIPPETS ------------------------------------------------------------------
 
 " Emmet for vim
@@ -194,23 +197,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events', Cond(exists('$TMUX'))
 " Games designed to make you better at Vim
 Plug 'ThePrimeagen/vim-be-good'
 
-Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
-
 call plug#end()
-
-let g:grepper = {}
-let g:grepper.tools = ["rg"]
-
-" nnoremap <C-f>
-"   \ :let @s='\<'.expand('<cword>').'\>'<CR>
-"   \ :Grepper -cword -noprompt<CR>
-"   \ :cfdo %s/<C-r>s// \| update
-"   \ <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-" xmap <C-f>
-"   \ "sy \|
-"   \ :GrepperRg <C-r>s<CR>
-"   \ :cfdo %s/<C-r>s// \| update
-"   \ <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
 " ==============================================================================
 " GENERAL
@@ -437,6 +424,13 @@ set display=lastline           " Show as much as possible of the last line
 
 set nojoinspaces               " No extra spaces when joining lines
 
+if has("nvim")                 " ┐
+    set inccommand=nosplit     " │ Live preview the :substitute command
+endif                          " ┘
+
+set gdefault                   " Set flag 'g' by default with ":substitute"
+                               " commands
+
 set spelllang=en,nl            " Set spelling language
 
 " ``<Leader>+ss` -- Toggle spell checking
@@ -615,15 +609,6 @@ nnoremap <Leader>rt :retab<CR>
 " `<Leader>+tw` -- Remove trailing whitespace
 nnoremap <Leader>tw :%s/ \+$//<CR>
 
-" `<Ctrl>+r` -- Search and replace the word under the cursor (normal mode)
-" nnoremap <Leader>sr :%s/\<<C-r><C-w>\>//g<Left><Left>
-nnoremap <C-r> :%s/\<<C-r><C-w>\>//g<Left><Left>
-
-" `<Ctrl>+r` -- Search and replace selected text (visual mode)
-vnoremap <C-r> "hy:%s/<C-r>h//gc<Left><Left><Left>
-vnoremap s/ y:s/<C-r>"/
-"https://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
-
 " `<Leader>+d` -- Delete without yanking
 nnoremap <Leader>d "_d
 vnoremap <Leader>d "_d
@@ -631,6 +616,22 @@ vnoremap <Leader>d "_d
 " `<Leader>+p` -- Replace currently selected text with default register
 " without yanking it
 vnoremap <Leader>p "_dP
+
+" `<Leader>+s` -- Find & Replace in the Current File
+nnoremap <Leader>s :let @s='\<'.expand('<cword>').'\>'<CR>:%s/<C-r>s//<Left>
+xnoremap <Leader>s "sy:%s/<C-r>s//<Left>
+
+" `<Leader>+S` -- Project-wide Find & Replace
+nnoremap <Leader>S
+  \ :let @s='\<'.expand('<cword>').'\>'<CR>
+  \ :Grepper -cword -noprompt<CR>
+  \ :cfdo %s/<C-r>s// \| update
+  \ <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+xmap <Leader>S
+  \ "sy \|
+  \ :GrepperRg <C-r>s<CR>
+  \ :cfdo %s/<C-r>s// \| update
+  \ <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
 " ==============================================================================
 " PLUGIN SETTINGS
