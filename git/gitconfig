@@ -24,6 +24,10 @@
   # https://git-scm.com/docs/git-update-index#_untracked_cache
   untrackedCache = true
 
+[init]
+
+  defaultBranch = main
+
 [apply]
 
   # Detect whitespace errors when applying a patch
