@@ -150,8 +150,8 @@ Plug 'junegunn/gv.vim'
 
 " -- THEME / INTERFACE ---------------------------------------------------------
 
-" Base16 for Vim
-Plug 'kaicataldo/material.vim'
+" Optimized Solarized colorschemes
+Plug 'lifepillar/vim-solarized8'
 
 " A light and configurable statusline/tabline plugin for Vim
 Plug 'itchyny/lightline.vim'
@@ -277,9 +277,7 @@ endif                           " ┘
 set termguicolors
 set background=dark
 
-let g:material_terminal_italics = 1
-let g:material_theme_style = 'palenight'
-colorscheme material
+colorscheme solarized8_flat
 
 " Italicised comments and attributes
 highlight htmlArg gui=italic

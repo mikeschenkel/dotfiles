@@ -58,7 +58,7 @@ alias cask="brew cask"
 alias chmox='chmod +x'
 
 # bat
-alias bat="bat --theme=TwoDark --italic-text=always"
+alias bat="bat --theme='Solarized (dark)' --italic-text=always"
 alias cat="bat"
 
 # ren

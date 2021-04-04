@@ -47,6 +47,7 @@ fi
 # ==============================================================================
 
 zstyle ':prompt:pure:prompt:success' color green
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 # ==============================================================================
 # MISC
@@ -117,6 +118,15 @@ setopt COMPLETE_ALIASES                                  # Turn on completion fo
 setopt LIST_ROWS_FIRST                                   # Cycle through menus horizontally instead of vertically
 
 # ==============================================================================
+# DIRCOLORS
+# ==============================================================================
+
+local DIRCOLORS="${HOME}/.dircolors"
+if [ -s "$DIRCOLORS" ]; then
+  eval $(gdircolors $DIRCOLORS/dircolors.ansi-dark)
+fi
+
+# ==============================================================================
 # GLOBBING
 # ==============================================================================
 
@@ -159,7 +169,7 @@ fi
 
 local FZF="${HOME}/.fzf"
 local FZF_zsh="${HOME}/.fzf.zsh"
-local FZF_base16="${ZSH_CONF}/.fzf-base16.config"
+local FZF_base16="${ZSH_CONF}/.fzf-solarized.config"
 if [ -s "${FZF}" ]; then
   [ -r "${FZF_zsh}" ] && source "${FZF_zsh}"
   [ -r "${FZF_base16}" ] && source "${FZF_base16}"
