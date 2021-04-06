@@ -12,8 +12,8 @@
 # HOMEBREW CASK
 # ==============================================================================
 
-tap "caskroom/cask"
-tap "caskroom/versions"
+tap "homebrew/cask"
+tap "homebrew/cask-versions"
 cask_args appdir: "/Applications"
 
 # Utilities
