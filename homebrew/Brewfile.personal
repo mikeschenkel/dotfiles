@@ -22,6 +22,7 @@ cask "bartender"
 cask "contexts"
 cask "dropbox"
 cask "istat-menus"
+cask "rectangle"
 
 # Tools
 cask "rightfont"
@@ -51,7 +52,6 @@ mas "Keynote", id: 409183694
 
 mas "Enpass", id: 732710998
 mas "Fantastical 2", id: 975937182
-mas "Magnet", id: 441258766
 mas "Reeder 4", id: 1449412482
 mas "Spark", id: 1176895641
 mas "Things", id: 904280696
