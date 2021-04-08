@@ -71,7 +71,7 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 
 " Functions and mappings to close open HTML/XML tags
-Plug 'docunext/closetag.vim'
+" Plug 'docunext/closetag.vim'
 
 " Highlight, navigate, and operate on sets of matching text
 Plug 'andymass/vim-matchup'
