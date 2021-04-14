@@ -75,7 +75,6 @@ brew "nano"
 brew "vim"
 brew "tmux"
 brew "neovim"
-# brew "macvim"
 
 # Git
 brew "git"
