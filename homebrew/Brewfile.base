@@ -115,6 +115,7 @@ cask "visual-studio-code"
 
 # Browsers
 cask "firefox"
+cask "firefox-nightly"
 cask "google-chrome"
 
 # Quick Look Plugins
