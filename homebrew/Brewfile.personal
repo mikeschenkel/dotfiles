@@ -26,6 +26,7 @@ cask "rectangle"
 
 # Tools
 cask "rightfont"
+cask "sequel-pro"
 cask "sip"
 
 # Apps
