@@ -44,7 +44,6 @@ alias nid="npm install --save-dev"
 
 # Vim
 alias v='nvim'
-alias vim='nvim'
 
 # mv, rm, cp
 alias mv="mv -v"
