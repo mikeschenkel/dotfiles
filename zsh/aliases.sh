@@ -133,7 +133,7 @@ alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'
 alias edithosts='sudo $EDITOR /private/etc/hosts'
 
 # Flush Directory Service cache
-alias flush-dns="dscacheutil -flushcache && killall -HUP mDNSResponder"
+alias flush-dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
