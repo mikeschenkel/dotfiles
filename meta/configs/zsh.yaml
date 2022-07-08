@@ -7,6 +7,8 @@
     ~/.zsh/.functions: zsh/functions.sh
     ~/.zsh/.fzf-base16.config: zsh/fzf-base16.config
     ~/.zsh/.fzf-solarized.config: zsh/fzf-solarized.config
+    ~/.zsh/.fzf-catppuccin.config: zsh/fzf-catppuccin.config
+    ~/.zsh/catppuccin-zsh-syntax-highlighting.zsh: zsh/catppuccin-zsh-syntax-highlighting.zsh
     ~/.dircolors/dircolors.ansi-dark: zsh/dircolors.ansi-dark
 
 - shell:
