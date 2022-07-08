@@ -10,6 +10,16 @@ export DOTFILES="${HOME}/repos/dotfiles"
 local ZSH_CONF="${HOME}/.zsh"
 local ZSH_CACHE="${ZSH_CONF}/cache"
 
+
+# ==============================================================================
+# ZSH SYNTX HIGHLIGHTING
+# ==============================================================================
+
+local ZSH_SYNTAX_HIGHLIGHTING="${ZSH_CONF}/catppuccin-zsh-syntax-highlighting.zsh"
+if [[ -r $ZSH_SYNTAX_HIGHLIGHTING ]]; then
+  source $ZSH_SYNTAX_HIGHLIGHTING
+fi
+
 # ==============================================================================
 # ZPLUG
 # ==============================================================================
