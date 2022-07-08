@@ -170,9 +170,11 @@ fi
 local FZF="${HOME}/.fzf"
 local FZF_zsh="${HOME}/.fzf.zsh"
 local FZF_base16="${ZSH_CONF}/.fzf-solarized.config"
+local FZF_catppuccin="${ZSH_CONF}/.fzf-catppuccin.config"
 if [ -s "${FZF}" ]; then
   [ -r "${FZF_zsh}" ] && source "${FZF_zsh}"
-  [ -r "${FZF_base16}" ] && source "${FZF_base16}"
+  # [ -r "${FZF_base16}" ] && source "${FZF_base16}"
+  [ -r "${FZF_catppuccin}" ] && source "${FZF_catppuccin}"
 
   # Use fd (https://github.com/sharkdp/fd) instead of the default find
   # command for listing path candidates.
