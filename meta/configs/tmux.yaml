@@ -1,5 +1,7 @@
 - link:
     ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux/themes/default.conf: tmux/themes/default.conf
+    ~/.tmux/themes/catppuccin.conf: tmux/themes/catppuccin.conf
 
 - shell:
   -
