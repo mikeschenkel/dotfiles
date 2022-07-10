@@ -1,6 +1,5 @@
 - link:
     ~/.vimrc: vim/vimrc
-    ~/.config/nvim/init.vim: vim/vimrc
     ~/.config/vim/plugin_settings: vim/plugin_settings
 
 - shell:
@@ -9,13 +8,8 @@
     stdout: true
     stderr: true
   -
-    description: "Installing Vim and Neovim"
-    command: "brew install vim neovim python3"
-    stdout: true
-    stderr: true
-  -
-    description: "Installing python support for neovim"
-    command: "pip3 install neovim"
+    description: "Installing Vim"
+    command: "brew install vim"
     stdout: true
     stderr: true
   -
