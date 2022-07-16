@@ -107,6 +107,7 @@ cask "imageoptim"
 
 # Apps
 cask "iterm2"
+cask "kitty"
 cask "transmission"
 cask "vlc"
 
