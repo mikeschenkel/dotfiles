@@ -18,6 +18,7 @@ cask_args appdir: "/Applications"
 
 # Utilities
 cask "alfred"
+cask "raycast"
 cask "bartender"
 cask "contexts"
 cask "dropbox"
