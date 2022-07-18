@@ -37,6 +37,7 @@ cask "transmit"
 # Media Playback
 cask "plexamp"
 cask "spotify"
+cask "sonixd"
 
 # Communication
 cask "franz"
