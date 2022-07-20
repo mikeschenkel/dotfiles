@@ -6,6 +6,7 @@ npm_packages=(
   "gulp-cli"
   "git-open"
   "http-server"
+  "netlify-cli"
 )
 
 for npm_package in "${npm_packages[@]}"; do
