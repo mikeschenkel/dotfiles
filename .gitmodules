@@ -1,6 +1,0 @@
-[submodule "vendor/dotbot"]
-	path = vendor/dotbot
-	url = https://github.com/anishathalye/dotbot.git
-[submodule "vendor/git-fuzzy"]
-	path = vendor/git-fuzzy
-	url = git@github.com:bigH/git-fuzzy.git

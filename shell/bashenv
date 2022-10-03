@@ -1,2 +1,0 @@
-source "${HOME}/.common_profile"
-shopt -s expand_aliases
